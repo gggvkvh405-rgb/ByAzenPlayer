@@ -1,0 +1,10 @@
+{
+  "name": "byazen",
+  "productName": "ByAzen",
+  "version": "1.0.0",
+  "description": "ByAzen — a premium desktop music player",
+  "main": "main.js",
+  "author": "ByAzen",
+  "license": "UNLICENSED",
+  "private": true
+}

@@ -1,0 +1,128 @@
+name: Build Windows app
+
+on:
+  push:
+    paths:
+      - 'app/**'
+      - 'tools/**'
+      - '.github/workflows/build-windows.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  windows:
+    runs-on: windows-latest
+    env:
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm install --no-audit --no-fund
+
+      - name: Core tests (tags, library, recommendations)
+        run: node tools/test-core.js
+
+      - name: Smoke test renderer
+        run: node tools/smoke-test.js
+
+      - name: Fetch Electron runtime
+        run: |
+          cd app
+          npm install --no-save --no-package-lock --no-audit --no-fund electron@32.2.0 rcedit@4.0.1
+          node -e "const p=require.resolve('electron');console.log('electron module:',p)"
+
+      - name: Assemble portable build
+        shell: pwsh
+        run: |
+          $out = "app/dist/ByAzen-win32-x64"
+          Remove-Item -Recurse -Force app/dist -ErrorAction SilentlyContinue
+          New-Item -ItemType Directory -Force -Path $out | Out-Null
+          Copy-Item -Recurse -Force app/node_modules/electron/dist/* $out/
+          Remove-Item -Force "$out/default_app.asar" -ErrorAction SilentlyContinue
+
+          $appDir = "$out/resources/app"
+          New-Item -ItemType Directory -Force -Path $appDir | Out-Null
+          $files = @('main.js', 'preload.js', 'meta.js', 'library.js', 'recommend.js', 'audius.js', 'package.json')
+          foreach ($f in $files) { Copy-Item -Force "app/$f" $appDir/ }
+          Copy-Item -Recurse -Force app/renderer $appDir/renderer
+          Copy-Item -Recurse -Force app/build $appDir/build
+          Write-Host "app payload:"
+          Get-ChildItem $appDir | Select-Object Name | Format-Table
+
+          Rename-Item -Force "$out/electron.exe" "ByAzen.exe"
+          Write-Host "payload before stamp:"
+          Get-ChildItem $out | Select-Object Name | Format-Table
+
+      - name: Stamp icon and version info
+        continue-on-error: true
+        shell: pwsh
+        run: |
+          $env:NODE_PATH = (Resolve-Path "app/node_modules").Path
+          node tools/stamp-exe.cjs "app/dist/ByAzen-win32-x64/ByAzen.exe" "app/build/icon.ico"
+          exit 0
+
+      - name: Launch test (self-test exit code)
+        shell: pwsh
+        run: |
+          $exe = (Resolve-Path "app/dist/ByAzen-win32-x64/ByAzen.exe").Path
+          $out = Join-Path $PWD "selftest.log"
+          $err = Join-Path $PWD "selftest.err"
+          $p = Start-Process -FilePath $exe -ArgumentList "--byazen-selftest" -PassThru `
+                 -RedirectStandardOutput $out -RedirectStandardError $err
+          if (-not $p.WaitForExit(45000)) {
+            Get-Process -Name ByAzen -ErrorAction SilentlyContinue | Stop-Process -Force -ErrorAction SilentlyContinue
+            Get-Content $out -ErrorAction SilentlyContinue
+            Get-Content $err -ErrorAction SilentlyContinue
+            throw "ByAzen.exe did not finish its self-test within 45s"
+          }
+          $p.Refresh()
+          Get-Content $out -ErrorAction SilentlyContinue
+          Get-Content $err -ErrorAction SilentlyContinue
+          if ($p.ExitCode -ne 0) { throw "ByAzen.exe self-test failed (exit $($p.ExitCode))" }
+          if (-not (Select-String -Quiet -Path $out -Pattern "BYAZEN_SELFTEST_OK")) {
+            throw "ByAzen.exe never reported a rendered window"
+          }
+          Write-Host "build verified: window rendered inside the packaged exe"
+
+      - name: Launch test (stays open as a normal app)
+        shell: pwsh
+        run: |
+          $exe = (Resolve-Path "app/dist/ByAzen-win32-x64/ByAzen.exe").Path
+          $p = Start-Process -FilePath $exe -PassThru
+          Start-Sleep -Seconds 8
+          if ($p.HasExited) { throw "ByAzen.exe exited during startup (code $($p.ExitCode))" }
+          Write-Host "ByAzen.exe is running (pid $($p.Id))"
+          Get-Process -Name ByAzen -ErrorAction SilentlyContinue | Stop-Process -Force -ErrorAction SilentlyContinue
+
+      - name: Zip portable build
+        shell: pwsh
+        run: |
+          Compress-Archive -Path app/dist/ByAzen-win32-x64/* -DestinationPath ByAzen-win32-x64-portable.zip -CompressionLevel Optimal
+          "{0:N1} MB" -f ((Get-Item ByAzen-win32-x64-portable.zip).Length / 1MB)
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ByAzen-windows
+          path: |
+            ByAzen-win32-x64-portable.zip
+            app/dist/ByAzen-win32-x64/ByAzen.exe
+          if-no-files-found: error
+
+      - name: Publish release
+        shell: pwsh
+        run: |
+          $tag = "v1.0.0"
+          gh release view $tag --repo $env:GITHUB_REPOSITORY *> $null
+          if ($LASTEXITCODE -ne 0) {
+            gh release create $tag --repo $env:GITHUB_REPOSITORY --title "ByAzen 1.0.0" --notes "Portable Windows build. Unzip, then run ByAzen.exe. Reads your own music folders (MP3/FLAC/M4A/OGG/Opus/WAV/AIFF/WMA) with tags, cover art, offline radio and .lrc lyrics; eight demo tracks are bundled." --target $env:GITHUB_SHA
+          }
+          gh release upload $tag ByAzen-win32-x64-portable.zip --repo $env:GITHUB_REPOSITORY --clobber
+          exit 0

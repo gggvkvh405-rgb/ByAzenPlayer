@@ -1,0 +1,315 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; img-src 'self' data:; media-src 'self' data:; style-src 'self' 'unsafe-inline'; font-src 'self'; script-src 'self'"
+    />
+    <title>ByAzen</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app" id="app">
+      <!-- ============================================================ titlebar -->
+      <header class="titlebar" id="titlebar">
+        <div class="tb-left">
+          <span class="tb-dots" aria-hidden="true"><i></i><i></i><i></i></span>
+        </div>
+        <div class="tb-center" id="tb-title">ByAzen</div>
+        <div class="tb-right">
+          <button class="win-btn" id="btn-min" title="Minimize" aria-label="Minimize">
+            <svg viewBox="0 0 12 12"><path d="M2.5 6h7" /></svg>
+          </button>
+          <button class="win-btn" id="btn-max" title="Maximize" aria-label="Maximize">
+            <svg viewBox="0 0 12 12"><rect x="2.6" y="2.6" width="6.8" height="6.8" rx="1.4" /></svg>
+          </button>
+          <button class="win-btn win-btn--close" id="btn-close" title="Close" aria-label="Close">
+            <svg viewBox="0 0 12 12"><path d="M3 3l6 6M9 3l-6 6" /></svg>
+          </button>
+        </div>
+      </header>
+
+      <!-- ============================================================= sidebar -->
+      <nav class="sidebar">
+        <div class="brand">
+          <span class="brand-by">By</span><span class="brand-azen">Azen</span><i class="brand-dot"></i>
+        </div>
+        <div class="brand-sub">PREMIUM AUDIO</div>
+
+        <div class="cap">BROWSE</div>
+        <button class="nav" data-view="home">
+          <svg class="ico" viewBox="0 0 20 20"><path d="M3 10.6 10 4.2l7 6.4V17a1 1 0 0 1-1 1h-3.4v-4.6H7.4V18H4a1 1 0 0 1-1-1z"/></svg>
+          <span>Home</span>
+        </button>
+        <button class="nav" data-view="library">
+          <svg class="ico" viewBox="0 0 20 20"><path d="M4 4.6h3.1v12.8H4zM9.3 4.6h3.1v12.8H9.3zM14.9 5.9l2.9-1.2 4.3 10.4-2.9 1.2z"/></svg>
+          <span>Library</span>
+        </button>
+        <button class="nav" data-view="online">
+          <svg class="ico" viewBox="0 0 20 20"><path d="M10 2.6a7.4 7.4 0 1 0 0 14.8 7.4 7.4 0 0 0 0-14.8M2.9 7.4h14.2M2.9 12.6h14.2M10 2.6c2 2.1 3 4.6 3 7.4s-1 5.3-3 7.4c-2-2.1-3-4.6-3-7.4s1-5.3 3-7.4"/></svg>
+          <span>Catalogue</span>
+        </button>
+        <button class="nav" data-view="playlists">
+          <svg class="ico" viewBox="0 0 20 20"><path d="M4 6h9M4 10.5h9M4 15h6M16.8 8.6v7.1M16.8 8.6l2.8-.9v7.2M16.8 15.7a1.4 1.4 0 1 1-2.8 0 1.4 1.4 0 0 1 2.8 0"/></svg>
+          <span>Playlists</span>
+        </button>
+        <button class="nav" data-view="radio">
+          <svg class="ico" viewBox="0 0 20 20"><path d="M10 8.4a1.6 1.6 0 1 0 0 3.2 1.6 1.6 0 0 0 0-3.2M5.4 5.4a6.5 6.5 0 0 0 0 9.2M14.6 5.4a6.5 6.5 0 0 1 0 9.2M2.8 2.8a10.2 10.2 0 0 0 0 14.4M17.2 2.8a10.2 10.2 0 0 1 0 14.4"/></svg>
+          <span>Radio</span>
+        </button>
+        <button class="nav" data-view="settings">
+          <svg class="ico" viewBox="0 0 20 20"><path d="M10 7.6a2.4 2.4 0 1 0 0 4.8 2.4 2.4 0 0 0 0-4.8M10 2.6v2M10 15.4v2M2.6 10h2M15.4 10h2M4.8 4.8l1.4 1.4M13.8 13.8l1.4 1.4M15.2 4.8l-1.4 1.4M6.2 13.8l-1.4 1.4"/></svg>
+          <span>Settings</span>
+        </button>
+
+        <div class="rule"></div>
+        <div class="cap">YOUR LIBRARY</div>
+        <div class="pl-list" id="playlist-list"></div>
+        <button class="ghost-btn" id="new-playlist">
+          <svg class="ico ico--sm" viewBox="0 0 20 20"><path d="M10 4.6v10.8M4.6 10h10.8"/></svg>
+          New playlist
+        </button>
+
+        <div class="side-foot">
+          <div class="lossless">
+            <div class="ll-badge">
+              <svg class="ico" viewBox="0 0 20 20"><path d="M3 8.4h3.2L10 5.2v9.6L6.2 11.6H3zM12.4 8a2.8 2.8 0 0 1 0 4M14.4 5.8a5.8 5.8 0 0 1 0 8.4"/></svg>
+            </div>
+            <div>
+              <div class="ll-title">Lossless</div>
+              <div class="ll-sub">24-bit / 48 kHz · WAV</div>
+            </div>
+          </div>
+          <div class="mini">
+            <div class="mini-title" id="mini-title">—</div>
+            <div class="mini-sub" id="mini-sub">—</div>
+            <div class="mini-bar"><i id="mini-fill"></i></div>
+          </div>
+        </div>
+      </nav>
+
+      <!-- ================================================================ main -->
+      <main class="main" id="main">
+        <!-- topbar -->
+        <div class="topbar">
+          <label class="search">
+            <svg class="ico" viewBox="0 0 20 20"><path d="M9.2 3.6a5.6 5.6 0 1 1 0 11.2 5.6 5.6 0 0 1 0-11.2M13.4 13.4 17 17"/></svg>
+            <input id="search" type="search" placeholder="Search albums, artists, tracks" autocomplete="off" spellcheck="false" />
+            <kbd>/</kbd>
+          </label>
+          <div class="top-right">
+            <button class="icon-btn" id="btn-mute-all" title="Toggle sound">
+              <svg class="ico" viewBox="0 0 20 20"><path d="M3 8h2.6L9.4 5v10L5.6 12H3zM12 7.6a3.4 3.4 0 0 1 0 4.8M14.4 5.2a6.8 6.8 0 0 1 0 9.6"/></svg>
+            </button>
+            <div class="avatar">KR</div>
+          </div>
+        </div>
+
+        <!-- =========================================================== view: home -->
+        <section class="view view--home is-active" id="view-home">
+          <div class="np-wrap">
+          <div class="np">
+            <div class="art-wrap">
+              <img class="art" id="np-art" alt="" />
+              <div class="art-glow" aria-hidden="true"></div>
+            </div>
+            <div class="np-meta">
+              <div class="cap">NOW PLAYING</div>
+              <h1 class="np-title" id="np-title">Aurora Lines</h1>
+              <div class="np-artist" id="np-artist">Kael Rivers · Northern Light</div>
+            </div>
+            <div class="seek">
+              <div class="seek-bar" id="seek" tabindex="0" role="slider" aria-label="Seek"
+                   aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+                <div class="seek-track"><i class="seek-fill" id="seek-fill"></i><i class="seek-knob" id="seek-knob"></i></div>
+              </div>
+              <div class="seek-times">
+                <span id="t-cur">0:00</span>
+                <span id="t-dur">0:00</span>
+              </div>
+            </div>
+            <div class="transport">
+              <button class="icon-btn" id="btn-shuffle" title="Shuffle (S)">
+                <svg class="ico" viewBox="0 0 20 20"><path d="M2.8 6h2.4c1.4 0 2.3.6 3.2 1.8l2.8 4c.9 1.2 1.8 1.8 3.2 1.8h2.4M13.4 10.8l2.6 2.8-2.6 2.6M2.8 13.6h2.4c1 0 1.7-.3 2.4-1M12 7.4c1-.9 2-1.4 3.2-1.4h2.8M13.4 3.2 16 6l-2.6 2.6"/></svg>
+              </button>
+              <button class="icon-btn" id="btn-prev" title="Previous (←)">
+                <svg class="ico ico--lg" viewBox="0 0 20 20"><path d="M5 4.4v11.2M14.8 5 6.6 10l8.2 5z"/></svg>
+              </button>
+              <button class="play" id="btn-play" title="Play / pause (Space)" aria-label="Play">
+                <svg class="play-ico" viewBox="0 0 24 24"><path d="M8.6 5.2 18 12l-9.4 6.8z"/></svg>
+                <svg class="pause-ico" viewBox="0 0 24 24"><path d="M8.4 5.4v13.2M15.6 5.4v13.2"/></svg>
+              </button>
+              <button class="icon-btn" id="btn-next" title="Next (→)">
+                <svg class="ico ico--lg" viewBox="0 0 20 20"><path d="M15 4.4v11.2M5.2 5 13.4 10 5.2 15z"/></svg>
+              </button>
+              <button class="icon-btn" id="btn-repeat" title="Repeat (R)">
+                <svg class="ico" viewBox="0 0 20 20"><path d="M4 8.4V7.4A2.4 2.4 0 0 1 6.4 5h7M13.6 12v1a2.4 2.4 0 0 1-2.4 2.4H4M11.2 2.8 13.6 5l-2.4 2.2M6.8 12.6 4.4 14.8l2.4 2.2"/></svg>
+              </button>
+            </div>
+            <div class="vol">
+              <svg class="ico" viewBox="0 0 20 20"><path d="M3 8h2.6L9.4 5v10L5.6 12H3z"/></svg>
+              <div class="vol-bar" id="vol" role="slider" aria-label="Volume" aria-valuemin="0" aria-valuemax="100" aria-valuenow="72">
+                <div class="vol-track"><i class="vol-fill" id="vol-fill"></i></div>
+              </div>
+              <span class="vol-val" id="vol-val">72</span>
+            </div>
+          </div>
+          <div class="shelves" id="shelves"></div>
+          </div>
+
+          <div class="queue">
+            <div class="queue-head">
+              <div class="cap">UP NEXT <em id="q-count">8</em></div>
+              <button class="link" id="q-clear">Clear</button>
+            </div>
+            <div class="queue-list" id="queue"></div>
+            <div class="lyrics" id="lyrics">
+              <div class="lyr-head"><span class="cap cap--dark">LYRICS</span><span class="lyr-sync" id="lyr-head-note">—</span></div>
+              <div class="lyr-body" id="lyr-body"></div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ======================================================== view: library -->
+        <section class="view view--library" id="view-library">
+          <div class="lib-head">
+            <h1 class="lib-title">Library</h1>
+            <div class="lib-count" id="lib-count">8 albums · 8 tracks</div>
+            <div class="lib-tools">
+              <button class="btn btn--sm" id="btn-rescan" title="Re-read tags and pick up new files">Rescan</button>
+              <button class="btn btn--sm btn--primary" id="btn-add-folder" title="Add a music folder">Add folder…</button>
+              <div class="chips" id="chips">
+                <button class="chip is-on" data-filter="all">All</button>
+                <button class="chip" data-filter="albums">Albums</button>
+                <button class="chip" data-filter="artists">Artists</button>
+                <button class="chip" data-filter="genres">Genres</button>
+              </div>
+              <label class="search search--sm">
+                <svg class="ico" viewBox="0 0 20 20"><path d="M9.2 3.6a5.6 5.6 0 1 1 0 11.2 5.6 5.6 0 0 1 0-11.2M13.4 13.4 17 17"/></svg>
+                <input id="search-lib" type="search" placeholder="Search library" autocomplete="off" spellcheck="false" />
+              </label>
+            </div>
+          </div>
+          <div class="lib-body">
+            <div class="grid" id="grid"></div>
+            <aside class="lib-side">
+              <div class="cap">RECENTLY PLAYED</div>
+              <div class="recent" id="recent"></div>
+              <div class="rule"></div>
+              <div class="cap">LIBRARY</div>
+              <div class="stats">
+                <div><b id="st-albums">0</b><span>Albums</span></div>
+                <div><b id="st-artists">0</b><span>Artists</span></div>
+                <div><b id="st-genres">0</b><span>Genres</span></div>
+              </div>
+            </aside>
+          </div>
+        </section>
+
+        <!-- ===================================================== view: playlists -->
+        <section class="view view--simple" id="view-playlists">
+          <h1 class="lib-title">Playlists</h1>
+          <div class="cards" id="playlists"></div>
+        </section>
+
+        <!-- ========================================================= view: radio -->
+        <section class="view view--simple" id="view-radio">
+          <h1 class="lib-title">Radio</h1>
+          <p class="lede">Stations are built on your own files: shared genres, tempo, era and the tracks you actually finish. Nothing leaves this machine.</p>
+          <div class="cards" id="stations"></div>
+        </section>
+
+        <!-- ======================================================= view: online -->
+        <section class="view view--simple view--online" id="view-online">
+          <div class="online-head">
+            <div>
+              <h1 class="lib-title">Catalogue</h1>
+              <p class="lede" id="online-lede">Music published openly on Audius — streamed legally, no account needed.</p>
+            </div>
+            <div class="online-status" id="online-status" data-state="idle">checking…</div>
+          </div>
+          <div class="online-tools">
+            <div class="chips" id="online-chips"></div>
+            <div class="seg" id="online-time">
+              <button class="seg-btn is-on" data-time="week">Week</button>
+              <button class="seg-btn" data-time="month">Month</button>
+              <button class="seg-btn" data-time="allTime">All time</button>
+            </div>
+            <button class="btn btn--sm" id="btn-online-underground" title="Fresh uploads, fewer plays">Underground</button>
+            <button class="btn btn--sm" id="btn-online-refresh" title="Reload the chart">Refresh</button>
+          </div>
+          <div class="online-grid" id="online-grid"></div>
+          <div class="online-search" id="online-search" hidden>
+            <div class="online-search-head">
+              <span class="cap">SEARCH RESULTS</span>
+              <span id="online-search-note"></span>
+              <button class="link" id="online-search-close">Clear</button>
+            </div>
+            <div class="rows" id="online-results"></div>
+          </div>
+        </section>
+
+        <!-- ====================================================== view: settings -->
+        <section class="view view--simple" id="view-settings">
+          <h1 class="lib-title">Settings</h1>
+          <div class="settings">
+            <div class="set-row">
+              <div><b>Crossfade</b><span>Smooth blend between tracks</span></div>
+              <label class="switch"><input type="checkbox" id="set-crossfade" checked /><i></i></label>
+            </div>
+            <div class="set-row">
+              <div><b>Repeat queue</b><span>Loop the whole up-next list</span></div>
+              <label class="switch"><input type="checkbox" id="set-repeat" /><i></i></label>
+            </div>
+            <div class="set-row">
+              <div><b>Reduced motion</b><span>Calm album art, no rotation</span></div>
+              <label class="switch"><input type="checkbox" id="set-motion" /><i></i></label>
+            </div>
+            <div class="set-row">
+              <div><b>Online catalogue</b><span>Audius charts and search (artist-uploaded, openly licensed)</span></div>
+              <label class="switch"><input type="checkbox" id="set-online" checked /><i></i></label>
+            </div>
+            <div class="set-row set-row--stack">
+              <div><b>Music folders</b><span id="library-path">—</span></div>
+              <div class="set-actions">
+                <button class="btn btn--sm" id="btn-add-folder-2">Add folder…</button>
+                <button class="btn btn--sm" id="btn-rescan-2">Rescan</button>
+              </div>
+            </div>
+            <div class="set-row">
+              <div><b>Playlists</b><span>Artists with 3+ tracks become one-click collections</span></div>
+              <span class="pill" id="lib-folders">0 folders</span>
+            </div>
+            <div class="set-meta" id="app-meta">ByAzen</div>
+          </div>
+        </section>
+
+        <div class="scan-banner" id="scan-banner">Scanning…</div>
+
+        <!-- =========================================================== footer -->
+        <div class="nowbar" id="nowbar">
+          <img class="nowbar-art" id="bar-art" alt="" />
+          <div class="nowbar-meta">
+            <div class="nowbar-title" id="bar-title">—</div>
+            <div class="nowbar-sub" id="bar-sub">—</div>
+          </div>
+          <button class="icon-btn" id="btn-fav" title="Favourite">
+            <svg class="ico" viewBox="0 0 20 20"><path d="M10 16.4s-6.2-3.7-6.2-8A3.3 3.3 0 0 1 10 6.4a3.3 3.3 0 0 1 6.2 2c0 4.3-6.2 8-6.2 8z"/></svg>
+          </button>
+          <div class="nowbar-ctrl">
+            <button class="icon-btn" id="btn-play2" title="Play / pause">
+              <svg class="ico play-ico" viewBox="0 0 24 24"><path d="M8.6 5.2 18 12l-9.4 6.8z"/></svg>
+              <svg class="ico pause-ico" viewBox="0 0 24 24"><path d="M8.4 5.4v13.2M15.6 5.4v13.2"/></svg>
+            </button>
+          </div>
+          <div class="nowbar-seek"><i id="bar-fill"></i></div>
+          <span class="nowbar-time" id="bar-time">0:00</span>
+        </div>
+      </main>
+    </div>
+    <div class="drop-hint" aria-hidden="true"><div>Drop a music folder to add it to your library</div></div>
+    <audio id="audio" preload="auto"></audio>
+    <script src="app.js"></script>
+  </body>
+</html>
