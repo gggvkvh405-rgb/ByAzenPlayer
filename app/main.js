@@ -235,9 +235,6 @@ app.whenReady().then(() => {
   library = new Library({ cacheDir: path.join(userData, 'cache') });
   library.load();
   audius = new Audius();
-  // the catalogue shelf and the view can both ask on start-up; keep the
-  // public API polite by sharing one in-flight chart request
-  audius.cache = audius.cache || null;
 
   registerMediaProtocol();
   createWindow();
@@ -307,6 +304,13 @@ function readAudiusCache() {
   }
 }
 function writeAudiusCache(data) {
+  const keys = Object.keys(data || {});
+  if (keys.length > 24) {
+    keys
+      .sort((a, b) => (data[a].at || 0) - (data[b].at || 0))
+      .slice(0, keys.length - 24)
+      .forEach((k) => delete data[k]);
+  }
   try {
     fs.writeFileSync(AUDIUS_CACHE_FILE(), JSON.stringify(data));
   } catch {
@@ -345,16 +349,23 @@ ipcMain.handle('audius:status', async () => {
   }
 });
 
+const inflightBrowse = new Map();
+
 ipcMain.handle('audius:browse', async (_e, { kind = 'trending', genre = 'All', time = 'week', limit = 24 } = {}) => {
+  const key = `${kind}:${genre}:${time}:${limit}`;
+  if (inflightBrowse.has(key)) return inflightBrowse.get(key);
+  const job = browseChart({ kind, genre, time, limit }).finally(() => inflightBrowse.delete(key));
+  inflightBrowse.set(key, job);
+  return job;
+});
+
+async function browseChart({ kind, genre, time, limit }) {
   try {
     const cached = readAudiusCache();
     let tracks;
     if (kind === 'underground') tracks = await audius.underground({ limit });
     else tracks = await audius.trending({ genre, time, limit });
-    if (cached && cached[kind + ':' + genre]) {
-      // remember the last good chart so the UI can still open it offline
-      delete cached[kind + ':' + genre];
-    }
+    // remember the last good chart so the UI can still open it offline
     const key = `${kind}:${genre}:${time}`;
     const store = cached || {};
     store[key] = { at: Date.now(), tracks };
@@ -371,7 +382,7 @@ ipcMain.handle('audius:browse', async (_e, { kind = 'trending', genre = 'All', t
       tracks: fallback ? await mapStreams(fallback.tracks) : [],
     };
   }
-});
+}
 
 ipcMain.handle('audius:search', async (_e, { query, limit = 30 } = {}) => {
   try {
