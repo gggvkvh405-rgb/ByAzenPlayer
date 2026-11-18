@@ -1,0 +1,31 @@
+ByAzen Native 0.6 — авторство, источники, лицензии
+
+Встроенные полные записи (не фрагменты)
+
+1. Melanie Ungar — What Is Love (2015). Music and performance: Melanie Ungar.
+Jamendo track 1204669, album 144705: https://www.jamendo.com/track/1204669
+Автор: https://www.jamendo.com/artist/463402/melanieungar
+CC BY 3.0 Unported: https://creativecommons.org/licenses/by/3.0/
+Неизменённый MP3 с тегами, SHA-256 cde4d681e19cbeebc7e27858cdd21948fb7bf23322dc983210aeb9a7409b90cf.
+Копия записи: https://github.com/SevennnnJ/DAT-612-FYP-See-your-voice/blob/fb3db26ca0d47fe8a3345cd654815f0e896eed91/assets/mp3/What%20Is%20Love.mp3
+
+2. Josh Woodward — Circles, с альбома 33⅓ (2025). © Josh Woodward.
+Автор и оригинальные загрузки: https://www.joshwoodward.com/
+Альбом: https://archive.org/details/josh-woodward-33-13
+CC BY 4.0 International: https://creativecommons.org/licenses/by/4.0/
+Источник AAC: https://github.com/talatmursalin/publicdomainsongs/blob/f8d6a864b055f9ddbfdb3523469ed8ded1a01f3a/33-1-3/33-02-circles.m4a
+Изменения: GRAMO конвертировал исходный MP3 в AAC (96 kbps). В нативном ByAzen тот же полный AAC декодирован в 16-битный PCM и упакован в FLAC для совместимости, без дополнительного сжатия с потерями, сокращения или изменения исполнения. Название репозитория источника не означает, что запись в общественном достоянии.
+
+11 инструментальных демозаписей и абстрактные иллюстрации — материалы проекта ByAzen. Иллюстрации в интерфейсе не являются оригинальными обложками сторонних альбомов. Исполнители не заявлены партнёрами ByAzen.
+
+Сетевые релизы — только по запросу слушателя; эти записи не входят в EXE.
+• Другие песни из альбома 33⅓ — Josh Woodward, CC BY 4.0. Кредиты и сведения о конвертации: https://github.com/talatmursalin/publicdomainsongs/tree/f8d6a864b055f9ddbfdb3523469ed8ded1a01f3a#josh-woodward--33%E2%85%93-2025
+• Melanie Ungar — альбом What Is Love, CC BY 3.0. GRAMO конвертировал исходные FLAC в AAC; эти AAC не изменены. https://www.jamendo.com/album/144705/what-is-love и https://github.com/talatmursalin/publicdomainsongs/tree/f8d6a864b055f9ddbfdb3523469ed8ded1a01f3a#melanie-ungar--what-is-love-2015
+• Саундтрек 0 A.D.: © Wildfire Games, CC BY-SA 3.0 Unported, https://creativecommons.org/licenses/by-sa/3.0/. Исходные Ogg не изменены. Главный композитор Omri Lahav; авторов и исполнителей отдельных произведений см. в титрах проекта. https://github.com/0ad/0ad/blob/61a3b9507d974084e6badb88a0826bd89a6d5b8b/binaries/data/mods/public/audio/LICENSE.txt и https://github.com/0ad/0ad/blob/61a3b9507d974084e6badb88a0826bd89a6d5b8b/binaries/data/mods/public/gui/credits/texts/audio.json
+• Начальный указатель Openverse: https://github.com/WordPress/openverse/blob/1345d7ce32ac4f1198954e5912a41295728663a9/sample_data/sample_audio.csv. Исполнитель, ссылка на источник и лицензия конкретной записи — кнопка «О записи».
+• Для каталога Audius: https://audius.co/documents/ApiTerms.pdf и https://audius.co/documents/PrivacyPolicy.pdf. Условия прослушивания определяет источник; прослушивание не даёт права на повторное распространение.
+
+Компоненты декодирования и чтения JSON (тексты лицензий ниже):
+miniaudio — https://github.com/mackron/miniaudio
+stb_vorbis — https://github.com/nothings/stb
+cJSON — https://github.com/DaveGamble/cJSON
