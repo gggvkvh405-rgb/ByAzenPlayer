@@ -5,6 +5,8 @@ const { pathToFileURL } = require('url');
 const { Library } = require('./library');
 
 const isDev = !app.isPackaged;
+/** `ByAzen.exe --byazen-selftest` boots the UI, then exits 0 (used by CI). */
+const SELFTEST = process.argv.includes('--byazen-selftest');
 
 /** @type {BrowserWindow|null} */
 let win = null;
@@ -78,7 +80,15 @@ function createWindow() {
   });
 
   win.loadFile(path.join(__dirname, 'renderer', 'index.html'));
-  win.once('ready-to-show', () => win.show());
+  win.once('ready-to-show', () => {
+    win.show();
+    // CI proof that the packaged payload boots: window shown => preload +
+    // renderer + every required module loaded, so exit successfully.
+    if (SELFTEST) {
+      console.log('BYAZEN_SELFTEST_OK');
+      setTimeout(() => app.exit(0), 250);
+    }
+  });
 
   const send = () => win && win.webContents.send('window:state', { maximized: win.isMaximized() });
   win.on('maximize', send);
@@ -89,8 +99,13 @@ function createWindow() {
     return { action: 'deny' };
   });
 
-  // hand drag-and-dropped folders/files to the renderer
   win.webContents.on('will-navigate', (e) => e.preventDefault());
+
+  // Chromium refuses to mix a custom media scheme with plain file:// pages in
+  // some builds; if the renderer ever fails to load the shell, say so loudly.
+  win.webContents.on('did-fail-load', (_e, code, desc) => {
+    console.error('renderer failed to load', code, desc);
+  });
 
   if (isDev && process.env.BYAZEN_DEVTOOLS) win.webContents.openDevTools({ mode: 'detach' });
 }
