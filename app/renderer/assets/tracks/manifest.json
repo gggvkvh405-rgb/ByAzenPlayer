@@ -1,0 +1,66 @@
+[
+  {
+    "id": "aurora-lines",
+    "title": "Aurora Lines",
+    "file": "assets/tracks/aurora-lines.wav",
+    "cover": "assets/covers/aurora-lines.png",
+    "duration": 25.3,
+    "bpm": 84
+  },
+  {
+    "id": "paper-moons",
+    "title": "Paper Moons",
+    "file": "assets/tracks/paper-moons.wav",
+    "cover": "assets/covers/paper-moons.png",
+    "duration": 23.3,
+    "bpm": 92
+  },
+  {
+    "id": "low-tide",
+    "title": "Low Tide",
+    "file": "assets/tracks/low-tide.wav",
+    "cover": "assets/covers/low-tide.png",
+    "duration": 27.7,
+    "bpm": 76
+  },
+  {
+    "id": "felt-piano",
+    "title": "Felt Piano",
+    "file": "assets/tracks/felt-piano.wav",
+    "cover": "assets/covers/felt-piano.png",
+    "duration": 30.6,
+    "bpm": 68
+  },
+  {
+    "id": "northbound",
+    "title": "Northbound",
+    "file": "assets/tracks/northbound.wav",
+    "cover": "assets/covers/northbound.png",
+    "duration": 24.2,
+    "bpm": 88
+  },
+  {
+    "id": "slow-light",
+    "title": "Slow Light",
+    "file": "assets/tracks/slow-light.wav",
+    "cover": "assets/covers/slow-light.png",
+    "duration": 29.1,
+    "bpm": 72
+  },
+  {
+    "id": "harbour",
+    "title": "Harbour",
+    "file": "assets/tracks/harbour.wav",
+    "cover": "assets/covers/harbour.png",
+    "duration": 26.4,
+    "bpm": 80
+  },
+  {
+    "id": "wildflower",
+    "title": "Wildflower",
+    "file": "assets/tracks/wildflower.wav",
+    "cover": "assets/covers/wildflower.png",
+    "duration": 22.4,
+    "bpm": 96
+  }
+]

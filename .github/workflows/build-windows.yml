@@ -1,0 +1,65 @@
+name: Build Windows app
+
+on:
+  push:
+    paths:
+      - 'app/**'
+      - '.github/workflows/build-windows.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  windows:
+    runs-on: windows-latest
+    env:
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install packager
+        working-directory: app
+        shell: pwsh
+        run: |
+          npm install --no-save --no-audit --no-fund electron@32.2.0 @electron/packager@18.3.6
+
+      - name: Smoke test renderer (jsdom)
+        shell: pwsh
+        run: |
+          npm install --no-save --no-audit --no-fund jsdom@31
+          node tools/smoke-test.js
+
+      - name: Package ByAzen.exe
+        working-directory: app
+        shell: pwsh
+        run: |
+          npx electron-packager . ByAzen --platform=win32 --arch=x64 --out=dist --overwrite --app-version=1.0.0 --icon=build/icon.ico --asar --prune=true --ignore="dist" --win32metadata.CompanyName="ByAzen" --win32metadata.FileDescription="ByAzen - premium desktop music player" --win32metadata.ProductName="ByAzen"
+          if ($LASTEXITCODE -ne 0) { throw "packager failed" }
+
+      - name: Zip portable build
+        shell: pwsh
+        run: Compress-Archive -Path app/dist/ByAzen-win32-x64/* -DestinationPath ByAzen-win32-x64-portable.zip
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ByAzen-windows
+          path: |
+            ByAzen-win32-x64-portable.zip
+            app/dist/ByAzen-win32-x64/ByAzen.exe
+          if-no-files-found: error
+
+      - name: Publish release
+        shell: pwsh
+        run: |
+          $tag = "v1.0.0"
+          gh release view $tag --repo $env:GITHUB_REPOSITORY 2>$null
+          if ($LASTEXITCODE -ne 0) {
+            gh release create $tag --repo $env:GITHUB_REPOSITORY --title "ByAzen 1.0.0" --notes "Portable Windows build. Unzip, then run ByAzen.exe." --target $env:GITHUB_SHA
+          }
+          gh release upload $tag ByAzen-win32-x64-portable.zip --repo $env:GITHUB_REPOSITORY --clobber

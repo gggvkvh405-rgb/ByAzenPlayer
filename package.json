@@ -2,9 +2,10 @@
   "name": "byazen-concept-sheet",
   "version": "1.0.0",
   "private": true,
-  "description": "ByAzen — UI/UX concept sheet (vector-drawn, rendered to PNG)",
+  "description": "ByAzen \u2014 UI/UX concept sheet (vector-drawn, rendered to PNG)",
   "scripts": {
-    "build": "node design/build.js"
+    "build": "node design/build.js",
+    "assets": "node tools/gen-assets.js"
   },
   "devDependencies": {
     "@resvg/resvg-js": "^2.6.2"
