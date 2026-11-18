@@ -23,13 +23,18 @@ function test(name, fn) {
     fails.push(`${name}\n    ${e.message}`);
   }
 }
-async function testAsync(name, fn) {
-  try {
-    await fn();
-    passed++;
-  } catch (e) {
-    fails.push(`${name}\n    ${e.message}`);
-  }
+const pending = [];
+function testAsync(name, fn) {
+  pending.push(
+    (async () => {
+      try {
+        await fn();
+        passed++;
+      } catch (e) {
+        fails.push(`${name}\n    ${e.message}`);
+      }
+    })()
+  );
 }
 
 const tmp = fs.mkdtempSync(path.join(os.tmpdir(), 'byazen-core-'));
@@ -402,12 +407,181 @@ test('genreTokens splits messy tags', () => {
   assert.deepStrictEqual(rec.genreTokens(null), []);
 });
 
-/* ------------------------------------------------------------------ report */
-fs.rmSync(tmp, { recursive: true, force: true });
+/* ---------------------------------------------------------- audius client */
+const { Audius, normalizeTrack, isFresh, AudiusError } = require('../app/audius');
 
-if (fails.length) {
-  console.error(`CORE TESTS FAILED — ${fails.length} of ${passed + fails.length}`);
-  fails.forEach((f) => console.error(' ✗', f));
-  process.exit(1);
+const AUDIUS_TRACK = {
+  id: 'Ma0blKV',
+  title: 'Light the way',
+  genre: 'Deep House',
+  mood: 'Fiery',
+  bpm: 130,
+  duration: 227,
+  play_count: 1520,
+  favorite_count: 60,
+  repost_count: 59,
+  release_date: '2026-11-14T16:14:54Z',
+  permalink: '/Stony100_RTMG/light-the-way',
+  is_streamable: true,
+  artwork: { '150x150': 'https://cdn/150.jpg', '480x480': 'https://cdn/480.jpg', '1000x1000': 'https://cdn/1000.jpg' },
+  user: { id: '17xp6XY', name: 'Stony100', handle: 'Stony100_RTMG' },
+  stream: { url: 'https://node/tracks/x/stream?sig=1' },
+};
+
+test('normalizeTrack maps audius payload to player fields', () => {
+  const t = normalizeTrack(AUDIUS_TRACK);
+  assert.strictEqual(t.id, 'audius:Ma0blKV');
+  assert.strictEqual(t.audiusId, 'Ma0blKV');
+  assert.strictEqual(t.source, 'audius');
+  assert.strictEqual(t.title, 'Light the way');
+  assert.strictEqual(t.artist, 'Stony100');
+  assert.strictEqual(t.genre, 'Deep House');
+  assert.strictEqual(t.bpm, 130);
+  assert.strictEqual(t.year, '2026');
+  assert.strictEqual(t.art, 'https://cdn/1000.jpg');
+  assert.strictEqual(t.playCount, 1520);
+  assert.strictEqual(t.permalinkUrl, 'https://audius.co/Stony100_RTMG/light-the-way');
+  assert.strictEqual(normalizeTrack(null), null);
+});
+
+test('gated tracks are not offered for playback', () => {
+  const gated = normalizeTrack({ ...AUDIUS_TRACK, is_stream_gated: true });
+  assert.strictEqual(gated.isStreamable, false);
+});
+
+test('signed stream urls are checked for expiry', () => {
+  const make = (ts) =>
+    'https://node/x?signature=' +
+    encodeURIComponent(JSON.stringify({ data: JSON.stringify({ timestamp: ts, cid: 'x' }), signature: '0x' }));
+  assert.strictEqual(isFresh(make(Date.now() + 3600e3)), true);
+  assert.strictEqual(isFresh(make(Date.now() - 3600e3)), false);
+  assert.strictEqual(isFresh('https://node/x'), true);
+  assert.strictEqual(isFresh('not a url'), false);
+});
+
+/** a fetch stub that serves the host list, charts, search and one failure */
+function stubFetch(log) {
+  return async (url) => {
+    log.push(String(url));
+    const u = new URL(String(url));
+    const json = (data) => ({ ok: true, status: 200, json: async () => data, headers: new Map() });
+    if (u.host === 'api.audius.co' && u.pathname === '/') return json(['https://disc1.example', 'https://disc2.example']);
+    if (u.pathname.endsWith('/tracks/trending')) {
+      const genre = u.searchParams.get('genre');
+      const data = genre ? [AUDIUS_TRACK, { ...AUDIUS_TRACK, id: 'B2', genre }] : [AUDIUS_TRACK];
+      return json({ data });
+    }
+    if (u.pathname.endsWith('/tracks/trending/underground')) return json({ data: [AUDIUS_TRACK] });
+    if (u.pathname.endsWith('/tracks/search')) return json({ data: [AUDIUS_TRACK] });
+    if (u.pathname.startsWith('/v1/users/') && u.pathname.endsWith('/tracks')) return json({ data: [AUDIUS_TRACK] });
+    if (u.pathname.startsWith('/v1/tracks/')) return json({ data: [AUDIUS_TRACK] });
+    if (u.pathname.startsWith('/v1/playlists/'))
+      return json({ data: [{ id: 'PL1', playlist_name: 'Late Night', user: { name: 'Stony100' }, tracks: [AUDIUS_TRACK, AUDIUS_TRACK] }] });
+    if (u.host === 'disc1.example' || u.host === 'disc2.example') {
+      if (u.pathname.endsWith('/tracks/search')) return json({ data: [] });
+    }
+    return { ok: false, status: 500, json: async () => ({}) };
+  };
 }
-console.log(`core tests: ${passed} passed`);
+
+testAsync('audius client: hosts, charts, search, artist, playlist', async () => {
+  const log = [];
+  const client = new Audius({ fetchImpl: stubFetch(log) });
+  const trending = await client.trending({ limit: 10 });
+  assert.strictEqual(trending.length, 1);
+  assert.strictEqual(trending[0].source, 'audius');
+  assert.ok(log.some((u) => u === 'https://api.audius.co'), 'host list should be fetched');
+  assert.ok(
+    log.some((u) => u.startsWith('https://disc1.example') && u.includes('app_name=ByAzen')),
+    'requests should identify the app'
+  );
+
+  const byGenre = await client.trending({ genre: 'House', limit: 5 });
+  assert.strictEqual(byGenre.length, 2);
+  assert.ok(log.some((u) => u.includes('genre=House')));
+
+  const underground = await client.underground({ limit: 3 });
+  assert.strictEqual(underground.length, 1);
+
+  const found = await client.search('light');
+  assert.strictEqual(found.length, 1);
+
+  const artist = await client.artistTracks('17xp6XY');
+  assert.strictEqual(artist.length, 1);
+  assert.deepStrictEqual(await client.artistTracks(''), []);
+
+  const pl = await client.playlist('PL1');
+  assert.strictEqual(pl.tracks.length, 2);
+  assert.strictEqual(pl.title, 'Late Night');
+
+  const one = await client.track('audius:Ma0blKV');
+  assert.strictEqual(one.audiusId, 'Ma0blKV');
+});
+
+testAsync('audius client: results are cached, not refetched', async () => {
+  const log = [];
+  const client = new Audius({ fetchImpl: stubFetch(log) });
+  await client.trending({ limit: 10 });
+  const before = log.length;
+  await client.trending({ limit: 10 });
+  assert.strictEqual(log.length, before, 'second chart load should hit the cache');
+});
+
+testAsync('audius client: rotated host when the first one dies', async () => {
+  const log = [];
+  const failing = async (url) => {
+    log.push(String(url));
+    const u = new URL(String(url));
+    if (u.host === 'api.audius.co') return { ok: true, status: 200, json: async () => ['https://dead.example', 'https://alive.example'] };
+    if (u.host === 'dead.example') throw new Error('ECONNRESET');
+    return { ok: true, status: 200, json: async () => ({ data: [AUDIUS_TRACK] }) };
+  };
+  const client = new Audius({ fetchImpl: failing });
+  const tracks = await client.trending({ limit: 2 });
+  assert.strictEqual(tracks.length, 1);
+  assert.ok(log.some((u) => u.startsWith('https://alive.example')));
+});
+
+testAsync('audius client: hard offline gives a readable error', async () => {
+  const client = new Audius({
+    fetchImpl: async () => {
+      throw new Error('offline');
+    },
+  });
+  let err = null;
+  try {
+    await client.trending();
+  } catch (e) {
+    err = e;
+  }
+  assert.ok(err instanceof AudiusError, 'expected AudiusError');
+  assert.ok(/unreachable/i.test(err.message), err.message);
+});
+
+testAsync('audius client: stream url prefers a fresh signed link', async () => {
+  const client = new Audius({ fetchImpl: stubFetch([]) });
+  const fresh = 'https://node/x?signature=' + encodeURIComponent(JSON.stringify({ data: JSON.stringify({ timestamp: Date.now() + 3600e3 }), signature: '0x' }));
+  const res = await client.streamUrl({ audiusId: 'Ma0blKV', streamUrl: fresh });
+  assert.strictEqual(res.direct, fresh);
+  assert.ok(res.endpoint.includes('/v1/tracks/Ma0blKV/stream'));
+  assert.ok(res.endpoint.includes('app_name=ByAzen'));
+  const stale = await client.streamUrl({ audiusId: 'Ma0blKV', streamUrl: 'https://node/x?signature=' + encodeURIComponent(JSON.stringify({ data: JSON.stringify({ timestamp: 1 }), signature: '0x' })) });
+  assert.strictEqual(stale.direct, null);
+});
+
+/* ------------------------------------------------------------------ report */
+(async () => {
+  await Promise.all(pending);
+  report();
+})();
+
+function report() {
+  fs.rmSync(tmp, { recursive: true, force: true });
+
+  if (fails.length) {
+    console.error(`CORE TESTS FAILED — ${fails.length} of ${passed + fails.length}`);
+    fails.forEach((f) => console.error(' ✗', f));
+    process.exit(1);
+  }
+  console.log(`core tests: ${passed} passed`);
+}

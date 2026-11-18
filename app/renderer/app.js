@@ -24,13 +24,20 @@ const state = {
   filter: 'all',
   station: null,
   recents: [],
+  /* online catalogue */
+  remote: new Map(), // id -> track coming from Audius
+  online: { genre: 'All', time: 'week', kind: 'trending', tracks: [], loading: false, error: null, cachedAt: null, status: null },
+  results: [],
+  onlineEnabled: true,
 };
 
 const audio = $('#audio');
 audio.volume = state.volume;
 
-const current = () => state.tracks.find((t) => t.id === state.queue[state.index]) || state.tracks[0] || null;
-const byId = (id) => state.tracks.find((t) => t.id === id) || null;
+const allTracks = () => (state.remote.size ? state.tracks.concat([...state.remote.values()]) : state.tracks);
+const byId = (id) => state.tracks.find((t) => t.id === id) || state.remote.get(id) || null;
+const current = () => byId(state.queue[state.index]) || state.tracks[0] || null;
+const isRemote = (t) => !!t && t.source === 'audius';
 
 /* -------------------------------------------------------------------- utils */
 const fmt = (s) => {
@@ -129,8 +136,15 @@ function albumCard(album, tracks) {
   return el;
 }
 
+function registerRemote(tracks) {
+  tracks.forEach((t) => {
+    if (t && t.source === 'audius') state.remote.set(t.id, t);
+  });
+}
+
 function playList(tracks) {
   if (!tracks.length) return;
+  registerRemote(tracks);
   state.queue = tracks.map((t) => t.id);
   state.index = 0;
   state.station = null;
@@ -320,15 +334,82 @@ function renderHome() {
   renderShelves();
 }
 
+/** a small "from the catalogue" row, shared by the empty and the filled home */
+function renderCatalogueShelf(wrap) {
+  const sec = document.createElement('section');
+  sec.className = 'shelf';
+  sec.innerHTML = `<div class="shelf-head"><h3>From the catalogue</h3><span>Audius · open catalogue</span></div><div class="shelf-row"></div>`;
+  const row = sec.querySelector('.shelf-row');
+  wrap.appendChild(sec);
+  if (!state.online.tracks.length) {
+    row.innerHTML = '<div class="shelf-loading">Loading charts…</div>';
+    loadOnline().then(() => {
+      row.innerHTML = '';
+      if (!state.online.tracks.length) {
+        row.innerHTML = '<div class="shelf-loading">Catalogue unavailable right now.</div>';
+        return;
+      }
+      state.online.tracks.slice(0, 12).forEach((t) => {
+        const el = document.createElement('button');
+        el.className = 'tile';
+        el.innerHTML = `<img src="${esc(t.art || ART_FALLBACK)}" alt="" draggable="false" onerror="this.src='${ART_FALLBACK}'" />
+          <span class="tile-t">${esc(t.title)}</span><span class="tile-s">${esc(t.artist)}</span>`;
+        el.addEventListener('click', () => {
+          playList(state.online.tracks);
+          const i = state.queue.indexOf(t.id);
+          if (i >= 0) {
+            state.index = i;
+            renderQueue();
+            loadCurrent(true);
+          }
+        });
+        row.appendChild(el);
+      });
+    });
+    return;
+  }
+  state.online.tracks.slice(0, 12).forEach((t) => {
+    const el = document.createElement('button');
+    el.className = 'tile';
+    el.innerHTML = `<img src="${esc(t.art || ART_FALLBACK)}" alt="" draggable="false" onerror="this.src='${ART_FALLBACK}'" />
+      <span class="tile-t">${esc(t.title)}</span><span class="tile-s">${esc(t.artist)}</span>`;
+    el.addEventListener('click', () => {
+      playList(state.online.tracks);
+      const i = state.queue.indexOf(t.id);
+      if (i >= 0) {
+        state.index = i;
+        renderQueue();
+        loadCurrent(true);
+      }
+    });
+    row.appendChild(el);
+  });
+}
+
 function renderShelves() {
   const wrap = $('#shelves');
   if (!wrap) return;
   wrap.innerHTML = '';
   if (!state.tracks.length) {
     wrap.innerHTML = `<div class="shelf-empty">
-      <b>Recommendations start with your music.</b>
-      <span>ByAzen builds stations from genres, tempo and what you actually finish listening to — all offline.</span>
+      <b>Two ways to get music in here.</b>
+      <span>Add a folder of your own files for an offline library and offline radio,
+      or open <b>Catalogue</b> to stream from Audius — an open catalogue of
+      artist-uploaded, openly licensed music.</span>
+      <span class="shelf-empty-actions">
+        <button class="btn btn--sm btn--primary" data-act="folder">Add folder…</button>
+        <button class="btn btn--sm" data-act="online">Open catalogue</button>
+        <button class="btn btn--sm" data-act="demo">Load demo tracks</button>
+      </span>
     </div>`;
+    $$('[data-act]', wrap).forEach((b) =>
+      b.addEventListener('click', () => {
+        if (b.dataset.act === 'folder') chooseFolder();
+        else if (b.dataset.act === 'online') go('online');
+        else loadDemo();
+      })
+    );
+    if (state.onlineEnabled) renderCatalogueShelf(wrap);
     return;
   }
   const shelves = buildShelves();
@@ -366,6 +447,7 @@ function renderShelves() {
     return el;
   };
   if (shelves.stations.length) add('Radio', 'From your library', shelves.stations, stationCard);
+  if (state.onlineEnabled) renderCatalogueShelf(wrap);
 }
 
 /* ---------------------------------------------------------------- queue etc */
@@ -389,7 +471,7 @@ function renderQueue() {
     b.className = 'q-item' + (i === state.index ? ' is-on' : '');
     b.innerHTML = `
       <img class="q-art" src="${albumArt(t)}" alt="" draggable="false" onerror="this.src='${ART_FALLBACK}'" />
-      <span class="q-meta"><span class="q-title">${esc(t.title)}</span><span class="q-artist">${esc(t.artist)}</span></span>
+      <span class="q-meta"><span class="q-title">${esc(t.title)}${isRemote(t) ? ' <span class="badge-src">audius</span>' : ''}</span><span class="q-artist">${esc(t.artist)}</span></span>
       <span class="q-dur">${fmt(t.duration)}</span>`;
     b.addEventListener('click', () => {
       state.index = i;
@@ -499,6 +581,7 @@ function paintPlaying() {
 function loadCurrent(autoplay = false) {
   const t = current();
   if (!t) return;
+  state.streamTried = false;
   audio.src = t.url || '';
   audio.load();
   renderHome();
@@ -794,6 +877,143 @@ function renderPlaylists() {
     });
 }
 
+/* --------------------------------------------------------- online catalogue */
+function paintOnlineStatus() {
+  const el = $('#online-status');
+  if (!el) return;
+  const st = state.online;
+  if (!state.onlineEnabled) {
+    el.dataset.state = 'offline';
+    el.textContent = 'off';
+    return;
+  }
+  if (st.loading) {
+    el.dataset.state = 'idle';
+    el.textContent = 'loading…';
+    return;
+  }
+  if (st.error) {
+    el.dataset.state = 'offline';
+    el.textContent = st.cachedAt ? 'offline · cached' : 'offline';
+    return;
+  }
+  el.dataset.state = 'online';
+  el.textContent = 'connected';
+}
+
+function onlineCard(t) {
+  const el = document.createElement('button');
+  el.className = 'on-card';
+  el.title = `${t.title} — ${t.artist}`;
+  const mins = t.duration ? `${Math.floor(t.duration / 60)}:${String(t.duration % 60).padStart(2, '0')}` : '';
+  el.innerHTML = `
+    <div class="on-art">
+      <img src="${esc(t.art || ART_FALLBACK)}" alt="" draggable="false" onerror="this.src='${ART_FALLBACK}'" />
+      <span class="on-play"><svg viewBox="0 0 24 24"><path d="M8.6 5.2 18 12l-9.4 6.8z"/></svg></span>
+    </div>
+    <span class="on-title">${esc(t.title)}</span>
+    <span class="on-sub">${esc(t.artist)}${t.album ? ' · ' + esc(t.album) : ''}</span>
+    <span class="on-meta">${[t.genre, mins, t.playCount ? fmtCount(t.playCount) + ' plays' : '']
+      .filter(Boolean)
+      .map((x) => `<span>${esc(x)}</span>`)
+      .join('')}</span>`;
+  el.addEventListener('click', () => {
+    playList(state.online.tracks);
+    const i = state.queue.indexOf(t.id);
+    if (i >= 0) {
+      state.index = i;
+      renderQueue();
+      loadCurrent(true);
+    }
+  });
+  return el;
+}
+
+const fmtCount = (n) => (n >= 1e6 ? (n / 1e6).toFixed(1) + 'M' : n >= 1e3 ? Math.round(n / 1e3) + 'k' : String(n));
+
+function renderOnline() {
+  const grid = $('#online-grid');
+  if (!grid) return;
+  paintOnlineStatus();
+  grid.innerHTML = '';
+  const st = state.online;
+
+  if (!state.onlineEnabled) {
+    grid.innerHTML = `<div class="on-error"><b>Online catalogue is switched off.</b><br />
+      Turn it back on in Settings to stream from Audius.</div>`;
+    return;
+  }
+  if (st.loading && !st.tracks.length) {
+    for (let i = 0; i < 8; i++) {
+      const sk = document.createElement('div');
+      sk.className = 'on-skel';
+      grid.appendChild(sk);
+    }
+    return;
+  }
+  if (st.error && !st.tracks.length) {
+    grid.innerHTML = `<div class="on-error"><b>Can't reach the catalogue.</b><br />
+      ${esc(st.error)}<br />Your local library keeps working while this is down.</div>`;
+    return;
+  }
+  if (!st.tracks.length) {
+    grid.innerHTML = `<div class="on-error"><b>Nothing came back for “${esc(st.genre)}”.</b><br />
+      Try another genre or the search field.</div>`;
+    return;
+  }
+  st.tracks.forEach((t) => grid.appendChild(onlineCard(t)));
+}
+
+async function loadOnline({ genre = state.online.genre, time = state.online.time, kind = state.online.kind } = {}) {
+  state.online.genre = genre;
+  state.online.time = time;
+  state.online.kind = kind;
+  if (!api || !api.audiusBrowse) {
+    state.online.error = 'Online catalogue needs the desktop app.';
+    renderOnline();
+    return;
+  }
+  state.online.loading = true;
+  state.online.error = null;
+  renderOnline();
+  const res = await api.audiusBrowse({ kind, genre, time, limit: 24 });
+  state.online.loading = false;
+  if (res && res.tracks && res.tracks.length) {
+    registerRemote(res.tracks);
+    state.online.tracks = res.tracks;
+    state.online.cachedAt = res.cachedAt || null;
+    state.online.error = res.ok ? null : res.error || 'offline';
+  } else {
+    state.online.tracks = [];
+    state.online.error = res && res.error ? res.error : 'no tracks';
+  }
+  renderOnline();
+}
+
+async function runOnlineSearch(q) {
+  const panel = $('#online-search');
+  const list = $('#online-results');
+  if (!panel || !list) return;
+  if (!q) {
+    panel.hidden = true;
+    state.results = [];
+    return;
+  }
+  panel.hidden = false;
+  list.innerHTML = '<div class="on-error">Searching…</div>';
+  const res = await api?.audiusSearch?.(q, 30);
+  const tracks = (res && res.tracks) || [];
+  state.results = tracks;
+  registerRemote(tracks);
+  $('#online-search-note').textContent = tracks.length ? `${tracks.length} tracks for “${q}”` : 'nothing found';
+  list.innerHTML = '';
+  if (!tracks.length) {
+    list.innerHTML = `<div class="on-error">${res && res.error ? esc(res.error) : `No tracks for “${esc(q)}” on Audius.`}</div>`;
+    return;
+  }
+  tracks.forEach((t, i) => list.appendChild(trackRow(t, i)));
+}
+
 /* ------------------------------------------------------------------- views */
 function go(view) {
   state.view = view;
@@ -803,6 +1023,10 @@ function go(view) {
   if (view === 'library') {
     renderLibrary();
     renderRecents();
+  }
+  if (view === 'online') {
+    renderOnline();
+    if (!state.online.tracks.length && !state.online.loading) loadOnline();
   }
   if (view === 'radio') renderStations();
   if (view === 'playlists') renderPlaylists();
@@ -997,19 +1221,75 @@ $('#chips').addEventListener('click', (e) => {
   renderLibrary();
 });
 $('#search-lib').addEventListener('input', renderLibrary);
+let searchTimer = null;
 $('#search').addEventListener('input', (e) => {
   const q = e.target.value.trim();
-  if (!q) return;
-  const hit = state.tracks.find(
-    (t) =>
-      t.title.toLowerCase().includes(q.toLowerCase()) ||
-      t.artist.toLowerCase().includes(q.toLowerCase())
-  );
-  if (hit) {
-    go('library');
-    $('#search-lib').value = q;
-    renderLibrary();
+  clearTimeout(searchTimer);
+  if (!q) {
+    if ($('#online-search')) $('#online-search').hidden = true;
+    return;
   }
+  if (!state.onlineEnabled) return;
+  searchTimer = setTimeout(() => {
+    go('online');
+    runOnlineSearch(q);
+  }, 320);
+});
+$('#search').addEventListener('keydown', (e) => {
+  if (e.key === 'Enter') {
+    const q = e.target.value.trim();
+    if (q && state.onlineEnabled) {
+      clearTimeout(searchTimer);
+      go('online');
+      runOnlineSearch(q);
+    }
+  }
+});
+
+/* ------------------------------------------------------- online controls */
+const onlineChips = $('#online-chips');
+if (onlineChips) {
+  const GENRES = ['All', 'Electronic', 'Hip-Hop/Rap', 'Pop', 'R&B/Soul', 'Rock', 'Lo-Fi', 'House', 'Techno', 'Ambient', 'Jazz', 'Classical', 'Downtempo'];
+  GENRES.forEach((g) => {
+    const b = document.createElement('button');
+    b.className = 'chip' + (g === 'All' ? ' is-on' : '');
+    b.dataset.genre = g;
+    b.textContent = g === 'Hip-Hop/Rap' ? 'Hip-Hop' : g === 'R&B/Soul' ? 'R&B' : g;
+    onlineChips.appendChild(b);
+  });
+  onlineChips.addEventListener('click', (e) => {
+    const chip = e.target.closest('.chip');
+    if (!chip) return;
+    Array.from(onlineChips.children).forEach((c) => c.classList.toggle('is-on', c === chip));
+    loadOnline({ genre: chip.dataset.genre, kind: 'trending' });
+  });
+}
+
+$('#online-time')?.addEventListener('click', (e) => {
+  const b = e.target.closest('.seg-btn');
+  if (!b) return;
+  $$('#online-time .seg-btn').forEach((x) => x.classList.toggle('is-on', x === b));
+  loadOnline({ time: b.dataset.time, kind: 'trending' });
+});
+$('#btn-online-underground')?.addEventListener('click', (e) => {
+  const on = state.online.kind !== 'underground';
+  e.currentTarget.classList.toggle('is-on', on);
+  loadOnline({ kind: on ? 'underground' : 'trending' });
+});
+$('#btn-online-refresh')?.addEventListener('click', () => {
+  state.online.tracks = [];
+  loadOnline();
+});
+$('#online-search-close')?.addEventListener('click', () => {
+  $('#online-search').hidden = true;
+  $('#search').value = '';
+  state.results = [];
+});
+$('#set-online')?.addEventListener('change', (e) => {
+  state.onlineEnabled = e.target.checked;
+  api?.setPrefs({ onlineCatalogue: state.onlineEnabled });
+  renderOnline();
+  if (state.onlineEnabled && !state.online.tracks.length) loadOnline();
 });
 
 /* drag and drop folders onto the window */
@@ -1072,14 +1352,25 @@ audio.addEventListener('timeupdate', () => {
 });
 audio.addEventListener('play', () => {
   document.body.classList.add('is-playing');
+  state.wasPlaying = true;
   state.skipGuard = true;
   paintPlaying();
 });
 audio.addEventListener('pause', () => document.body.classList.remove('is-playing'));
 audio.addEventListener('error', () => {
   document.body.classList.remove('is-playing');
+  const t = current();
   const el = $('#np-artist');
-  if (el && current()) el.textContent = 'Could not read this file (codec not supported)';
+  if (isRemote(t) && !state.streamTried) {
+    // a signed content-node URL can expire mid-session: fall back to the proxy
+    state.streamTried = true;
+    if (el) el.textContent = 'Reconnecting to the catalogue…';
+    audio.src = t.url;
+    audio.load();
+    if (document.body.classList.contains('is-playing') || state.wasPlaying) play();
+    return;
+  }
+  if (el && t) el.textContent = isRemote(t) ? 'Track unavailable — it may have been removed' : 'Could not read this file (codec not supported)';
 });
 audio.addEventListener('ended', () => next(true));
 
@@ -1143,6 +1434,11 @@ async function loadPrefs() {
   if (p.history) state.history = p.history;
   $('#vol-fill').style.width = `${state.volume * 100}%`;
   $('#vol-val').textContent = String(Math.round(state.volume * 100));
+  if (p.onlineCatalogue === false) {
+    state.onlineEnabled = false;
+    const cb = $('#set-online');
+    if (cb) cb.checked = false;
+  }
   if (p.reducedMotion) {
     state.reducedMotion = true;
     document.body.classList.add('reduce-motion');
@@ -1179,6 +1475,7 @@ async function loadPrefs() {
   renderLibrary();
   if (state.tracks.length) loadCurrent(false);
   // refresh the index quietly in the background
+  if (api && state.onlineEnabled && !state.online.tracks.length) loadOnline().catch(() => {});
   if (api && state.tracks.length) {
     api.refresh().then((snap) => {
       if (snap && snap.changed) applyLibrary(snap);
@@ -1187,4 +1484,18 @@ async function loadPrefs() {
 })();
 
 /* expose a tiny hook for the smoke test */
-window.__byazen = { state, applyLibrary, loadDemo, playTrack, next, go, buildShelves, renderLibrary, renderHome };
+window.__byazen = {
+  state,
+  applyLibrary,
+  loadDemo,
+  playTrack,
+  next,
+  go,
+  buildShelves,
+  renderLibrary,
+  renderHome,
+  loadOnline,
+  renderOnline,
+  runOnlineSearch,
+  registerRemote,
+};

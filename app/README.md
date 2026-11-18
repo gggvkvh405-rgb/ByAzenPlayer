@@ -11,6 +11,7 @@ app/
   meta.js              dependency-free tag reader (ID3v2.2/2.3/2.4, FLAC, M4A)
   library.js           folder walk, artwork cache, index in userData
   recommend.js         offline "Radio": similarity + play/skip affinity
+  audius.js            public Audius API client (charts, search, streams)
   renderer/index.html  UI shell
   renderer/styles.css  design tokens + layout
   renderer/app.js      library, queue, transport, lyrics, views, hotkeys
@@ -45,6 +46,21 @@ in the track's folder → a soft placeholder. Files without tags fall back to th
   drops files that disappeared.
 * Searches match title, artist, album and genre; the chips switch the grid
   between albums, artists and genres.
+
+## Catalogue (Audius)
+
+`app/audius.js` talks to the public Audius API: `GET https://api.audius.co` lists
+discovery hosts, then `/v1/tracks/trending`, `/v1/tracks/trending/underground`,
+`/v1/tracks/search`, `/v1/users/{id}/tracks`, `/v1/playlists/{id}` and
+`/v1/tracks/{id}/stream`. Requests identify the app with `app_name=ByAzen`,
+results are cached for two minutes, hosts rotate on failure, and gated
+(purchase-only) tracks are filtered out.
+
+Streams are played through `byazen://stream/<trackId>`, which proxies the
+redirect target with `net.fetch` and forwards Range headers, so seeking behaves
+like a local file and the page never depends on a remote CORS policy. The last
+successful chart is stored in `%APPDATA%/ByAzen/audius-cache.json` and shown when
+the network is down.
 
 ## Recommendations (offline)
 

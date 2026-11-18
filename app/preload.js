@@ -42,7 +42,7 @@ contextBridge.exposeInMainWorld('byazen', {
     return () => ipcRenderer.removeListener('window:state', handler);
   },
 
-  /* library */
+  /* local library */
   libraryState: () => ipcRenderer.invoke('library:state'),
   chooseFolder: () => ipcRenderer.invoke('library:chooseFolder'),
   addFolders: (folders) => ipcRenderer.invoke('library:addFolders', folders),
@@ -54,6 +54,15 @@ contextBridge.exposeInMainWorld('byazen', {
     ipcRenderer.on('library:progress', handler);
     return () => ipcRenderer.removeListener('library:progress', handler);
   },
+
+  /* online catalogue (Audius) */
+  audiusStatus: () => ipcRenderer.invoke('audius:status'),
+  audiusBrowse: (opts) => ipcRenderer.invoke('audius:browse', opts || {}),
+  audiusSearch: (query, limit) => ipcRenderer.invoke('audius:search', { query, limit }),
+  audiusArtist: (artistId, limit) => ipcRenderer.invoke('audius:artist', { artistId, limit }),
+  audiusTrack: (id) => ipcRenderer.invoke('audius:track', { id }),
+  audiusPlaylist: (id) => ipcRenderer.invoke('audius:playlist', { id }),
+  audiusOpenPage: (permalink) => ipcRenderer.invoke('audius:openPage', { permalink }),
 
   /* recommendations */
   history: () => ipcRenderer.invoke('rec:history'),

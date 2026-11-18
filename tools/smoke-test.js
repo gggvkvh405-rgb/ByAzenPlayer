@@ -90,6 +90,57 @@ const TRACKS = [
 ];
 
 let library = { tracks: [], folders: [], scannedAt: 0 };
+const audiusCalls = [];
+const REMOTE = [
+  {
+    id: 'audius:A1',
+    audiusId: 'A1',
+    source: 'audius',
+    title: 'Light the way',
+    artist: 'Stony100',
+    album: '',
+    albumArtist: 'Stony100',
+    genre: 'Deep House',
+    year: '2026',
+    bpm: 130,
+    duration: 227,
+    art: 'https://cdn/1000.jpg',
+    url: 'byazen://stream/A1',
+    playCount: 1520,
+  },
+  {
+    id: 'audius:A2',
+    audiusId: 'A2',
+    source: 'audius',
+    title: 'The Search',
+    artist: 'JXNKO',
+    album: '',
+    albumArtist: 'JXNKO',
+    genre: 'Trap',
+    year: '2026',
+    bpm: 140,
+    duration: 163,
+    art: 'https://cdn/2.jpg',
+    url: 'byazen://stream/A2',
+    playCount: 313,
+  },
+  {
+    id: 'audius:A3',
+    audiusId: 'A3',
+    source: 'audius',
+    title: 'Aurora',
+    artist: 'EIME',
+    album: 'The Real Old School Hip Hop, Vol. 3',
+    albumArtist: 'EIME',
+    genre: 'Jazz',
+    year: '2021',
+    bpm: 120,
+    duration: 225,
+    art: 'https://cdn/3.jpg',
+    url: 'byazen://stream/A3',
+    playCount: 9609,
+  },
+];
 const recEvents = [];
 const bridge = {
   platform: 'win32',
@@ -123,6 +174,22 @@ const bridge = {
   setPrefs: async () => true,
   reveal: async () => true,
   droppedFolders: async (list) => list,
+  takeDroppedPaths: () => [],
+  /* online catalogue */
+  audiusBrowse: async ({ kind = 'trending', genre = 'All' } = {}) => {
+    audiusCalls.push({ kind, genre });
+    const list = [REMOTE[0], REMOTE[1]].map((t) => ({ ...t, genre: genre === 'All' ? t.genre : genre }));
+    return { ok: true, genre, tracks: list.map((t) => ({ ...t, url: `byazen://stream/${t.audiusId}` })) };
+  },
+  audiusSearch: async (q) => {
+    audiusCalls.push({ search: q });
+    return { ok: true, tracks: [{ ...REMOTE[2], url: `byazen://stream/${REMOTE[2].audiusId}` }] };
+  },
+  audiusArtist: async () => ({ ok: true, tracks: [] }),
+  audiusTrack: async () => ({ ok: true, track: REMOTE[0] }),
+  audiusPlaylist: async () => ({ ok: false }),
+  audiusStatus: async () => ({ online: true }),
+  audiusOpenPage: async () => true,
 };
 window.byazen = bridge;
 
@@ -240,6 +307,58 @@ const tick = () => new Promise((r) => setTimeout(r, 30));
 
   click(q('#q-clear'));
   check('clear queue keeps one', qa('.q-item').length === 1, String(qa('.q-item').length));
+
+  /* ------------------------------------------------------ online catalogue */
+  click(q('.nav[data-view="online"]'));
+  await tick();
+  await tick();
+  check('online view opens', d.body.dataset.view === 'online', d.body.dataset.view);
+  check('chart cards render', qa('#online-grid .on-card').length === 2, String(qa('#online-grid .on-card').length));
+  check('status shows connected', q('#online-status').dataset.state === 'online', q('#online-status').textContent);
+  check('genre chips built', qa('#online-chips .chip').length > 5, String(qa('#online-chips .chip').length));
+  check('chart fetched for the catalogue view', audiusCalls.some((c) => c.kind === 'trending'), JSON.stringify(audiusCalls));
+  check('catalogue shelf on home', qa('#shelves .shelf-row .tile').length >= 2, String(qa('#shelves .shelf-row .tile').length));
+
+  click(q('#online-chips .chip[data-genre="House"]'));
+  await tick();
+  await tick();
+  check('genre switch refetches', audiusCalls.some((c) => c.genre === 'House'), JSON.stringify(audiusCalls));
+
+  click(q('#btn-online-underground'));
+  await tick();
+  await tick();
+  check('underground requests underground', audiusCalls.some((c) => c.kind === 'underground'), JSON.stringify(audiusCalls));
+  click(q('#btn-online-underground'));
+
+  const chartCard = qa('#online-grid .on-card')[0];
+  click(chartCard);
+  await tick();
+  check('remote track plays', q('#np-title').textContent.length > 0 && d.body.dataset.view === 'home', d.body.dataset.view);
+  check('remote marked in queue', /audius/.test(q('#queue').textContent), 'queue has no source badge');
+  check('remote id in queue', window.__byazen.state.queue.some((id) => id.startsWith('audius:')), JSON.stringify(window.__byazen.state.queue));
+
+  click(q('#btn-next'));
+  await tick();
+  check('next walks the online queue', window.__byazen.state.queue[window.__byazen.state.index].startsWith('audius:'), String(window.__byazen.state.index));
+
+  q('#search').value = 'aurora';
+  q('#search').dispatchEvent(new window.Event('input', { bubbles: true }));
+  await new Promise((r) => setTimeout(r, 420));
+  check('search hits the catalogue', audiusCalls.some((c) => c.search === 'aurora'), JSON.stringify(audiusCalls));
+  check('search results listed', qa('#online-results .row').length === 1, String(qa('#online-results .row').length));
+  check('search panel visible', q('#online-search').hidden === false);
+  click(q('#online-results .row'));
+  await tick();
+  check('search result plays', q('#np-title').textContent === 'Aurora', q('#np-title').textContent);
+  click(q('#online-search-close'));
+  check('search panel closes', q('#online-search').hidden === true);
+
+  q('#set-online').checked = false;
+  q('#set-online').dispatchEvent(new window.Event('change', { bubbles: true }));
+  await tick();
+  check('catalogue can be switched off', /switched off/i.test(q('#online-grid').textContent), q('#online-grid').textContent.slice(0, 40));
+  q('#set-online').checked = true;
+  q('#set-online').dispatchEvent(new window.Event('change', { bubbles: true }));
 
   const exposed = window.__byazen || {};
   check('test hooks exported', typeof exposed.applyLibrary === 'function' && !!exposed.state);

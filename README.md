@@ -23,6 +23,22 @@ with four labelled sections:
 Unzip anywhere and run `ByAzen.exe`. It is unsigned, so Windows SmartScreen will
 ask once: *More info → Run anyway*.
 
+### Catalogue (online, legal)
+
+Sidebar → **Catalogue** streams from **Audius** — an open, artist-uploaded
+catalogue whose API is public and whose streaming is meant to be embedded in
+third-party players. Browse charts (week/month/all-time), switch genre, hit
+**Underground** for fresh uploads, or search the whole catalogue from the top
+search field. Tracks queue and play exactly like local files; signed content-node
+URLs that expire are transparently re-resolved through the app's own
+`byazen://stream/` proxy, which also forwards Range requests so seeking works.
+The last good chart is cached, so the view still opens when you are offline.
+Turn it off entirely in Settings.
+
+Nothing is scraped or bypassed: no tokens are borrowed, no DRM is touched, no
+unofficial client endpoints are called. VK Music, Spotify and Apple Music do not
+expose their catalogues to third-party players, which is why they are not here.
+
 ### Your own music
 
 The app is a **local** player: it reads music from folders on your PC

@@ -1,8 +1,9 @@
-const { app, BrowserWindow, ipcMain, dialog, shell, nativeImage, protocol } = require('electron');
+const { app, BrowserWindow, ipcMain, dialog, shell, nativeImage, protocol, net } = require('electron');
 const path = require('path');
 const fs = require('fs');
 const { Readable } = require('stream');
 const { Library } = require('./library');
+const { Audius, GENRES: AUDIUS_GENRES } = require('./audius');
 
 const isDev = !app.isPackaged;
 /** `ByAzen.exe --byazen-selftest` boots the UI, then exits 0 (used by CI). */
@@ -12,6 +13,8 @@ const SELFTEST = process.argv.includes('--byazen-selftest');
 let win = null;
 /** @type {Library|null} */
 let library = null;
+/** @type {Audius|null} */
+let audius = null;
 let prefsFile = null;
 
 /* --------------------------------------------------------------- local media */
@@ -56,6 +59,7 @@ function decodeMediaPath(requestUrl) {
  */
 function registerMediaProtocol() {
   protocol.handle('byazen', (request) => {
+    if (request.url.startsWith('byazen://stream')) return handleAudiusStream(request);
     const file = decodeMediaPath(request.url);
     if (!file) return new Response('forbidden', { status: 403 });
 
@@ -108,6 +112,47 @@ function registerMediaProtocol() {
       headers: { ...headers, 'content-length': String(stat.size) },
     });
   });
+}
+
+/* --------------------------------------------------------- remote streaming */
+const AUDIUS_API = 'https://api.audius.co';
+
+/**
+ * byazen://stream/<trackId> — proxies bytes from public Audius content nodes.
+ * Going through net.fetch keeps Range requests (seeking) and headers intact and
+ * keeps the page independent of the remote host's CORS setup.
+ */
+async function handleAudiusStream(request) {
+  let id;
+  try {
+    const url = new URL(request.url);
+    id = decodeURIComponent(url.pathname.replace(/^\//, ''));
+  } catch {
+    return new Response('bad request', { status: 400 });
+  }
+  if (!/^[A-Za-z0-9_-]{1,64}$/.test(id)) return new Response('forbidden', { status: 403 });
+
+  const range = request.headers.get('range');
+  const target = `${AUDIUS_API}/v1/tracks/${encodeURIComponent(id)}/stream?app_name=ByAzen`;
+  try {
+    // follow the redirect to a content node; fetch() follows by default
+    const upstream = await net.fetch(target, range ? { headers: { range } } : undefined);
+    if (!upstream.ok && upstream.status !== 206) {
+      return new Response('stream unavailable', { status: upstream.status === 404 ? 404 : 502 });
+    }
+    const headers = {
+      'content-type': upstream.headers.get('content-type') || 'audio/mpeg',
+      'accept-ranges': 'bytes',
+      'cache-control': 'no-store',
+    };
+    const len = upstream.headers.get('content-length');
+    if (len) headers['content-length'] = len;
+    const cr = upstream.headers.get('content-range');
+    if (cr) headers['content-range'] = cr;
+    return new Response(upstream.body, { status: upstream.status, headers });
+  } catch {
+    return new Response('stream unavailable', { status: 502 });
+  }
 }
 
 /* ------------------------------------------------------------------- prefs */
@@ -189,6 +234,7 @@ app.whenReady().then(() => {
   prefsFile = path.join(userData, 'prefs.json');
   library = new Library({ cacheDir: path.join(userData, 'cache') });
   library.load();
+  audius = new Audius();
 
   registerMediaProtocol();
   createWindow();
@@ -245,6 +291,125 @@ function lrcFor(file) {
 }
 
 const decorate = (t) => ({ ...t, url: toMediaUrl(t.file), art: toMediaUrl(t.art), lrc: lrcFor(t.file) });
+
+/* -------------------------------------------------------------- audius (online) */
+const AUDIUS_CACHE_FILE = () => path.join(app.getPath('userData'), 'audius-cache.json');
+
+function readAudiusCache() {
+  try {
+    const raw = JSON.parse(fs.readFileSync(AUDIUS_CACHE_FILE(), 'utf8'));
+    return raw && typeof raw === 'object' ? raw : null;
+  } catch {
+    return null;
+  }
+}
+function writeAudiusCache(data) {
+  try {
+    fs.writeFileSync(AUDIUS_CACHE_FILE(), JSON.stringify(data));
+  } catch {
+    /* non fatal */
+  }
+}
+
+/** attach a ready-to-play url; main owns stream resolution */
+async function withStream(track) {
+  if (!track) return null;
+  const { direct, endpoint } = await audius.streamUrl(track).catch(() => ({ direct: null, endpoint: null }));
+  return {
+    ...track,
+    // prefer a signed direct URL (fast start), the local proxy is the fallback
+    url: `byazen://stream/${encodeURIComponent(track.audiusId)}`,
+    fallbackUrl: direct || endpoint,
+    resolvedAt: Date.now(),
+  };
+}
+
+async function mapStreams(tracks) {
+  const out = [];
+  for (const t of tracks) {
+    const s = await withStream(t).catch(() => null);
+    if (s) out.push(s);
+  }
+  return out;
+}
+
+ipcMain.handle('audius:status', async () => {
+  try {
+    const tracks = await audius.trending({ limit: 1 });
+    return { online: true, sample: tracks[0] ? tracks[0].title : null, genres: AUDIUS_GENRES };
+  } catch (e) {
+    return { online: false, error: String(e && e.message ? e.message : e), genres: AUDIUS_GENRES };
+  }
+});
+
+ipcMain.handle('audius:browse', async (_e, { kind = 'trending', genre = 'All', time = 'week', limit = 24 } = {}) => {
+  try {
+    const cached = readAudiusCache();
+    let tracks;
+    if (kind === 'underground') tracks = await audius.underground({ limit });
+    else tracks = await audius.trending({ genre, time, limit });
+    if (cached && cached[kind + ':' + genre]) {
+      // remember the last good chart so the UI can still open it offline
+      delete cached[kind + ':' + genre];
+    }
+    const key = `${kind}:${genre}:${time}`;
+    const store = cached || {};
+    store[key] = { at: Date.now(), tracks };
+    writeAudiusCache(store);
+    return { ok: true, genre, time, tracks: await mapStreams(tracks) };
+  } catch (e) {
+    const store = readAudiusCache() || {};
+    const fallback = store[`${kind}:${genre}:${time}`];
+    return {
+      ok: false,
+      offline: !fallback,
+      error: String(e && e.message ? e.message : e),
+      cachedAt: fallback ? fallback.at : null,
+      tracks: fallback ? await mapStreams(fallback.tracks) : [],
+    };
+  }
+});
+
+ipcMain.handle('audius:search', async (_e, { query, limit = 30 } = {}) => {
+  try {
+    const tracks = await audius.search(query, { limit });
+    return { ok: true, tracks: await mapStreams(tracks) };
+  } catch (e) {
+    return { ok: false, error: String(e && e.message ? e.message : e), tracks: [] };
+  }
+});
+
+ipcMain.handle('audius:artist', async (_e, { artistId, limit = 20 } = {}) => {
+  try {
+    const tracks = await audius.artistTracks(artistId, { limit });
+    return { ok: true, tracks: await mapStreams(tracks) };
+  } catch (e) {
+    return { ok: false, error: String(e && e.message ? e.message : e), tracks: [] };
+  }
+});
+
+ipcMain.handle('audius:track', async (_e, { id } = {}) => {
+  try {
+    const t = await audius.track(id);
+    return { ok: !!t, track: t ? await withStream(t) : null };
+  } catch (e) {
+    return { ok: false, error: String(e && e.message ? e.message : e) };
+  }
+});
+
+ipcMain.handle('audius:playlist', async (_e, { id } = {}) => {
+  try {
+    const p = await audius.playlist(id);
+    if (!p) return { ok: false, error: 'playlist not found' };
+    return { ok: true, playlist: { ...p, tracks: await mapStreams(p.tracks.slice(0, 100)) } };
+  } catch (e) {
+    return { ok: false, error: String(e && e.message ? e.message : e) };
+  }
+});
+
+ipcMain.handle('audius:openPage', (_e, { permalink } = {}) => {
+  if (typeof permalink === 'string' && /^https:\/\/audius\.co\//.test(permalink)) shell.openExternal(permalink);
+});
 
 /* ------------------------------------------------------------------ library */
 ipcMain.handle('library:state', () => {
