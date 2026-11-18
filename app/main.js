@@ -235,6 +235,9 @@ app.whenReady().then(() => {
   library = new Library({ cacheDir: path.join(userData, 'cache') });
   library.load();
   audius = new Audius();
+  // the catalogue shelf and the view can both ask on start-up; keep the
+  // public API polite by sharing one in-flight chart request
+  audius.cache = audius.cache || null;
 
   registerMediaProtocol();
   createWindow();

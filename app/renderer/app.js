@@ -1352,22 +1352,26 @@ audio.addEventListener('timeupdate', () => {
 });
 audio.addEventListener('play', () => {
   document.body.classList.add('is-playing');
-  state.wasPlaying = true;
+  state.wasPlaying = !audio.paused;
   state.skipGuard = true;
   paintPlaying();
 });
-audio.addEventListener('pause', () => document.body.classList.remove('is-playing'));
+audio.addEventListener('pause', () => {
+  document.body.classList.remove('is-playing');
+  state.wasPlaying = false;
+});
 audio.addEventListener('error', () => {
   document.body.classList.remove('is-playing');
   const t = current();
   const el = $('#np-artist');
   if (isRemote(t) && !state.streamTried) {
-    // a signed content-node URL can expire mid-session: fall back to the proxy
+    // the proxy can fail over to a fresh signed content-node URL (or vice versa)
     state.streamTried = true;
+    const next = t.fallbackUrl && audio.src !== t.fallbackUrl ? t.fallbackUrl : t.url;
     if (el) el.textContent = 'Reconnecting to the catalogue…';
-    audio.src = t.url;
+    audio.src = next;
     audio.load();
-    if (document.body.classList.contains('is-playing') || state.wasPlaying) play();
+    if (state.wasPlaying) play();
     return;
   }
   if (el && t) el.textContent = isRemote(t) ? 'Track unavailable — it may have been removed' : 'Could not read this file (codec not supported)';
