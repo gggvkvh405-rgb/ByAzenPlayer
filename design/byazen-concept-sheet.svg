@@ -1,0 +1,1285 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="3200" height="5608" viewBox="0 0 1600 2804">
+
+<defs>
+  <filter id="softSm" x="-50%" y="-50%" width="200%" height="200%">
+    <feGaussianBlur stdDeviation="9"/>
+  </filter>
+  <filter id="softBig" x="-60%" y="-60%" width="220%" height="220%">
+    <feGaussianBlur stdDeviation="18"/>
+  </filter>
+  <filter id="softHuge" x="-40%" y="-40%" width="180%" height="180%">
+    <feGaussianBlur stdDeviation="34"/>
+  </filter>
+  <filter id="grain" x="0" y="0" width="100%" height="100%">
+    <feTurbulence type="fractalNoise" baseFrequency="0.82" numOctaves="3" seed="7" result="n"/>
+    <feColorMatrix in="n" type="saturate" values="0"/>
+  </filter>
+  <pattern id="dots" width="30" height="30" patternUnits="userSpaceOnUse">
+    <circle cx="1.5" cy="1.5" r="1.1" fill="rgba(30,30,30,0.05)"/>
+  </pattern>
+  <pattern id="grid" width="80" height="80" patternUnits="userSpaceOnUse">
+    <path d="M80 0H0V80" fill="none" stroke="rgba(30,30,30,0.04)" stroke-width="1"/>
+  </pattern>
+  <radialGradient id="vig" cx="0.5" cy="0.32" r="0.8">
+    <stop offset="0.55" stop-color="#FFFFFF" stop-opacity="0"/>
+    <stop offset="1" stop-color="#C9B49C" stop-opacity="0.2"/>
+  </radialGradient>
+</defs>
+<rect width="1600" height="2804" fill="#F5F1EA"/>
+<rect width="1600" height="2804" fill="url(#dots)" opacity="0.55"/>
+<rect x="40" y="40" width="1520" height="2724" fill="url(#grid)" opacity="0.6"/>
+<rect width="1600" height="2804" fill="url(#vig)"/>
+<text x="80" y="92" font-family="Inter SemiBold" font-size="9.2" font-weight="600" fill="#B3A99D" text-anchor="start" letter-spacing="3.4" opacity="1" >PRODUCT DESIGN  ·  CONCEPT SHEET  ·  V1.0</text>
+<text x="80" y="158" font-family="Playfair Display" font-size="64" font-weight="400" fill="#1E1E1E" text-anchor="start" letter-spacing="0.6" opacity="1" >By</text>
+<text x="158" y="157" font-family="Inter SemiBold" font-size="51" font-weight="600" fill="#1E1E1E" text-anchor="start" letter-spacing="1.6" opacity="1" >Azen</text>
+<circle cx="360" cy="127" r="3.6" fill="#C4704F" />
+<text x="80" y="188" font-family="Inter" font-size="14.4" font-weight="400" fill="#6B6259" text-anchor="start" letter-spacing="0.1" opacity="1" >A premium desktop music player — quiet surfaces, warm light, generous air.</text>
+<text x="1520" y="92" font-family="Inter SemiBold" font-size="9.2" font-weight="600" fill="#B3A99D" text-anchor="end" letter-spacing="2.6" opacity="1" >UI / UX</text>
+<text x="1520" y="114" font-family="Inter" font-size="11.2" font-weight="400" fill="#6B6259" text-anchor="end" letter-spacing="0" opacity="1" >Desktop · macOS / Windows</text>
+<text x="1520" y="133" font-family="Inter" font-size="11.2" font-weight="400" fill="#6B6259" text-anchor="end" letter-spacing="0" opacity="1" >Inter + Playfair Display</text>
+<text x="1520" y="152" font-family="Inter" font-size="11.2" font-weight="400" fill="#6B6259" text-anchor="end" letter-spacing="0" opacity="1" >Warm cream / graphite / terracotta</text>
+<line x1="80" y1="216" x2="1520" y2="216" stroke="rgba(30,30,30,0.12)" stroke-width="1" />
+<text x="80" y="256" font-family="Playfair Display" font-size="16" font-weight="400" fill="#C4704F" text-anchor="start" letter-spacing="1" opacity="1" >01</text>
+<text x="116" y="255" font-family="Inter SemiBold" font-size="9.2" font-weight="600" fill="#4A443D" text-anchor="start" letter-spacing="2.6" opacity="1" >MAIN PLAYER WINDOW</text>
+<line x1="288.8" y1="252" x2="1520" y2="252" stroke="rgba(30,30,30,0.1)" stroke-width="1" />
+<text x="1520" y="255" font-family="Inter" font-size="9" font-weight="400" fill="#B3A99D" text-anchor="end" letter-spacing="0.3" opacity="1" >1280 × 800  ·  Now playing, queue &amp; lyrics</text>
+<g>
+  <rect x="110" y="292" width="1380" height="825" rx="46" fill="#8B6E56" opacity="0.09" filter="url(#softHuge)"/>
+  <rect x="142" y="292" width="1320" height="825" rx="30" fill="#7A5942" opacity="0.16" filter="url(#softHuge)"/>
+  <rect x="140" y="272" width="1320" height="825" rx="22" fill="#FBF8F3" />
+  <g transform="translate(140,272) scale(1.03)">
+    <clipPath id="clipMain"><rect width="1280" height="800" rx="21.33"/></clipPath>
+    <g clip-path="url(#clipMain)"><rect x="0" y="0" width="236" height="800" rx="0" fill="#F1EBE1" />
+<rect x="235" y="0" width="1" height="800" rx="0" fill="rgba(30,30,30,0.05)" />
+<text x="28" y="52" font-family="Playfair Display" font-size="26" font-weight="400" fill="#1E1E1E" text-anchor="start" letter-spacing="0.4" opacity="1" >By</text>
+<text x="62" y="52" font-family="Inter SemiBold" font-size="21" font-weight="600" fill="#1E1E1E" text-anchor="start" letter-spacing="1.2" opacity="1" >Azen</text>
+<circle cx="122" cy="43" r="2.1" fill="#C4704F" />
+<text x="29" y="72" font-family="Inter SemiBold" font-size="7.4" font-weight="600" fill="#B3A99D" text-anchor="start" letter-spacing="2.6" opacity="1" >PREMIUM AUDIO</text>
+<text x="28" y="124" font-family="Inter SemiBold" font-size="7.8" font-weight="600" fill="#B3A99D" text-anchor="start" letter-spacing="2.4" opacity="1" >BROWSE</text>
+<rect x="16" y="137" width="204" height="38" rx="11" fill="#FFFFFF" opacity="0.92"/>
+<rect x="16" y="137" width="204" height="38" rx="11" fill="none" stroke="rgba(30,30,30,0.045)"/>
+<rect x="16" y="149" width="2.6" height="14" rx="1.3" fill="#C4704F" />
+<g transform="translate(34,148) scale(0.85)" fill="none" stroke="#A85A3B" stroke-width="1.88" stroke-linecap="round" stroke-linejoin="round" opacity="1"><path d="M3 10.6 10 4.2l7 6.4V17a1 1 0 0 1-1 1h-3.4v-4.6H7.4V18H4a1 1 0 0 1-1-1z"/></g>
+<text x="64" y="161" font-family="Inter SemiBold" font-size="13.4" font-weight="600" fill="#1E1E1E" text-anchor="start" letter-spacing="0.1" opacity="1" >Home</text>
+<g transform="translate(34,190) scale(0.85)" fill="none" stroke="#8A8177" stroke-width="1.59" stroke-linecap="round" stroke-linejoin="round" opacity="1"><path d="M4 4.6h3.1v12.8H4zM9.3 4.6h3.1v12.8H9.3zM14.9 5.9l2.9-1.2 4.3 10.4-2.9 1.2z"/></g>
+<text x="64" y="203" font-family="Inter" font-size="13.4" font-weight="450" fill="#8A8177" text-anchor="start" letter-spacing="0.1" opacity="1" >Library</text>
+<g transform="translate(34,232) scale(0.85)" fill="none" stroke="#8A8177" stroke-width="1.59" stroke-linecap="round" stroke-linejoin="round" opacity="1"><path d="M4 6h9M4 10.5h9M4 15h6M16.8 8.6v7.1M16.8 8.6l2.8-.9v7.2M16.8 15.7a1.4 1.4 0 1 1-2.8 0 1.4 1.4 0 0 1 2.8 0"/></g>
+<text x="64" y="245" font-family="Inter" font-size="13.4" font-weight="450" fill="#8A8177" text-anchor="start" letter-spacing="0.1" opacity="1" >Playlists</text>
+<g transform="translate(34,274) scale(0.85)" fill="none" stroke="#8A8177" stroke-width="1.59" stroke-linecap="round" stroke-linejoin="round" opacity="1"><path d="M10 8.4a1.6 1.6 0 1 0 0 3.2 1.6 1.6 0 0 0 0-3.2M5.4 5.4a6.5 6.5 0 0 0 0 9.2M14.6 5.4a6.5 6.5 0 0 1 0 9.2M2.8 2.8a10.2 10.2 0 0 0 0 14.4M17.2 2.8a10.2 10.2 0 0 1 0 14.4"/></g>
+<text x="64" y="287" font-family="Inter" font-size="13.4" font-weight="450" fill="#8A8177" text-anchor="start" letter-spacing="0.1" opacity="1" >Radio</text>
+<g transform="translate(34,316) scale(0.85)" fill="none" stroke="#8A8177" stroke-width="1.59" stroke-linecap="round" stroke-linejoin="round" opacity="1"><path d="M10 7.6a2.4 2.4 0 1 0 0 4.8 2.4 2.4 0 0 0 0-4.8M10 2.6v2M10 15.4v2M2.6 10h2M15.4 10h2M4.8 4.8l1.4 1.4M13.8 13.8l1.4 1.4M15.2 4.8l-1.4 1.4M6.2 13.8l-1.4 1.4"/></g>
+<text x="64" y="329" font-family="Inter" font-size="13.4" font-weight="450" fill="#8A8177" text-anchor="start" letter-spacing="0.1" opacity="1" >Settings</text>
+<line x1="28" y1="374" x2="208" y2="374" stroke="rgba(30,30,30,0.07)" stroke-width="1" />
+<text x="28" y="400" font-family="Inter SemiBold" font-size="7.8" font-weight="600" fill="#B3A99D" text-anchor="start" letter-spacing="2.4" opacity="1" >YOUR LIBRARY</text>
+<circle cx="33" cy="424" r="2.1" fill="#C4704F" />
+<text x="46" y="428" font-family="Inter" font-size="12.2" font-weight="450" fill="#5E574F" text-anchor="start" letter-spacing="0" opacity="1" >Aurora Sessions</text>
+<text x="208" y="428" font-family="Inter" font-size="9" font-weight="400" fill="#B3A99D" text-anchor="end" letter-spacing="0" opacity="1" >24</text>
+<circle cx="33" cy="449" r="2.1" fill="#E4C6B6" />
+<text x="46" y="453" font-family="Inter" font-size="12.2" font-weight="450" fill="#5E574F" text-anchor="start" letter-spacing="0" opacity="1" >Slow Mornings</text>
+<text x="208" y="453" font-family="Inter" font-size="9" font-weight="400" fill="#B3A99D" text-anchor="end" letter-spacing="0" opacity="1" >18</text>
+<circle cx="33" cy="474" r="2.1" fill="#E4C6B6" />
+<text x="46" y="478" font-family="Inter" font-size="12.2" font-weight="450" fill="#5E574F" text-anchor="start" letter-spacing="0" opacity="1" >Deep Focus</text>
+<text x="208" y="478" font-family="Inter" font-size="9" font-weight="400" fill="#B3A99D" text-anchor="end" letter-spacing="0" opacity="1" >42</text>
+<g transform="translate(30,496) scale(0.65)" fill="none" stroke="#C4704F" stroke-width="2.31" stroke-linecap="round" stroke-linejoin="round" opacity="1"><path d="M10 4.6v10.8M4.6 10h10.8"/></g>
+<text x="46" y="506" font-family="Inter" font-size="11.8" font-weight="400" fill="#C4704F" text-anchor="start" letter-spacing="0" opacity="1" >New playlist</text>
+<rect x="20" y="636" width="196" height="124" rx="16" fill="#FBF8F3" opacity="0.92"/>
+<rect x="20" y="636" width="196" height="124" rx="16" fill="none" stroke="rgba(30,30,30,0.05)"/>
+<rect x="34" y="652" width="27" height="27" rx="9" fill="#C4704F" opacity="0.13"/>
+<g transform="translate(40,658) scale(0.75)" fill="none" stroke="#A85A3B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity="1"><path d="M3 8.4h3.2L10 5.2v9.6L6.2 11.6H3zM12.4 8a2.8 2.8 0 0 1 0 4M14.4 5.8a5.8 5.8 0 0 1 0 8.4"/></g>
+<text x="70" y="664" font-family="Inter SemiBold" font-size="11.6" font-weight="600" fill="#1E1E1E" text-anchor="start" letter-spacing="0" opacity="1" >Lossless</text>
+<text x="70" y="679" font-family="Inter" font-size="9.2" font-weight="400" fill="#B3A99D" text-anchor="start" letter-spacing="0.2" opacity="1" >24-bit / 96 kHz</text>
+<line x1="34" y1="696" x2="202" y2="696" stroke="rgba(30,30,30,0.06)" stroke-width="1" />
+<text x="34" y="715" font-family="Inter Medium" font-size="10.4" font-weight="500" fill="#5E574F" text-anchor="start" letter-spacing="0" opacity="1" >Aurora Lines</text>
+<text x="34" y="729" font-family="Inter" font-size="8.8" font-weight="400" fill="#B3A99D" text-anchor="start" letter-spacing="0" opacity="1" >Kael Rivers · FLAC</text>
+<rect x="34" y="739" width="168" height="2.4" rx="1.2" fill="#E2D8CC" />
+<rect x="34" y="739" width="64" height="2.4" rx="1.2" fill="#C4704F" />
+<line x1="236" y1="76" x2="1280" y2="76" stroke="rgba(30,30,30,0.055)" stroke-width="1" />
+<rect x="260" y="21" width="338" height="34" rx="17" fill="#F1EBE1" opacity="0.95"/>
+<g transform="translate(274,30) scale(0.75)" fill="none" stroke="#8A8177" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" opacity="1"><path d="M9.2 3.6a5.6 5.6 0 1 1 0 11.2 5.6 5.6 0 0 1 0-11.2M13.4 13.4 17 17"/></g>
+<text x="298" y="43" font-family="Inter" font-size="11.4" font-weight="400" fill="#B3A99D" text-anchor="start" letter-spacing="0" opacity="1" >Search albums, artists, tracks</text>
+<rect x="550" y="30" width="26" height="17" rx="5" fill="#FFFFFF" opacity="0.85"/>
+<text x="563" y="42.4" font-family="Inter Medium" font-size="9" font-weight="500" fill="#B3A99D" text-anchor="middle" letter-spacing="0" opacity="1" >/</text>
+<g transform="translate(1234,29) scale(0.8)" fill="none" stroke="#8A8177" stroke-width="1.63" stroke-linecap="round" stroke-linejoin="round" opacity="1"><path d="M10 3.4a4.4 4.4 0 0 1 4.4 4.4c0 4 1.4 5.2 1.4 5.2H4.2s1.4-1.2 1.4-5.2A4.4 4.4 0 0 1 10 3.4M8.4 16.4a1.8 1.8 0 0 0 3.2 0"/></g>
+<circle cx="1212" cy="38" r="15.5" fill="#E9D3C5" />
+<circle cx="1212" cy="38" r="15.5" fill="none" stroke="rgba(255,255,255,0.85)" stroke-width="1.6"/>
+<text x="1212" y="42.4" font-family="Inter SemiBold" font-size="9.4" font-weight="600" fill="#8A4E36" text-anchor="middle" letter-spacing="0.5" opacity="1" >KR</text>
+<rect x="441" y="116" width="330" height="330" rx="24" fill="#7A4A34" opacity="0.16" filter="url(#softBig)"/>
+<g>
+  <defs>
+    <linearGradient id="cvmart72g" x1="0.1" y1="0" x2="0.9" y2="1">
+      <stop offset="0" stop-color="#F7E4CD"/><stop offset="1" stop-color="#EFC79F"/>
+    </linearGradient>
+    <filter id="cvmart72b" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="0.32"/>
+    </filter>
+    <linearGradient id="cvmart72s" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.2"/>
+      <stop offset="0.5" stop-color="#ffffff" stop-opacity="0"/>
+      <stop offset="1" stop-color="#3A2318" stop-opacity="0.15"/>
+    </linearGradient>
+    <clipPath id="cvmart72c"><rect width="100" height="100" rx="22"/></clipPath>
+  </defs>
+  <g transform="translate(439,100) scale(3.3)" clip-path="url(#cvmart72c)">
+    <rect width="100" height="100" fill="url(#cvmart72g)"/>
+    <g filter="url(#cvmart72b)"><rect width="100" height="100" fill="#EFC79F" opacity="0.5"/>
+      <path d="M0 60C22 54 34 26 56 24s30 22 52 14v62H0z" fill="#D98A5F" opacity="0.52"/>
+      <path d="M0 73C24 67 36 45 58 43s28 20 50 12v45H0z" fill="#8E4A32" opacity="0.34"/>
+      <path d="M0 86C22 82 34 64 56 62s30 18 52 12v26H0z" fill="#D98A5F" opacity="0.3"/>
+      <circle cx="66.25" cy="22.59" r="11" fill="#FFF6E9" opacity="0.82"/>
+      <path d="M0 52C24 46 38 22 60 20s26 18 48 12" fill="none" stroke="#F7E4CD" stroke-width="0.4" opacity="0.4"/><path d="M0 58C24 52 38 28 60 26s26 18 48 12" fill="none" stroke="#F7E4CD" stroke-width="0.4" opacity="0.4"/><path d="M0 64C24 58 38 34 60 32s26 18 48 12" fill="none" stroke="#F7E4CD" stroke-width="0.4" opacity="0.4"/></g>
+    <rect width="100" height="100" fill="url(#cvmart72s)"/>
+  </g></g>
+<rect x="439" y="100" width="330" height="330" rx="24" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="1"/>
+<text x="439" y="458" font-family="Inter SemiBold" font-size="7" font-weight="600" fill="#B3A99D" text-anchor="start" letter-spacing="2.6" opacity="1" >AURORA LINES</text>
+<text x="769" y="458" font-family="Inter" font-size="8.4" font-weight="400" fill="#B3A99D" text-anchor="end" letter-spacing="0" opacity="1" >2024 · LP</text>
+<text x="604" y="508" font-family="Playfair Display" font-size="34" font-weight="400" fill="#1E1E1E" text-anchor="middle" letter-spacing="0.2" opacity="1" >Aurora Lines</text>
+<text x="604" y="531" font-family="Inter" font-size="12" font-weight="400" fill="#8A8177" text-anchor="middle" letter-spacing="0.3" opacity="1" >Kael Rivers  ·  Northern Light</text>
+<g transform="translate(736,494) scale(0.7)" fill="#C4704F" stroke="#C4704F" stroke-width="1.57" stroke-linejoin="round" opacity="0.92"><path d="M10 16.4s-6.2-3.7-6.2-8A3.3 3.3 0 0 1 10 6.4a3.3 3.3 0 0 1 6.2 2c0 4.3-6.2 8-6.2 8z"/></g>
+<rect x="314" y="566" width="580" height="4" rx="2" fill="#E4DACE" />
+<rect x="314" y="566" width="237.8" height="4" rx="2" fill="#C4704F" />
+<circle cx="551.8" cy="568" r="4.6" fill="#FFFFFF" stroke="#C4704F" stroke-width="1.6"/>
+<text x="314" y="588" font-family="Inter" font-size="10" font-weight="400" fill="#B3A99D" text-anchor="start" letter-spacing="0.2" opacity="1" >1:42</text>
+<text x="894" y="588" font-family="Inter" font-size="10" font-weight="400" fill="#B3A99D" text-anchor="end" letter-spacing="0.2" opacity="1" >−3:58</text>
+<g transform="translate(426,631) scale(0.85)" fill="none" stroke="#8A8177" stroke-width="1.59" stroke-linecap="round" stroke-linejoin="round" opacity="1"><path d="M2.8 6h2.4c1.4 0 2.3.6 3.2 1.8l2.8 4c.9 1.2 1.8 1.8 3.2 1.8h2.4M13.4 10.8l2.6 2.8-2.6 2.6M2.8 13.6h2.4c1 0 1.7-.3 2.4-1M12 7.4c1-.9 2-1.4 3.2-1.4h2.8M13.4 3.2 16 6l-2.6 2.6"/></g>
+<g transform="translate(494,630) scale(1)" fill="#1E1E1E" stroke="#1E1E1E" stroke-width="1.1" stroke-linejoin="round" opacity="0.92"><path d="M5 4.4v11.2M14.8 5 6.6 10l8.2 5z"/></g>
+<circle cx="604" cy="640" r="27" fill="#C4704F" />
+<circle cx="604" cy="640" r="27" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
+<path d="M597 630.4 612.4 640 597 649.6z" fill="#FDF8F2"/>
+<g transform="translate(694,630) scale(1)" fill="#1E1E1E" stroke="#1E1E1E" stroke-width="1.1" stroke-linejoin="round" opacity="0.92"><path d="M15 4.4v11.2M5.2 5 13.4 10 5.2 15z"/></g>
+<g transform="translate(765,631) scale(0.85)" fill="none" stroke="#8A8177" stroke-width="1.59" stroke-linecap="round" stroke-linejoin="round" opacity="1"><path d="M4 8.4V7.4A2.4 2.4 0 0 1 6.4 5h7M13.6 12v1a2.4 2.4 0 0 1-2.4 2.4H4M11.2 2.8 13.6 5l-2.4 2.2M6.8 12.6 4.4 14.8l2.4 2.2"/></g>
+<g transform="translate(506,704) scale(0.8)" fill="none" stroke="#8A8177" stroke-width="1.63" stroke-linecap="round" stroke-linejoin="round" opacity="1"><path d="M3 8h2.6L9.4 5v10L5.6 12H3zM12 7.6a3.4 3.4 0 0 1 0 4.8M14.4 5.2a6.8 6.8 0 0 1 0 9.6"/></g>
+<rect x="538" y="712" width="108" height="3.4" rx="1.7" fill="#E4DACE" />
+<rect x="538" y="712" width="62" height="3.4" rx="1.7" fill="#B3A99D" />
+<circle cx="600" cy="713.7" r="3.6" fill="#FFFFFF" stroke="#B3A99D" stroke-width="1.3"/>
+<g transform="translate(686,705) scale(0.7)" fill="none" stroke="#B3A99D" stroke-width="2.14" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.2L3 3" /><path d="M3 3L8.2 3" /><path d="M17 11.8L17 17" /><path d="M17 17L11.8 17" /></g>
+<rect x="972" y="0" width="308" height="800" rx="0" fill="#FCFAF6" />
+<rect x="972" y="0" width="1" height="800" rx="0" fill="rgba(30,30,30,0.05)" />
+<text x="996" y="104" font-family="Inter SemiBold" font-size="8.2" font-weight="600" fill="#B3A99D" text-anchor="start" letter-spacing="2.4" opacity="1" >UP NEXT</text>
+<text x="1068" y="104" font-family="Inter SemiBold" font-size="8.2" font-weight="600" fill="#C4704F" text-anchor="start" letter-spacing="1" opacity="1" >12</text>
+<text x="1256" y="104" font-family="Inter" font-size="10" font-weight="400" fill="#C4704F" text-anchor="end" letter-spacing="0" opacity="1" >Clear</text>
+<rect x="990" y="122" width="272" height="58" rx="13" fill="#F4ECE0" opacity="1"/>
+<rect x="990" y="122" width="272" height="58" rx="13" fill="none" stroke="rgba(30,30,30,0.045)"/>
+<g>
+  <defs>
+    <linearGradient id="cvmq032g" x1="0.1" y1="0" x2="0.9" y2="1">
+      <stop offset="0" stop-color="#F8F0E2"/><stop offset="1" stop-color="#EEDCC0"/>
+    </linearGradient>
+    <filter id="cvmq032b" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="0.32"/>
+    </filter>
+    <linearGradient id="cvmq032s" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.2"/>
+      <stop offset="0.5" stop-color="#ffffff" stop-opacity="0"/>
+      <stop offset="1" stop-color="#3A2318" stop-opacity="0.15"/>
+    </linearGradient>
+    <clipPath id="cvmq032c"><rect width="100" height="100" rx="22"/></clipPath>
+  </defs>
+  <g transform="translate(1002,133) scale(0.36)" clip-path="url(#cvmq032c)">
+    <rect width="100" height="100" fill="url(#cvmq032g)"/>
+    <g filter="url(#cvmq032b)"><rect width="100" height="100" fill="#EEDCC0" opacity="0.5"/>
+      <path d="M0 60C22 54 34 26 56 24s30 22 52 14v62H0z" fill="#CBAA7D" opacity="0.52"/>
+      <path d="M0 73C24 67 36 45 58 43s28 20 50 12v45H0z" fill="#8F7047" opacity="0.34"/>
+      <path d="M0 86C22 82 34 64 56 62s30 18 52 12v26H0z" fill="#CBAA7D" opacity="0.3"/>
+      <circle cx="71.6" cy="22.61" r="11" fill="#FFF6E9" opacity="0.82"/>
+      <path d="M0 52C24 46 38 22 60 20s26 18 48 12" fill="none" stroke="#F8F0E2" stroke-width="0.4" opacity="0.4"/><path d="M0 58C24 52 38 28 60 26s26 18 48 12" fill="none" stroke="#F8F0E2" stroke-width="0.4" opacity="0.4"/><path d="M0 64C24 58 38 34 60 32s26 18 48 12" fill="none" stroke="#F8F0E2" stroke-width="0.4" opacity="0.4"/></g>
+    <rect width="100" height="100" fill="url(#cvmq032s)"/>
+  </g></g>
+<text x="1050" y="147" font-family="Inter Medium" font-size="11.6" font-weight="500" fill="#1E1E1E" text-anchor="start" letter-spacing="0" opacity="1" >Paper Moons</text>
+<text x="1050" y="162" font-family="Inter" font-size="9.4" font-weight="400" fill="#B3A99D" text-anchor="start" letter-spacing="0" opacity="1" >Nils Åberg</text>
+<text x="1246" y="147" font-family="Inter" font-size="9" font-weight="400" fill="#B3A99D" text-anchor="end" letter-spacing="0" opacity="1" >3:24</text>
+<circle cx="1243" cy="162" r="1.7" fill="#C4704F" />
+<rect x="990" y="188" width="272" height="58" rx="13" fill="#FFFFFF" opacity="0.68"/>
+<rect x="990" y="188" width="272" height="58" rx="13" fill="none" stroke="rgba(30,30,30,0.045)"/>
+<g>
+  <defs>
+    <linearGradient id="cvmq153g" x1="0.1" y1="0" x2="0.9" y2="1">
+      <stop offset="0" stop-color="#EEEDDD"/><stop offset="1" stop-color="#DDE2CC"/>
+    </linearGradient>
+    <filter id="cvmq153b" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="0.32"/>
+    </filter>
+    <linearGradient id="cvmq153s" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.2"/>
+      <stop offset="0.5" stop-color="#ffffff" stop-opacity="0"/>
+      <stop offset="1" stop-color="#3A2318" stop-opacity="0.15"/>
+    </linearGradient>
+    <clipPath id="cvmq153c"><rect width="100" height="100" rx="22"/></clipPath>
+  </defs>
+  <g transform="translate(1002,199) scale(0.36)" clip-path="url(#cvmq153c)">
+    <rect width="100" height="100" fill="url(#cvmq153g)"/>
+    <g filter="url(#cvmq153b)"><path d="M-6 92.96340246545151C18 80.96340246545151 26 48.96340246545151 52 44.96340246545151s34 22 56 8" fill="none" stroke="#93A381" stroke-width="15" opacity="0.82"/>
+      <path d="M-6 76.96340246545151C18 64.96340246545151 26 32.96340246545151 52 28.96340246545151s34 22 56 8" fill="none" stroke="#59654C" stroke-width="4" opacity="0.42"/>
+      <path d="M-6 108.96340246545151C20 98.96340246545151 30 74.96340246545151 56 70.96340246545151s30 18 52 6" fill="none" stroke="#EEEDDD" stroke-width="7" opacity="0.6"/></g>
+    <rect width="100" height="100" fill="url(#cvmq153s)"/>
+  </g></g>
+<text x="1050" y="213" font-family="Inter Medium" font-size="11.6" font-weight="500" fill="#1E1E1E" text-anchor="start" letter-spacing="0" opacity="1" >Low Tide</text>
+<text x="1050" y="228" font-family="Inter" font-size="9.4" font-weight="400" fill="#B3A99D" text-anchor="start" letter-spacing="0" opacity="1" >Mira Voss</text>
+<text x="1246" y="213" font-family="Inter" font-size="9" font-weight="400" fill="#B3A99D" text-anchor="end" letter-spacing="0" opacity="1" >4:02</text>
+<rect x="990" y="254" width="272" height="58" rx="13" fill="#FFFFFF" opacity="0.68"/>
+<rect x="990" y="254" width="272" height="58" rx="13" fill="none" stroke="rgba(30,30,30,0.045)"/>
+<g>
+  <defs>
+    <linearGradient id="cvmq294g" x1="0.1" y1="0" x2="0.9" y2="1">
+      <stop offset="0" stop-color="#F5DFD2"/><stop offset="1" stop-color="#E9C0A8"/>
+    </linearGradient>
+    <filter id="cvmq294b" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="0.32"/>
+    </filter>
+    <linearGradient id="cvmq294s" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.2"/>
+      <stop offset="0.5" stop-color="#ffffff" stop-opacity="0"/>
+      <stop offset="1" stop-color="#3A2318" stop-opacity="0.15"/>
+    </linearGradient>
+    <clipPath id="cvmq294c"><rect width="100" height="100" rx="22"/></clipPath>
+  </defs>
+  <g transform="translate(1002,265) scale(0.36)" clip-path="url(#cvmq294c)">
+    <rect width="100" height="100" fill="url(#cvmq294g)"/>
+    <g filter="url(#cvmq294b)"><path d="M0 100 42 0h22L24 100z" fill="#BC7452" opacity="0.68"/>
+      <path d="M40 100 82 0h14L54 100z" fill="#7C4A31" opacity="0.5"/>
+      <circle cx="72" cy="30" r="17" fill="#F5DFD2" opacity="0.78"/></g>
+    <rect width="100" height="100" fill="url(#cvmq294s)"/>
+  </g></g>
+<text x="1050" y="279" font-family="Inter Medium" font-size="11.6" font-weight="500" fill="#1E1E1E" text-anchor="start" letter-spacing="0" opacity="1" >Felt Piano</text>
+<text x="1050" y="294" font-family="Inter" font-size="9.4" font-weight="400" fill="#B3A99D" text-anchor="start" letter-spacing="0" opacity="1" >Aster Quartet</text>
+<text x="1246" y="279" font-family="Inter" font-size="9" font-weight="400" fill="#B3A99D" text-anchor="end" letter-spacing="0" opacity="1" >2:58</text>
+<rect x="990" y="320" width="272" height="58" rx="13" fill="#FFFFFF" opacity="0.68"/>
+<rect x="990" y="320" width="272" height="58" rx="13" fill="none" stroke="rgba(30,30,30,0.045)"/>
+<g>
+  <defs>
+    <linearGradient id="cvmq3112g" x1="0.1" y1="0" x2="0.9" y2="1">
+      <stop offset="0" stop-color="#EAE5DC"/><stop offset="1" stop-color="#D6CFC3"/>
+    </linearGradient>
+    <filter id="cvmq3112b" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="0.32"/>
+    </filter>
+    <linearGradient id="cvmq3112s" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.2"/>
+      <stop offset="0.5" stop-color="#ffffff" stop-opacity="0"/>
+      <stop offset="1" stop-color="#3A2318" stop-opacity="0.15"/>
+    </linearGradient>
+    <clipPath id="cvmq3112c"><rect width="100" height="100" rx="22"/></clipPath>
+  </defs>
+  <g transform="translate(1002,331) scale(0.36)" clip-path="url(#cvmq3112c)">
+    <rect width="100" height="100" fill="url(#cvmq3112g)"/>
+    <g filter="url(#cvmq3112b)"><rect width="100" height="100" fill="#D6CFC3" opacity="0.5"/>
+      <path d="M0 60C22 54 34 26 56 24s30 22 52 14v62H0z" fill="#7C766D" opacity="0.52"/>
+      <path d="M0 73C24 67 36 45 58 43s28 20 50 12v45H0z" fill="#3E3A35" opacity="0.34"/>
+      <path d="M0 86C22 82 34 64 56 62s30 18 52 12v26H0z" fill="#7C766D" opacity="0.3"/>
+      <circle cx="71.96" cy="20.07" r="11" fill="#FFF6E9" opacity="0.82"/>
+      <path d="M0 52C24 46 38 22 60 20s26 18 48 12" fill="none" stroke="#EAE5DC" stroke-width="0.4" opacity="0.4"/><path d="M0 58C24 52 38 28 60 26s26 18 48 12" fill="none" stroke="#EAE5DC" stroke-width="0.4" opacity="0.4"/><path d="M0 64C24 58 38 34 60 32s26 18 48 12" fill="none" stroke="#EAE5DC" stroke-width="0.4" opacity="0.4"/></g>
+    <rect width="100" height="100" fill="url(#cvmq3112s)"/>
+  </g></g>
+<text x="1050" y="345" font-family="Inter Medium" font-size="11.6" font-weight="500" fill="#1E1E1E" text-anchor="start" letter-spacing="0" opacity="1" >Northbound</text>
+<text x="1050" y="360" font-family="Inter" font-size="9.4" font-weight="400" fill="#B3A99D" text-anchor="start" letter-spacing="0" opacity="1" >Kael Rivers</text>
+<text x="1246" y="345" font-family="Inter" font-size="9" font-weight="400" fill="#B3A99D" text-anchor="end" letter-spacing="0" opacity="1" >3:47</text>
+<rect x="990" y="386" width="272" height="58" rx="13" fill="#FFFFFF" opacity="0.68"/>
+<rect x="990" y="386" width="272" height="58" rx="13" fill="none" stroke="rgba(30,30,30,0.045)"/>
+<g>
+  <defs>
+    <linearGradient id="cvmq4143g" x1="0.1" y1="0" x2="0.9" y2="1">
+      <stop offset="0" stop-color="#F0ECDE"/><stop offset="1" stop-color="#DFE2C7"/>
+    </linearGradient>
+    <filter id="cvmq4143b" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="0.32"/>
+    </filter>
+    <linearGradient id="cvmq4143s" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.2"/>
+      <stop offset="0.5" stop-color="#ffffff" stop-opacity="0"/>
+      <stop offset="1" stop-color="#3A2318" stop-opacity="0.15"/>
+    </linearGradient>
+    <clipPath id="cvmq4143c"><rect width="100" height="100" rx="22"/></clipPath>
+  </defs>
+  <g transform="translate(1002,397) scale(0.36)" clip-path="url(#cvmq4143c)">
+    <rect width="100" height="100" fill="url(#cvmq4143g)"/>
+    <g filter="url(#cvmq4143b)"><path d="M-6 85.4510067133233C18 73.4510067133233 26 41.451006713323295 52 37.451006713323295s34 22 56 8" fill="none" stroke="#A5AA84" stroke-width="15" opacity="0.82"/>
+      <path d="M-6 69.4510067133233C18 57.451006713323295 26 25.451006713323295 52 21.451006713323295s34 22 56 8" fill="none" stroke="#666C4C" stroke-width="4" opacity="0.42"/>
+      <path d="M-6 101.4510067133233C20 91.4510067133233 30 67.4510067133233 56 63.451006713323295s30 18 52 6" fill="none" stroke="#F0ECDE" stroke-width="7" opacity="0.6"/></g>
+    <rect width="100" height="100" fill="url(#cvmq4143s)"/>
+  </g></g>
+<text x="1050" y="411" font-family="Inter Medium" font-size="11.6" font-weight="500" fill="#1E1E1E" text-anchor="start" letter-spacing="0" opacity="1" >Slow Light</text>
+<text x="1050" y="426" font-family="Inter" font-size="9.4" font-weight="400" fill="#B3A99D" text-anchor="start" letter-spacing="0" opacity="1" >Sable &amp; Co.</text>
+<text x="1246" y="411" font-family="Inter" font-size="9" font-weight="400" fill="#B3A99D" text-anchor="end" letter-spacing="0" opacity="1" >5:12</text>
+<g>
+    <defs>
+      <linearGradient id="lgwm" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0" stop-color="#F6E7D8"/><stop offset="0.5" stop-color="#EBD3BF"/>
+        <stop offset="1" stop-color="#DCC4AC"/>
+      </linearGradient>
+      <clipPath id="lgcm"><rect x="990" y="476" width="272" height="196" rx="18"/></clipPath>
+    </defs>
+    <g clip-path="url(#lgcm)">
+      <rect x="990" y="476" width="272" height="196" fill="url(#lgwm)"/>
+      <circle cx="1026" cy="520" r="92" fill="#FFF7EC" opacity="0.7" filter="url(#softBig)"/>
+      <circle cx="1246" cy="666" r="80" fill="#C0704B" opacity="0.22" filter="url(#softBig)"/>
+      <rect x="1000" y="486" width="252" height="176" rx="12" fill="#FFFDF8" opacity="0.45"/>
+    </g>
+    <rect x="990.5" y="476.5" width="271" height="195" rx="18" fill="none" stroke="rgba(255,255,255,0.55)"/>
+    <rect x="1000.5" y="486.5" width="251" height="175" rx="12" fill="none" stroke="rgba(255,255,255,0.28)"/>
+  </g>
+<text x="1012" y="512" font-family="Inter SemiBold" font-size="7.4" font-weight="600" fill="rgba(60,36,24,0.55)" text-anchor="start" letter-spacing="2.4" opacity="1" >LYRICS</text>
+<text x="1012" y="544" font-family="Playfair Display" font-size="12.4" font-weight="400" fill="rgba(48,28,18,0.84)" text-anchor="start" letter-spacing="0.1" opacity="1" >We drift through aurora lines,</text>
+<text x="1012" y="566" font-family="Playfair Display" font-size="12.4" font-weight="400" fill="rgba(48,28,18,0.84)" text-anchor="start" letter-spacing="0.1" opacity="1" >a slow and golden thread —</text>
+<text x="1012" y="588" font-family="Playfair Display" font-size="12.4" font-weight="400" fill="rgba(58,34,22,0.4)" text-anchor="start" letter-spacing="0.1" opacity="1" >the night folds into morning</text>
+<text x="1012" y="610" font-family="Playfair Display" font-size="12.4" font-weight="400" fill="rgba(58,34,22,0.4)" text-anchor="start" letter-spacing="0.1" opacity="1" >and nothing needs to be said.</text>
+<line x1="1012" y1="638" x2="1240" y2="638" stroke="rgba(60,36,24,0.16)" stroke-width="1" />
+<text x="1012" y="654" font-family="Inter" font-size="8.4" font-weight="400" fill="rgba(48,28,18,0.62)" text-anchor="start" letter-spacing="0" opacity="1" >Synced · line by line</text>
+<g transform="translate(1224,643) scale(0.6)" fill="none" stroke="rgba(48,28,18,0.6)" stroke-width="2.33" stroke-linecap="round" stroke-linejoin="round" opacity="1"><path d="m6.5 8.2 3.5 3.5 3.5-3.5"/></g></g>
+  </g>
+  <rect x="140.5" y="272.5" width="1319" height="824" rx="22" fill="none" stroke="rgba(30,30,30,0.10)"/>
+  <rect x="140.5" y="272.5" width="1319" height="824" rx="22" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="1"/>
+</g>
+<text x="80" y="1173" font-family="Playfair Display" font-size="16" font-weight="400" fill="#C4704F" text-anchor="start" letter-spacing="1" opacity="1" >02</text>
+<text x="116" y="1172" font-family="Inter SemiBold" font-size="9.2" font-weight="600" fill="#4A443D" text-anchor="start" letter-spacing="2.6" opacity="1" >EXPANDED LIBRARY VIEW</text>
+<line x1="314.6" y1="1169" x2="1520" y2="1169" stroke="rgba(30,30,30,0.1)" stroke-width="1" />
+<text x="1520" y="1172" font-family="Inter" font-size="9" font-weight="400" fill="#B3A99D" text-anchor="end" letter-spacing="0.3" opacity="1" >1280 × 800  ·  Grid, filters &amp; detail list</text>
+<g>
+  <rect x="142" y="1209" width="1320" height="825" rx="30" fill="#7A5942" opacity="0.16" filter="url(#softHuge)"/>
+  <rect x="140" y="1189" width="1320" height="825" rx="22" fill="#FBF8F3" />
+  <g transform="translate(140,1189) scale(1.03)">
+    <clipPath id="clipLib"><rect width="1280" height="800" rx="21.33"/></clipPath>
+    <g clip-path="url(#clipLib)"><rect x="0" y="0" width="236" height="800" rx="0" fill="#F1EBE1" />
+<rect x="235" y="0" width="1" height="800" rx="0" fill="rgba(30,30,30,0.05)" />
+<text x="28" y="52" font-family="Playfair Display" font-size="26" font-weight="400" fill="#1E1E1E" text-anchor="start" letter-spacing="0.4" opacity="1" >By</text>
+<text x="62" y="52" font-family="Inter SemiBold" font-size="21" font-weight="600" fill="#1E1E1E" text-anchor="start" letter-spacing="1.2" opacity="1" >Azen</text>
+<circle cx="122" cy="43" r="2.1" fill="#C4704F" />
+<text x="29" y="72" font-family="Inter SemiBold" font-size="7.4" font-weight="600" fill="#B3A99D" text-anchor="start" letter-spacing="2.6" opacity="1" >PREMIUM AUDIO</text>
+<text x="28" y="124" font-family="Inter SemiBold" font-size="7.8" font-weight="600" fill="#B3A99D" text-anchor="start" letter-spacing="2.4" opacity="1" >BROWSE</text>
+<g transform="translate(34,148) scale(0.85)" fill="none" stroke="#8A8177" stroke-width="1.59" stroke-linecap="round" stroke-linejoin="round" opacity="1"><path d="M3 10.6 10 4.2l7 6.4V17a1 1 0 0 1-1 1h-3.4v-4.6H7.4V18H4a1 1 0 0 1-1-1z"/></g>
+<text x="64" y="161" font-family="Inter" font-size="13.4" font-weight="450" fill="#8A8177" text-anchor="start" letter-spacing="0.1" opacity="1" >Home</text>
+<rect x="16" y="179" width="204" height="38" rx="11" fill="#FFFFFF" opacity="0.92"/>
+<rect x="16" y="179" width="204" height="38" rx="11" fill="none" stroke="rgba(30,30,30,0.045)"/>
+<rect x="16" y="191" width="2.6" height="14" rx="1.3" fill="#C4704F" />
+<g transform="translate(34,190) scale(0.85)" fill="none" stroke="#A85A3B" stroke-width="1.88" stroke-linecap="round" stroke-linejoin="round" opacity="1"><path d="M4 4.6h3.1v12.8H4zM9.3 4.6h3.1v12.8H9.3zM14.9 5.9l2.9-1.2 4.3 10.4-2.9 1.2z"/></g>
+<text x="64" y="203" font-family="Inter SemiBold" font-size="13.4" font-weight="600" fill="#1E1E1E" text-anchor="start" letter-spacing="0.1" opacity="1" >Library</text>
+<g transform="translate(34,232) scale(0.85)" fill="none" stroke="#8A8177" stroke-width="1.59" stroke-linecap="round" stroke-linejoin="round" opacity="1"><path d="M4 6h9M4 10.5h9M4 15h6M16.8 8.6v7.1M16.8 8.6l2.8-.9v7.2M16.8 15.7a1.4 1.4 0 1 1-2.8 0 1.4 1.4 0 0 1 2.8 0"/></g>
+<text x="64" y="245" font-family="Inter" font-size="13.4" font-weight="450" fill="#8A8177" text-anchor="start" letter-spacing="0.1" opacity="1" >Playlists</text>
+<g transform="translate(34,274) scale(0.85)" fill="none" stroke="#8A8177" stroke-width="1.59" stroke-linecap="round" stroke-linejoin="round" opacity="1"><path d="M10 8.4a1.6 1.6 0 1 0 0 3.2 1.6 1.6 0 0 0 0-3.2M5.4 5.4a6.5 6.5 0 0 0 0 9.2M14.6 5.4a6.5 6.5 0 0 1 0 9.2M2.8 2.8a10.2 10.2 0 0 0 0 14.4M17.2 2.8a10.2 10.2 0 0 1 0 14.4"/></g>
+<text x="64" y="287" font-family="Inter" font-size="13.4" font-weight="450" fill="#8A8177" text-anchor="start" letter-spacing="0.1" opacity="1" >Radio</text>
+<g transform="translate(34,316) scale(0.85)" fill="none" stroke="#8A8177" stroke-width="1.59" stroke-linecap="round" stroke-linejoin="round" opacity="1"><path d="M10 7.6a2.4 2.4 0 1 0 0 4.8 2.4 2.4 0 0 0 0-4.8M10 2.6v2M10 15.4v2M2.6 10h2M15.4 10h2M4.8 4.8l1.4 1.4M13.8 13.8l1.4 1.4M15.2 4.8l-1.4 1.4M6.2 13.8l-1.4 1.4"/></g>
+<text x="64" y="329" font-family="Inter" font-size="13.4" font-weight="450" fill="#8A8177" text-anchor="start" letter-spacing="0.1" opacity="1" >Settings</text>
+<line x1="28" y1="374" x2="208" y2="374" stroke="rgba(30,30,30,0.07)" stroke-width="1" />
+<text x="28" y="400" font-family="Inter SemiBold" font-size="7.8" font-weight="600" fill="#B3A99D" text-anchor="start" letter-spacing="2.4" opacity="1" >YOUR LIBRARY</text>
+<circle cx="33" cy="424" r="2.1" fill="#C4704F" />
+<text x="46" y="428" font-family="Inter Medium" font-size="12.2" font-weight="550" fill="#1E1E1E" text-anchor="start" letter-spacing="0" opacity="1" >Aurora Sessions</text>
+<circle cx="33" cy="449" r="2.1" fill="#E4C6B6" />
+<text x="46" y="453" font-family="Inter" font-size="12.2" font-weight="450" fill="#5E574F" text-anchor="start" letter-spacing="0" opacity="1" >Slow Mornings</text>
+<circle cx="33" cy="474" r="2.1" fill="#E4C6B6" />
+<text x="46" y="478" font-family="Inter" font-size="12.2" font-weight="450" fill="#5E574F" text-anchor="start" letter-spacing="0" opacity="1" >Deep Focus</text>
+<circle cx="33" cy="499" r="2.1" fill="#E4C6B6" />
+<text x="46" y="503" font-family="Inter" font-size="12.2" font-weight="450" fill="#5E574F" text-anchor="start" letter-spacing="0" opacity="1" >Vinyl Rips</text>
+<line x1="28" y1="536" x2="208" y2="536" stroke="rgba(30,30,30,0.07)" stroke-width="1" />
+<text x="28" y="562" font-family="Inter SemiBold" font-size="7.8" font-weight="600" fill="#B3A99D" text-anchor="start" letter-spacing="2.4" opacity="1" >SMART</text>
+<g transform="translate(34,580) scale(0.75)" fill="none" stroke="#8A8177" stroke-width="1.73" stroke-linecap="round" stroke-linejoin="round" opacity="1"><path d="M10 3.6a6.4 6.4 0 1 0 0 12.8 6.4 6.4 0 0 0 0-12.8M10 6.6V10l2.4 1.6"/></g>
+<text x="60" y="592" font-family="Inter" font-size="11.8" font-weight="400" fill="#5E574F" text-anchor="start" letter-spacing="0" opacity="1" >Recently added</text>
+<g transform="translate(34,607) scale(0.75)" fill="none" stroke="#8A8177" stroke-width="1.73" stroke-linecap="round" stroke-linejoin="round" opacity="1"><path d="M10 16.4s-6.2-3.7-6.2-8A3.3 3.3 0 0 1 10 6.4a3.3 3.3 0 0 1 6.2 2c0 4.3-6.2 8-6.2 8z"/></g>
+<text x="60" y="619" font-family="Inter" font-size="11.8" font-weight="400" fill="#5E574F" text-anchor="start" letter-spacing="0" opacity="1" >Loved</text>
+<g transform="translate(34,634) scale(0.75)" fill="none" stroke="#8A8177" stroke-width="1.73" stroke-linecap="round" stroke-linejoin="round" opacity="1"><path d="M10 4v9M6.4 9.8 10 13.4l3.6-3.6M4 16.4h12"/></g>
+<text x="60" y="646" font-family="Inter" font-size="11.8" font-weight="400" fill="#5E574F" text-anchor="start" letter-spacing="0" opacity="1" >Downloaded</text>
+<rect x="20" y="686" width="196" height="68" rx="14" fill="rgba(255,255,255,0.6)" />
+<rect x="20" y="686" width="196" height="68" rx="14" fill="none" stroke="rgba(30,30,30,0.05)"/>
+<circle cx="44" cy="720" r="11" fill="#C9D2BC" />
+<g transform="translate(37,713) scale(0.65)" fill="none" stroke="#5E6B52" stroke-width="2.62" stroke-linecap="round" stroke-linejoin="round" opacity="1"><path d="m5 10.6 3.2 3.2L15 6.6"/></g>
+<text x="64" y="716" font-family="Inter Medium" font-size="11" font-weight="550" fill="#1E1E1E" text-anchor="start" letter-spacing="0" opacity="1" >Library synced</text>
+<text x="64" y="731" font-family="Inter" font-size="8.6" font-weight="400" fill="#B3A99D" text-anchor="start" letter-spacing="0" opacity="1" >12,406 tracks · just now</text>
+<text x="268" y="62" font-family="Playfair Display" font-size="29" font-weight="400" fill="#1E1E1E" text-anchor="start" letter-spacing="0.2" opacity="1" >Library</text>
+<text x="394" y="60" font-family="Inter" font-size="10.4" font-weight="400" fill="#B3A99D" text-anchor="start" letter-spacing="0.3" opacity="1" >1,284 albums  ·  12,406 tracks</text>
+<rect x="640" y="31" width="236" height="33" rx="16.5" fill="#F1EBE1" opacity="0.9"/>
+<g transform="translate(654,40) scale(0.7)" fill="none" stroke="#8A8177" stroke-width="1.93" stroke-linecap="round" stroke-linejoin="round" opacity="1"><path d="M9.2 3.6a5.6 5.6 0 1 1 0 11.2 5.6 5.6 0 0 1 0-11.2M13.4 13.4 17 17"/></g>
+<text x="676" y="52" font-family="Inter" font-size="10.8" font-weight="400" fill="#B3A99D" text-anchor="start" letter-spacing="0" opacity="1" >Search library</text>
+<rect x="892" y="31" width="132" height="33" rx="16.5" fill="#FFFFFF" opacity="0.85"/>
+<rect x="892" y="31" width="132" height="33" rx="16.5" fill="none" stroke="rgba(30,30,30,0.055)"/>
+<g transform="translate(904,40) scale(0.7)" fill="none" stroke="#8A8177" stroke-width="1.79" stroke-linecap="round" stroke-linejoin="round" opacity="1"><path d="M10 3.6a6.4 6.4 0 1 0 0 12.8 6.4 6.4 0 0 0 0-12.8M10 6.6V10l2.4 1.6"/></g>
+<text x="924" y="51.5" font-family="Inter" font-size="9.4" font-weight="400" fill="#6B6259" text-anchor="start" letter-spacing="0" opacity="1" >Recently added</text>
+<g transform="translate(1000,42) scale(0.55)" fill="none" stroke="#B3A99D" stroke-width="2.55" stroke-linecap="round" stroke-linejoin="round" opacity="1"><path d="m6.5 8.2 3.5 3.5 3.5-3.5"/></g>
+<rect x="1036" y="31" width="64" height="33" rx="16.5" fill="rgba(255,255,255,0.8)" />
+<rect x="1036" y="31" width="64" height="33" rx="16.5" fill="none" stroke="rgba(30,30,30,0.055)"/>
+<rect x="1039.5" y="34.5" width="29" height="26" rx="13" fill="#FFFFFF" stroke="rgba(30,30,30,0.05)"/>
+<g transform="translate(1047,42) scale(0.65)" fill="none" stroke="#A85A3B" stroke-width="2.23" stroke-linecap="round" stroke-linejoin="round" opacity="1"><path d="M3.4 3.4h5.2v5.2H3.4zM11.4 3.4h5.2v5.2h-5.2zM3.4 11.4h5.2v5.2H3.4zM11.4 11.4h5.2v5.2h-5.2z"/></g>
+<g transform="translate(1076,42) scale(0.65)" fill="none" stroke="#B3A99D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity="1"><path d="M3 5.4h14M3 10h14M3 14.6h14"/></g>
+<rect x="268" y="84" width="38.6" height="27" rx="13.5" fill="#1E1E1E" />
+<text x="287.3" y="101.5" font-family="Inter Medium" font-size="10.2" font-weight="550" fill="#F7F2EA" text-anchor="middle" letter-spacing="0.2" opacity="1" >All</text>
+<rect x="314.6" y="84" width="57.2" height="27" rx="13.5" fill="rgba(255,255,255,0.75)" />
+<rect x="314.6" y="84" width="57.2" height="27" rx="13.5" fill="none" stroke="rgba(30,30,30,0.06)"/>
+<text x="343.2" y="101.5" font-family="Inter" font-size="10.2" font-weight="450" fill="#6B6259" text-anchor="middle" letter-spacing="0.2" opacity="1" >Albums</text>
+<rect x="379.8" y="84" width="63.4" height="27" rx="13.5" fill="rgba(255,255,255,0.75)" />
+<rect x="379.8" y="84" width="63.4" height="27" rx="13.5" fill="none" stroke="rgba(30,30,30,0.06)"/>
+<text x="411.5" y="101.5" font-family="Inter" font-size="10.2" font-weight="450" fill="#6B6259" text-anchor="middle" letter-spacing="0.2" opacity="1" >Artists</text>
+<rect x="451.2" y="84" width="57.2" height="27" rx="13.5" fill="rgba(255,255,255,0.75)" />
+<rect x="451.2" y="84" width="57.2" height="27" rx="13.5" fill="none" stroke="rgba(30,30,30,0.06)"/>
+<text x="479.8" y="101.5" font-family="Inter" font-size="10.2" font-weight="450" fill="#6B6259" text-anchor="middle" letter-spacing="0.2" opacity="1" >Genres</text>
+<rect x="516.4" y="84" width="75.8" height="27" rx="13.5" fill="rgba(255,255,255,0.75)" />
+<rect x="516.4" y="84" width="75.8" height="27" rx="13.5" fill="none" stroke="rgba(30,30,30,0.06)"/>
+<text x="554.3" y="101.5" font-family="Inter" font-size="10.2" font-weight="450" fill="#6B6259" text-anchor="middle" letter-spacing="0.2" opacity="1" >Playlists</text>
+<text x="1248" y="101" font-family="Inter" font-size="9.2" font-weight="400" fill="#B3A99D" text-anchor="end" letter-spacing="0.3" opacity="1" >1,284 albums</text>
+<rect x="269" y="142" width="138" height="138" rx="12" fill="#7A5A45" opacity="0.14" filter="url(#softSm)"/>
+<g>
+  <defs>
+    <linearGradient id="cvlg072g" x1="0.1" y1="0" x2="0.9" y2="1">
+      <stop offset="0" stop-color="#F7E4CD"/><stop offset="1" stop-color="#EFC79F"/>
+    </linearGradient>
+    <filter id="cvlg072b" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="0.32"/>
+    </filter>
+    <linearGradient id="cvlg072s" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.2"/>
+      <stop offset="0.5" stop-color="#ffffff" stop-opacity="0"/>
+      <stop offset="1" stop-color="#3A2318" stop-opacity="0.15"/>
+    </linearGradient>
+    <clipPath id="cvlg072c"><rect width="100" height="100" rx="22"/></clipPath>
+  </defs>
+  <g transform="translate(268,130) scale(1.38)" clip-path="url(#cvlg072c)">
+    <rect width="100" height="100" fill="url(#cvlg072g)"/>
+    <g filter="url(#cvlg072b)"><rect width="100" height="100" fill="#EFC79F" opacity="0.5"/>
+      <path d="M0 60C22 54 34 26 56 24s30 22 52 14v62H0z" fill="#D98A5F" opacity="0.52"/>
+      <path d="M0 73C24 67 36 45 58 43s28 20 50 12v45H0z" fill="#8E4A32" opacity="0.34"/>
+      <path d="M0 86C22 82 34 64 56 62s30 18 52 12v26H0z" fill="#D98A5F" opacity="0.3"/>
+      <circle cx="66.25" cy="22.59" r="11" fill="#FFF6E9" opacity="0.82"/>
+      <path d="M0 52C24 46 38 22 60 20s26 18 48 12" fill="none" stroke="#F7E4CD" stroke-width="0.4" opacity="0.4"/><path d="M0 58C24 52 38 28 60 26s26 18 48 12" fill="none" stroke="#F7E4CD" stroke-width="0.4" opacity="0.4"/><path d="M0 64C24 58 38 34 60 32s26 18 48 12" fill="none" stroke="#F7E4CD" stroke-width="0.4" opacity="0.4"/></g>
+    <rect width="100" height="100" fill="url(#cvlg072s)"/>
+  </g></g>
+<rect x="268" y="130" width="138" height="138" rx="12" fill="none" stroke="rgba(255,255,255,0.45)"/>
+<rect x="277" y="139" width="58" height="19" rx="9.5" fill="rgba(255,255,255,0.8)" />
+<text x="306" y="152" font-family="Inter SemiBold" font-size="6.4" font-weight="600" fill="#7C462F" text-anchor="middle" letter-spacing="1.6" opacity="1" >PLAYING</text>
+<text x="268" y="289" font-family="Inter Medium" font-size="11.6" font-weight="550" fill="#1E1E1E" text-anchor="start" letter-spacing="0" opacity="1" >Aurora Lines</text>
+<text x="268" y="303" font-family="Inter" font-size="9.4" font-weight="400" fill="#B3A99D" text-anchor="start" letter-spacing="0" opacity="1" >Kael Rivers  ·  12</text>
+<rect x="427" y="142" width="138" height="138" rx="12" fill="#7A5A45" opacity="0.14" filter="url(#softSm)"/>
+<g>
+  <defs>
+    <linearGradient id="cvlg132g" x1="0.1" y1="0" x2="0.9" y2="1">
+      <stop offset="0" stop-color="#F8F0E2"/><stop offset="1" stop-color="#EEDCC0"/>
+    </linearGradient>
+    <filter id="cvlg132b" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="0.32"/>
+    </filter>
+    <linearGradient id="cvlg132s" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.2"/>
+      <stop offset="0.5" stop-color="#ffffff" stop-opacity="0"/>
+      <stop offset="1" stop-color="#3A2318" stop-opacity="0.15"/>
+    </linearGradient>
+    <clipPath id="cvlg132c"><rect width="100" height="100" rx="22"/></clipPath>
+  </defs>
+  <g transform="translate(426,130) scale(1.38)" clip-path="url(#cvlg132c)">
+    <rect width="100" height="100" fill="url(#cvlg132g)"/>
+    <g filter="url(#cvlg132b)"><rect width="100" height="100" fill="#EEDCC0" opacity="0.5"/>
+      <path d="M0 60C22 54 34 26 56 24s30 22 52 14v62H0z" fill="#CBAA7D" opacity="0.52"/>
+      <path d="M0 73C24 67 36 45 58 43s28 20 50 12v45H0z" fill="#8F7047" opacity="0.34"/>
+      <path d="M0 86C22 82 34 64 56 62s30 18 52 12v26H0z" fill="#CBAA7D" opacity="0.3"/>
+      <circle cx="71.6" cy="22.61" r="11" fill="#FFF6E9" opacity="0.82"/>
+      <path d="M0 52C24 46 38 22 60 20s26 18 48 12" fill="none" stroke="#F8F0E2" stroke-width="0.4" opacity="0.4"/><path d="M0 58C24 52 38 28 60 26s26 18 48 12" fill="none" stroke="#F8F0E2" stroke-width="0.4" opacity="0.4"/><path d="M0 64C24 58 38 34 60 32s26 18 48 12" fill="none" stroke="#F8F0E2" stroke-width="0.4" opacity="0.4"/></g>
+    <rect width="100" height="100" fill="url(#cvlg132s)"/>
+  </g></g>
+<rect x="426" y="130" width="138" height="138" rx="12" fill="none" stroke="rgba(255,255,255,0.45)"/>
+<text x="426" y="289" font-family="Inter Medium" font-size="11.6" font-weight="550" fill="#1E1E1E" text-anchor="start" letter-spacing="0" opacity="1" >Paper Moons</text>
+<text x="426" y="303" font-family="Inter" font-size="9.4" font-weight="400" fill="#B3A99D" text-anchor="start" letter-spacing="0" opacity="1" >Nils Åberg  ·  15</text>
+<rect x="585" y="142" width="138" height="138" rx="12" fill="#7A5A45" opacity="0.14" filter="url(#softSm)"/>
+<g>
+  <defs>
+    <linearGradient id="cvlg253g" x1="0.1" y1="0" x2="0.9" y2="1">
+      <stop offset="0" stop-color="#EEEDDD"/><stop offset="1" stop-color="#DDE2CC"/>
+    </linearGradient>
+    <filter id="cvlg253b" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="0.32"/>
+    </filter>
+    <linearGradient id="cvlg253s" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.2"/>
+      <stop offset="0.5" stop-color="#ffffff" stop-opacity="0"/>
+      <stop offset="1" stop-color="#3A2318" stop-opacity="0.15"/>
+    </linearGradient>
+    <clipPath id="cvlg253c"><rect width="100" height="100" rx="22"/></clipPath>
+  </defs>
+  <g transform="translate(584,130) scale(1.38)" clip-path="url(#cvlg253c)">
+    <rect width="100" height="100" fill="url(#cvlg253g)"/>
+    <g filter="url(#cvlg253b)"><path d="M-6 92.96340246545151C18 80.96340246545151 26 48.96340246545151 52 44.96340246545151s34 22 56 8" fill="none" stroke="#93A381" stroke-width="15" opacity="0.82"/>
+      <path d="M-6 76.96340246545151C18 64.96340246545151 26 32.96340246545151 52 28.96340246545151s34 22 56 8" fill="none" stroke="#59654C" stroke-width="4" opacity="0.42"/>
+      <path d="M-6 108.96340246545151C20 98.96340246545151 30 74.96340246545151 56 70.96340246545151s30 18 52 6" fill="none" stroke="#EEEDDD" stroke-width="7" opacity="0.6"/></g>
+    <rect width="100" height="100" fill="url(#cvlg253s)"/>
+  </g></g>
+<rect x="584" y="130" width="138" height="138" rx="12" fill="none" stroke="rgba(255,255,255,0.45)"/>
+<text x="584" y="289" font-family="Inter Medium" font-size="11.6" font-weight="550" fill="#1E1E1E" text-anchor="start" letter-spacing="0" opacity="1" >Low Tide</text>
+<text x="584" y="303" font-family="Inter" font-size="9.4" font-weight="400" fill="#B3A99D" text-anchor="start" letter-spacing="0" opacity="1" >Mira Voss  ·  18</text>
+<rect x="743" y="142" width="138" height="138" rx="12" fill="#7A5A45" opacity="0.14" filter="url(#softSm)"/>
+<g>
+  <defs>
+    <linearGradient id="cvlg394g" x1="0.1" y1="0" x2="0.9" y2="1">
+      <stop offset="0" stop-color="#F5DFD2"/><stop offset="1" stop-color="#E9C0A8"/>
+    </linearGradient>
+    <filter id="cvlg394b" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="0.32"/>
+    </filter>
+    <linearGradient id="cvlg394s" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.2"/>
+      <stop offset="0.5" stop-color="#ffffff" stop-opacity="0"/>
+      <stop offset="1" stop-color="#3A2318" stop-opacity="0.15"/>
+    </linearGradient>
+    <clipPath id="cvlg394c"><rect width="100" height="100" rx="22"/></clipPath>
+  </defs>
+  <g transform="translate(742,130) scale(1.38)" clip-path="url(#cvlg394c)">
+    <rect width="100" height="100" fill="url(#cvlg394g)"/>
+    <g filter="url(#cvlg394b)"><path d="M0 100 42 0h22L24 100z" fill="#BC7452" opacity="0.68"/>
+      <path d="M40 100 82 0h14L54 100z" fill="#7C4A31" opacity="0.5"/>
+      <circle cx="72" cy="30" r="17" fill="#F5DFD2" opacity="0.78"/></g>
+    <rect width="100" height="100" fill="url(#cvlg394s)"/>
+  </g></g>
+<rect x="742" y="130" width="138" height="138" rx="12" fill="none" stroke="rgba(255,255,255,0.45)"/>
+<text x="742" y="289" font-family="Inter Medium" font-size="11.6" font-weight="550" fill="#1E1E1E" text-anchor="start" letter-spacing="0" opacity="1" >Felt Piano</text>
+<text x="742" y="303" font-family="Inter" font-size="9.4" font-weight="400" fill="#B3A99D" text-anchor="start" letter-spacing="0" opacity="1" >Aster Quartet  ·  21</text>
+<rect x="269" y="342" width="138" height="138" rx="12" fill="#7A5A45" opacity="0.14" filter="url(#softSm)"/>
+<g>
+  <defs>
+    <linearGradient id="cvlg4112g" x1="0.1" y1="0" x2="0.9" y2="1">
+      <stop offset="0" stop-color="#EAE5DC"/><stop offset="1" stop-color="#D6CFC3"/>
+    </linearGradient>
+    <filter id="cvlg4112b" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="0.32"/>
+    </filter>
+    <linearGradient id="cvlg4112s" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.2"/>
+      <stop offset="0.5" stop-color="#ffffff" stop-opacity="0"/>
+      <stop offset="1" stop-color="#3A2318" stop-opacity="0.15"/>
+    </linearGradient>
+    <clipPath id="cvlg4112c"><rect width="100" height="100" rx="22"/></clipPath>
+  </defs>
+  <g transform="translate(268,330) scale(1.38)" clip-path="url(#cvlg4112c)">
+    <rect width="100" height="100" fill="url(#cvlg4112g)"/>
+    <g filter="url(#cvlg4112b)"><rect width="100" height="100" fill="#D6CFC3" opacity="0.5"/>
+      <path d="M0 60C22 54 34 26 56 24s30 22 52 14v62H0z" fill="#7C766D" opacity="0.52"/>
+      <path d="M0 73C24 67 36 45 58 43s28 20 50 12v45H0z" fill="#3E3A35" opacity="0.34"/>
+      <path d="M0 86C22 82 34 64 56 62s30 18 52 12v26H0z" fill="#7C766D" opacity="0.3"/>
+      <circle cx="71.96" cy="20.07" r="11" fill="#FFF6E9" opacity="0.82"/>
+      <path d="M0 52C24 46 38 22 60 20s26 18 48 12" fill="none" stroke="#EAE5DC" stroke-width="0.4" opacity="0.4"/><path d="M0 58C24 52 38 28 60 26s26 18 48 12" fill="none" stroke="#EAE5DC" stroke-width="0.4" opacity="0.4"/><path d="M0 64C24 58 38 34 60 32s26 18 48 12" fill="none" stroke="#EAE5DC" stroke-width="0.4" opacity="0.4"/></g>
+    <rect width="100" height="100" fill="url(#cvlg4112s)"/>
+  </g></g>
+<rect x="268" y="330" width="138" height="138" rx="12" fill="none" stroke="rgba(255,255,255,0.45)"/>
+<text x="268" y="489" font-family="Inter Medium" font-size="11.6" font-weight="550" fill="#1E1E1E" text-anchor="start" letter-spacing="0" opacity="1" >Northbound</text>
+<text x="268" y="503" font-family="Inter" font-size="9.4" font-weight="400" fill="#B3A99D" text-anchor="start" letter-spacing="0" opacity="1" >Kael Rivers  ·  24</text>
+<rect x="427" y="342" width="138" height="138" rx="12" fill="#7A5A45" opacity="0.14" filter="url(#softSm)"/>
+<g>
+  <defs>
+    <linearGradient id="cvlg5143g" x1="0.1" y1="0" x2="0.9" y2="1">
+      <stop offset="0" stop-color="#F0ECDE"/><stop offset="1" stop-color="#DFE2C7"/>
+    </linearGradient>
+    <filter id="cvlg5143b" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="0.32"/>
+    </filter>
+    <linearGradient id="cvlg5143s" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.2"/>
+      <stop offset="0.5" stop-color="#ffffff" stop-opacity="0"/>
+      <stop offset="1" stop-color="#3A2318" stop-opacity="0.15"/>
+    </linearGradient>
+    <clipPath id="cvlg5143c"><rect width="100" height="100" rx="22"/></clipPath>
+  </defs>
+  <g transform="translate(426,330) scale(1.38)" clip-path="url(#cvlg5143c)">
+    <rect width="100" height="100" fill="url(#cvlg5143g)"/>
+    <g filter="url(#cvlg5143b)"><path d="M-6 85.4510067133233C18 73.4510067133233 26 41.451006713323295 52 37.451006713323295s34 22 56 8" fill="none" stroke="#A5AA84" stroke-width="15" opacity="0.82"/>
+      <path d="M-6 69.4510067133233C18 57.451006713323295 26 25.451006713323295 52 21.451006713323295s34 22 56 8" fill="none" stroke="#666C4C" stroke-width="4" opacity="0.42"/>
+      <path d="M-6 101.4510067133233C20 91.4510067133233 30 67.4510067133233 56 63.451006713323295s30 18 52 6" fill="none" stroke="#F0ECDE" stroke-width="7" opacity="0.6"/></g>
+    <rect width="100" height="100" fill="url(#cvlg5143s)"/>
+  </g></g>
+<rect x="426" y="330" width="138" height="138" rx="12" fill="none" stroke="rgba(255,255,255,0.45)"/>
+<text x="426" y="489" font-family="Inter Medium" font-size="11.6" font-weight="550" fill="#1E1E1E" text-anchor="start" letter-spacing="0" opacity="1" >Slow Light</text>
+<text x="426" y="503" font-family="Inter" font-size="9.4" font-weight="400" fill="#B3A99D" text-anchor="start" letter-spacing="0" opacity="1" >Sable &amp; Co.  ·  27</text>
+<rect x="585" y="342" width="138" height="138" rx="12" fill="#7A5A45" opacity="0.14" filter="url(#softSm)"/>
+<g>
+  <defs>
+    <linearGradient id="cvlg6172g" x1="0.1" y1="0" x2="0.9" y2="1">
+      <stop offset="0" stop-color="#EFE0D5"/><stop offset="1" stop-color="#DCBCA9"/>
+    </linearGradient>
+    <filter id="cvlg6172b" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="0.32"/>
+    </filter>
+    <linearGradient id="cvlg6172s" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.2"/>
+      <stop offset="0.5" stop-color="#ffffff" stop-opacity="0"/>
+      <stop offset="1" stop-color="#3A2318" stop-opacity="0.15"/>
+    </linearGradient>
+    <clipPath id="cvlg6172c"><rect width="100" height="100" rx="22"/></clipPath>
+  </defs>
+  <g transform="translate(584,330) scale(1.38)" clip-path="url(#cvlg6172c)">
+    <rect width="100" height="100" fill="url(#cvlg6172g)"/>
+    <g filter="url(#cvlg6172b)"><rect width="100" height="100" fill="#DCBCA9" opacity="0.5"/>
+      <path d="M0 60C22 54 34 26 56 24s30 22 52 14v62H0z" fill="#A16E5F" opacity="0.52"/>
+      <path d="M0 73C24 67 36 45 58 43s28 20 50 12v45H0z" fill="#67413A" opacity="0.34"/>
+      <path d="M0 86C22 82 34 64 56 62s30 18 52 12v26H0z" fill="#A16E5F" opacity="0.3"/>
+      <circle cx="69.15" cy="20.91" r="11" fill="#FFF6E9" opacity="0.82"/>
+      <path d="M0 52C24 46 38 22 60 20s26 18 48 12" fill="none" stroke="#EFE0D5" stroke-width="0.4" opacity="0.4"/><path d="M0 58C24 52 38 28 60 26s26 18 48 12" fill="none" stroke="#EFE0D5" stroke-width="0.4" opacity="0.4"/><path d="M0 64C24 58 38 34 60 32s26 18 48 12" fill="none" stroke="#EFE0D5" stroke-width="0.4" opacity="0.4"/></g>
+    <rect width="100" height="100" fill="url(#cvlg6172s)"/>
+  </g></g>
+<rect x="584" y="330" width="138" height="138" rx="12" fill="none" stroke="rgba(255,255,255,0.45)"/>
+<text x="584" y="489" font-family="Inter Medium" font-size="11.6" font-weight="550" fill="#1E1E1E" text-anchor="start" letter-spacing="0" opacity="1" >Harbour</text>
+<text x="584" y="503" font-family="Inter" font-size="9.4" font-weight="400" fill="#B3A99D" text-anchor="start" letter-spacing="0" opacity="1" >Ines Roux  ·  30</text>
+<rect x="743" y="342" width="138" height="138" rx="12" fill="#7A5A45" opacity="0.14" filter="url(#softSm)"/>
+<g>
+  <defs>
+    <linearGradient id="cvlg7214g" x1="0.1" y1="0" x2="0.9" y2="1">
+      <stop offset="0" stop-color="#F7E7E1"/><stop offset="1" stop-color="#EDD2C7"/>
+    </linearGradient>
+    <filter id="cvlg7214b" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="0.32"/>
+    </filter>
+    <linearGradient id="cvlg7214s" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.2"/>
+      <stop offset="0.5" stop-color="#ffffff" stop-opacity="0"/>
+      <stop offset="1" stop-color="#3A2318" stop-opacity="0.15"/>
+    </linearGradient>
+    <clipPath id="cvlg7214c"><rect width="100" height="100" rx="22"/></clipPath>
+  </defs>
+  <g transform="translate(742,330) scale(1.38)" clip-path="url(#cvlg7214c)">
+    <rect width="100" height="100" fill="url(#cvlg7214g)"/>
+    <g filter="url(#cvlg7214b)"><path d="M0 100 42 0h22L24 100z" fill="#C68F82" opacity="0.68"/>
+      <path d="M40 100 82 0h14L54 100z" fill="#8A5E53" opacity="0.5"/>
+      <circle cx="72" cy="30" r="17" fill="#F7E7E1" opacity="0.78"/></g>
+    <rect width="100" height="100" fill="url(#cvlg7214s)"/>
+  </g></g>
+<rect x="742" y="330" width="138" height="138" rx="12" fill="none" stroke="rgba(255,255,255,0.45)"/>
+<text x="742" y="489" font-family="Inter Medium" font-size="11.6" font-weight="550" fill="#1E1E1E" text-anchor="start" letter-spacing="0" opacity="1" >Wildflower</text>
+<text x="742" y="503" font-family="Inter" font-size="9.4" font-weight="400" fill="#B3A99D" text-anchor="start" letter-spacing="0" opacity="1" >June Alba  ·  33</text>
+<g>
+  <defs>
+    <linearGradient id="cvlh0262g" x1="0.1" y1="0" x2="0.9" y2="1">
+      <stop offset="0" stop-color="#F5DFD2"/><stop offset="1" stop-color="#E9C0A8"/>
+    </linearGradient>
+    <filter id="cvlh0262b" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="0.32"/>
+    </filter>
+    <linearGradient id="cvlh0262s" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.2"/>
+      <stop offset="0.5" stop-color="#ffffff" stop-opacity="0"/>
+      <stop offset="1" stop-color="#3A2318" stop-opacity="0.15"/>
+    </linearGradient>
+    <clipPath id="cvlh0262c"><rect width="100" height="100" rx="22"/></clipPath>
+  </defs>
+  <g transform="translate(268,506) scale(1.38)" clip-path="url(#cvlh0262c)">
+    <rect width="100" height="100" fill="url(#cvlh0262g)"/>
+    <g filter="url(#cvlh0262b)"><rect width="100" height="100" fill="#E9C0A8" opacity="0.5"/>
+      <path d="M0 60C22 54 34 26 56 24s30 22 52 14v62H0z" fill="#BC7452" opacity="0.52"/>
+      <path d="M0 73C24 67 36 45 58 43s28 20 50 12v45H0z" fill="#7C4A31" opacity="0.34"/>
+      <path d="M0 86C22 82 34 64 56 62s30 18 52 12v26H0z" fill="#BC7452" opacity="0.3"/>
+      <circle cx="73.65" cy="23.08" r="11" fill="#FFF6E9" opacity="0.82"/>
+      <path d="M0 52C24 46 38 22 60 20s26 18 48 12" fill="none" stroke="#F5DFD2" stroke-width="0.4" opacity="0.4"/><path d="M0 58C24 52 38 28 60 26s26 18 48 12" fill="none" stroke="#F5DFD2" stroke-width="0.4" opacity="0.4"/><path d="M0 64C24 58 38 34 60 32s26 18 48 12" fill="none" stroke="#F5DFD2" stroke-width="0.4" opacity="0.4"/></g>
+    <rect width="100" height="100" fill="url(#cvlh0262s)"/>
+  </g></g>
+<text x="268" y="665" font-family="Inter Medium" font-size="11.6" font-weight="550" fill="#1E1E1E" text-anchor="start" letter-spacing="0" opacity="1" >Clay &amp; Ash</text>
+<text x="268" y="679" font-family="Inter" font-size="9.4" font-weight="400" fill="#B3A99D" text-anchor="start" letter-spacing="0" opacity="1" >Oren Vale  ·  14</text>
+<g>
+  <defs>
+    <linearGradient id="cvlh1293g" x1="0.1" y1="0" x2="0.9" y2="1">
+      <stop offset="0" stop-color="#EFE0D5"/><stop offset="1" stop-color="#DCBCA9"/>
+    </linearGradient>
+    <filter id="cvlh1293b" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="0.32"/>
+    </filter>
+    <linearGradient id="cvlh1293s" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.2"/>
+      <stop offset="0.5" stop-color="#ffffff" stop-opacity="0"/>
+      <stop offset="1" stop-color="#3A2318" stop-opacity="0.15"/>
+    </linearGradient>
+    <clipPath id="cvlh1293c"><rect width="100" height="100" rx="22"/></clipPath>
+  </defs>
+  <g transform="translate(426,506) scale(1.38)" clip-path="url(#cvlh1293c)">
+    <rect width="100" height="100" fill="url(#cvlh1293g)"/>
+    <g filter="url(#cvlh1293b)"><path d="M-6 85.65179222123697C18 73.65179222123697 26 41.651792221236974 52 37.651792221236974s34 22 56 8" fill="none" stroke="#A16E5F" stroke-width="15" opacity="0.82"/>
+      <path d="M-6 69.65179222123697C18 57.651792221236974 26 25.651792221236974 52 21.651792221236974s34 22 56 8" fill="none" stroke="#67413A" stroke-width="4" opacity="0.42"/>
+      <path d="M-6 101.65179222123697C20 91.65179222123697 30 67.65179222123697 56 63.651792221236974s30 18 52 6" fill="none" stroke="#EFE0D5" stroke-width="7" opacity="0.6"/></g>
+    <rect width="100" height="100" fill="url(#cvlh1293s)"/>
+  </g></g>
+<text x="426" y="665" font-family="Inter Medium" font-size="11.6" font-weight="550" fill="#1E1E1E" text-anchor="start" letter-spacing="0" opacity="1" >Night Bus</text>
+<text x="426" y="679" font-family="Inter" font-size="9.4" font-weight="400" fill="#B3A99D" text-anchor="start" letter-spacing="0" opacity="1" >Mira Voss  ·  18</text>
+<g>
+  <defs>
+    <linearGradient id="cvlh2324g" x1="0.1" y1="0" x2="0.9" y2="1">
+      <stop offset="0" stop-color="#F8F0E2"/><stop offset="1" stop-color="#EEDCC0"/>
+    </linearGradient>
+    <filter id="cvlh2324b" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="0.32"/>
+    </filter>
+    <linearGradient id="cvlh2324s" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.2"/>
+      <stop offset="0.5" stop-color="#ffffff" stop-opacity="0"/>
+      <stop offset="1" stop-color="#3A2318" stop-opacity="0.15"/>
+    </linearGradient>
+    <clipPath id="cvlh2324c"><rect width="100" height="100" rx="22"/></clipPath>
+  </defs>
+  <g transform="translate(584,506) scale(1.38)" clip-path="url(#cvlh2324c)">
+    <rect width="100" height="100" fill="url(#cvlh2324g)"/>
+    <g filter="url(#cvlh2324b)"><path d="M0 100 42 0h22L24 100z" fill="#CBAA7D" opacity="0.68"/>
+      <path d="M40 100 82 0h14L54 100z" fill="#8F7047" opacity="0.5"/>
+      <circle cx="72" cy="30" r="17" fill="#F8F0E2" opacity="0.78"/></g>
+    <rect width="100" height="100" fill="url(#cvlh2324s)"/>
+  </g></g>
+<text x="584" y="665" font-family="Inter Medium" font-size="11.6" font-weight="550" fill="#1E1E1E" text-anchor="start" letter-spacing="0" opacity="1" >Pale Coast</text>
+<text x="584" y="679" font-family="Inter" font-size="9.4" font-weight="400" fill="#B3A99D" text-anchor="start" letter-spacing="0" opacity="1" >Sable &amp; Co.  ·  22</text>
+<g>
+  <defs>
+    <linearGradient id="cvlh3352g" x1="0.1" y1="0" x2="0.9" y2="1">
+      <stop offset="0" stop-color="#EAE5DC"/><stop offset="1" stop-color="#D6CFC3"/>
+    </linearGradient>
+    <filter id="cvlh3352b" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="0.32"/>
+    </filter>
+    <linearGradient id="cvlh3352s" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.2"/>
+      <stop offset="0.5" stop-color="#ffffff" stop-opacity="0"/>
+      <stop offset="1" stop-color="#3A2318" stop-opacity="0.15"/>
+    </linearGradient>
+    <clipPath id="cvlh3352c"><rect width="100" height="100" rx="22"/></clipPath>
+  </defs>
+  <g transform="translate(742,506) scale(1.38)" clip-path="url(#cvlh3352c)">
+    <rect width="100" height="100" fill="url(#cvlh3352g)"/>
+    <g filter="url(#cvlh3352b)"><rect width="100" height="100" fill="#D6CFC3" opacity="0.5"/>
+      <path d="M0 60C22 54 34 26 56 24s30 22 52 14v62H0z" fill="#7C766D" opacity="0.52"/>
+      <path d="M0 73C24 67 36 45 58 43s28 20 50 12v45H0z" fill="#3E3A35" opacity="0.34"/>
+      <path d="M0 86C22 82 34 64 56 62s30 18 52 12v26H0z" fill="#7C766D" opacity="0.3"/>
+      <circle cx="65.11" cy="21.98" r="11" fill="#FFF6E9" opacity="0.82"/>
+      <path d="M0 52C24 46 38 22 60 20s26 18 48 12" fill="none" stroke="#EAE5DC" stroke-width="0.4" opacity="0.4"/><path d="M0 58C24 52 38 28 60 26s26 18 48 12" fill="none" stroke="#EAE5DC" stroke-width="0.4" opacity="0.4"/><path d="M0 64C24 58 38 34 60 32s26 18 48 12" fill="none" stroke="#EAE5DC" stroke-width="0.4" opacity="0.4"/></g>
+    <rect width="100" height="100" fill="url(#cvlh3352s)"/>
+  </g></g>
+<text x="742" y="665" font-family="Inter Medium" font-size="11.6" font-weight="550" fill="#1E1E1E" text-anchor="start" letter-spacing="0" opacity="1" >Hush</text>
+<text x="742" y="679" font-family="Inter" font-size="9.4" font-weight="400" fill="#B3A99D" text-anchor="start" letter-spacing="0" opacity="1" >June Alba  ·  26</text>
+<rect x="962" y="84" width="286" height="616" rx="16" fill="rgba(255,255,255,0.62)" />
+<rect x="962" y="84" width="286" height="616" rx="16" fill="none" stroke="rgba(30,30,30,0.055)"/>
+<text x="984" y="114" font-family="Inter SemiBold" font-size="7.8" font-weight="600" fill="#B3A99D" text-anchor="start" letter-spacing="2.2" opacity="1" >RECENTLY PLAYED</text>
+<text x="1226" y="114" font-family="Inter" font-size="9.2" font-weight="400" fill="#C4704F" text-anchor="end" letter-spacing="0" opacity="1" >View all</text>
+<rect x="974" y="139" width="262" height="41" rx="10" fill="#F5EDE1" />
+<g>
+  <defs>
+    <linearGradient id="cvlr072g" x1="0.1" y1="0" x2="0.9" y2="1">
+      <stop offset="0" stop-color="#F7E4CD"/><stop offset="1" stop-color="#EFC79F"/>
+    </linearGradient>
+    <filter id="cvlr072b" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="0.32"/>
+    </filter>
+    <linearGradient id="cvlr072s" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.2"/>
+      <stop offset="0.5" stop-color="#ffffff" stop-opacity="0"/>
+      <stop offset="1" stop-color="#3A2318" stop-opacity="0.15"/>
+    </linearGradient>
+    <clipPath id="cvlr072c"><rect width="100" height="100" rx="22"/></clipPath>
+  </defs>
+  <g transform="translate(982,144) scale(0.32)" clip-path="url(#cvlr072c)">
+    <rect width="100" height="100" fill="url(#cvlr072g)"/>
+    <g filter="url(#cvlr072b)"><rect width="100" height="100" fill="#EFC79F" opacity="0.5"/>
+      <path d="M0 60C22 54 34 26 56 24s30 22 52 14v62H0z" fill="#D98A5F" opacity="0.52"/>
+      <path d="M0 73C24 67 36 45 58 43s28 20 50 12v45H0z" fill="#8E4A32" opacity="0.34"/>
+      <path d="M0 86C22 82 34 64 56 62s30 18 52 12v26H0z" fill="#D98A5F" opacity="0.3"/>
+      <circle cx="66.25" cy="22.59" r="11" fill="#FFF6E9" opacity="0.82"/>
+      <path d="M0 52C24 46 38 22 60 20s26 18 48 12" fill="none" stroke="#F7E4CD" stroke-width="0.4" opacity="0.4"/><path d="M0 58C24 52 38 28 60 26s26 18 48 12" fill="none" stroke="#F7E4CD" stroke-width="0.4" opacity="0.4"/><path d="M0 64C24 58 38 34 60 32s26 18 48 12" fill="none" stroke="#F7E4CD" stroke-width="0.4" opacity="0.4"/></g>
+    <rect width="100" height="100" fill="url(#cvlr072s)"/>
+  </g></g>
+<text x="1026" y="157" font-family="Inter SemiBold" font-size="11" font-weight="600" fill="#1E1E1E" text-anchor="start" letter-spacing="0" opacity="1" >Aurora Lines</text>
+<text x="1026" y="170" font-family="Inter" font-size="8.8" font-weight="400" fill="#B3A99D" text-anchor="start" letter-spacing="0" opacity="1" >Kael Rivers</text>
+<text x="1226" y="162" font-family="Inter" font-size="8.8" font-weight="400" fill="#B3A99D" text-anchor="end" letter-spacing="0" opacity="1" >3:58</text>
+<g>
+  <defs>
+    <linearGradient id="cvlr153g" x1="0.1" y1="0" x2="0.9" y2="1">
+      <stop offset="0" stop-color="#EEEDDD"/><stop offset="1" stop-color="#DDE2CC"/>
+    </linearGradient>
+    <filter id="cvlr153b" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="0.32"/>
+    </filter>
+    <linearGradient id="cvlr153s" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.2"/>
+      <stop offset="0.5" stop-color="#ffffff" stop-opacity="0"/>
+      <stop offset="1" stop-color="#3A2318" stop-opacity="0.15"/>
+    </linearGradient>
+    <clipPath id="cvlr153c"><rect width="100" height="100" rx="22"/></clipPath>
+  </defs>
+  <g transform="translate(982,187) scale(0.32)" clip-path="url(#cvlr153c)">
+    <rect width="100" height="100" fill="url(#cvlr153g)"/>
+    <g filter="url(#cvlr153b)"><path d="M-6 92.96340246545151C18 80.96340246545151 26 48.96340246545151 52 44.96340246545151s34 22 56 8" fill="none" stroke="#93A381" stroke-width="15" opacity="0.82"/>
+      <path d="M-6 76.96340246545151C18 64.96340246545151 26 32.96340246545151 52 28.96340246545151s34 22 56 8" fill="none" stroke="#59654C" stroke-width="4" opacity="0.42"/>
+      <path d="M-6 108.96340246545151C20 98.96340246545151 30 74.96340246545151 56 70.96340246545151s30 18 52 6" fill="none" stroke="#EEEDDD" stroke-width="7" opacity="0.6"/></g>
+    <rect width="100" height="100" fill="url(#cvlr153s)"/>
+  </g></g>
+<text x="1026" y="200" font-family="Inter Medium" font-size="11" font-weight="500" fill="#1E1E1E" text-anchor="start" letter-spacing="0" opacity="1" >Low Tide</text>
+<text x="1026" y="213" font-family="Inter" font-size="8.8" font-weight="400" fill="#B3A99D" text-anchor="start" letter-spacing="0" opacity="1" >Mira Voss</text>
+<text x="1226" y="205" font-family="Inter" font-size="8.8" font-weight="400" fill="#B3A99D" text-anchor="end" letter-spacing="0" opacity="1" >4:02</text>
+<g>
+  <defs>
+    <linearGradient id="cvlr294g" x1="0.1" y1="0" x2="0.9" y2="1">
+      <stop offset="0" stop-color="#F5DFD2"/><stop offset="1" stop-color="#E9C0A8"/>
+    </linearGradient>
+    <filter id="cvlr294b" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="0.32"/>
+    </filter>
+    <linearGradient id="cvlr294s" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.2"/>
+      <stop offset="0.5" stop-color="#ffffff" stop-opacity="0"/>
+      <stop offset="1" stop-color="#3A2318" stop-opacity="0.15"/>
+    </linearGradient>
+    <clipPath id="cvlr294c"><rect width="100" height="100" rx="22"/></clipPath>
+  </defs>
+  <g transform="translate(982,230) scale(0.32)" clip-path="url(#cvlr294c)">
+    <rect width="100" height="100" fill="url(#cvlr294g)"/>
+    <g filter="url(#cvlr294b)"><path d="M0 100 42 0h22L24 100z" fill="#BC7452" opacity="0.68"/>
+      <path d="M40 100 82 0h14L54 100z" fill="#7C4A31" opacity="0.5"/>
+      <circle cx="72" cy="30" r="17" fill="#F5DFD2" opacity="0.78"/></g>
+    <rect width="100" height="100" fill="url(#cvlr294s)"/>
+  </g></g>
+<text x="1026" y="243" font-family="Inter Medium" font-size="11" font-weight="500" fill="#1E1E1E" text-anchor="start" letter-spacing="0" opacity="1" >Felt Piano</text>
+<text x="1026" y="256" font-family="Inter" font-size="8.8" font-weight="400" fill="#B3A99D" text-anchor="start" letter-spacing="0" opacity="1" >Aster Quartet</text>
+<text x="1226" y="248" font-family="Inter" font-size="8.8" font-weight="400" fill="#B3A99D" text-anchor="end" letter-spacing="0" opacity="1" >2:58</text>
+<g>
+  <defs>
+    <linearGradient id="cvlr332g" x1="0.1" y1="0" x2="0.9" y2="1">
+      <stop offset="0" stop-color="#F8F0E2"/><stop offset="1" stop-color="#EEDCC0"/>
+    </linearGradient>
+    <filter id="cvlr332b" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="0.32"/>
+    </filter>
+    <linearGradient id="cvlr332s" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.2"/>
+      <stop offset="0.5" stop-color="#ffffff" stop-opacity="0"/>
+      <stop offset="1" stop-color="#3A2318" stop-opacity="0.15"/>
+    </linearGradient>
+    <clipPath id="cvlr332c"><rect width="100" height="100" rx="22"/></clipPath>
+  </defs>
+  <g transform="translate(982,273) scale(0.32)" clip-path="url(#cvlr332c)">
+    <rect width="100" height="100" fill="url(#cvlr332g)"/>
+    <g filter="url(#cvlr332b)"><rect width="100" height="100" fill="#EEDCC0" opacity="0.5"/>
+      <path d="M0 60C22 54 34 26 56 24s30 22 52 14v62H0z" fill="#CBAA7D" opacity="0.52"/>
+      <path d="M0 73C24 67 36 45 58 43s28 20 50 12v45H0z" fill="#8F7047" opacity="0.34"/>
+      <path d="M0 86C22 82 34 64 56 62s30 18 52 12v26H0z" fill="#CBAA7D" opacity="0.3"/>
+      <circle cx="71.6" cy="22.61" r="11" fill="#FFF6E9" opacity="0.82"/>
+      <path d="M0 52C24 46 38 22 60 20s26 18 48 12" fill="none" stroke="#F8F0E2" stroke-width="0.4" opacity="0.4"/><path d="M0 58C24 52 38 28 60 26s26 18 48 12" fill="none" stroke="#F8F0E2" stroke-width="0.4" opacity="0.4"/><path d="M0 64C24 58 38 34 60 32s26 18 48 12" fill="none" stroke="#F8F0E2" stroke-width="0.4" opacity="0.4"/></g>
+    <rect width="100" height="100" fill="url(#cvlr332s)"/>
+  </g></g>
+<text x="1026" y="286" font-family="Inter Medium" font-size="11" font-weight="500" fill="#1E1E1E" text-anchor="start" letter-spacing="0" opacity="1" >Paper Moons</text>
+<text x="1026" y="299" font-family="Inter" font-size="8.8" font-weight="400" fill="#B3A99D" text-anchor="start" letter-spacing="0" opacity="1" >Nils Åberg</text>
+<text x="1226" y="291" font-family="Inter" font-size="8.8" font-weight="400" fill="#B3A99D" text-anchor="end" letter-spacing="0" opacity="1" >3:24</text>
+<g>
+  <defs>
+    <linearGradient id="cvlr4214g" x1="0.1" y1="0" x2="0.9" y2="1">
+      <stop offset="0" stop-color="#F7E7E1"/><stop offset="1" stop-color="#EDD2C7"/>
+    </linearGradient>
+    <filter id="cvlr4214b" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="0.32"/>
+    </filter>
+    <linearGradient id="cvlr4214s" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.2"/>
+      <stop offset="0.5" stop-color="#ffffff" stop-opacity="0"/>
+      <stop offset="1" stop-color="#3A2318" stop-opacity="0.15"/>
+    </linearGradient>
+    <clipPath id="cvlr4214c"><rect width="100" height="100" rx="22"/></clipPath>
+  </defs>
+  <g transform="translate(982,316) scale(0.32)" clip-path="url(#cvlr4214c)">
+    <rect width="100" height="100" fill="url(#cvlr4214g)"/>
+    <g filter="url(#cvlr4214b)"><path d="M0 100 42 0h22L24 100z" fill="#C68F82" opacity="0.68"/>
+      <path d="M40 100 82 0h14L54 100z" fill="#8A5E53" opacity="0.5"/>
+      <circle cx="72" cy="30" r="17" fill="#F7E7E1" opacity="0.78"/></g>
+    <rect width="100" height="100" fill="url(#cvlr4214s)"/>
+  </g></g>
+<text x="1026" y="329" font-family="Inter Medium" font-size="11" font-weight="500" fill="#1E1E1E" text-anchor="start" letter-spacing="0" opacity="1" >Wildflower</text>
+<text x="1026" y="342" font-family="Inter" font-size="8.8" font-weight="400" fill="#B3A99D" text-anchor="start" letter-spacing="0" opacity="1" >June Alba</text>
+<text x="1226" y="334" font-family="Inter" font-size="8.8" font-weight="400" fill="#B3A99D" text-anchor="end" letter-spacing="0" opacity="1" >3:12</text>
+<g>
+  <defs>
+    <linearGradient id="cvlr5172g" x1="0.1" y1="0" x2="0.9" y2="1">
+      <stop offset="0" stop-color="#EFE0D5"/><stop offset="1" stop-color="#DCBCA9"/>
+    </linearGradient>
+    <filter id="cvlr5172b" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="0.32"/>
+    </filter>
+    <linearGradient id="cvlr5172s" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.2"/>
+      <stop offset="0.5" stop-color="#ffffff" stop-opacity="0"/>
+      <stop offset="1" stop-color="#3A2318" stop-opacity="0.15"/>
+    </linearGradient>
+    <clipPath id="cvlr5172c"><rect width="100" height="100" rx="22"/></clipPath>
+  </defs>
+  <g transform="translate(982,359) scale(0.32)" clip-path="url(#cvlr5172c)">
+    <rect width="100" height="100" fill="url(#cvlr5172g)"/>
+    <g filter="url(#cvlr5172b)"><rect width="100" height="100" fill="#DCBCA9" opacity="0.5"/>
+      <path d="M0 60C22 54 34 26 56 24s30 22 52 14v62H0z" fill="#A16E5F" opacity="0.52"/>
+      <path d="M0 73C24 67 36 45 58 43s28 20 50 12v45H0z" fill="#67413A" opacity="0.34"/>
+      <path d="M0 86C22 82 34 64 56 62s30 18 52 12v26H0z" fill="#A16E5F" opacity="0.3"/>
+      <circle cx="69.15" cy="20.91" r="11" fill="#FFF6E9" opacity="0.82"/>
+      <path d="M0 52C24 46 38 22 60 20s26 18 48 12" fill="none" stroke="#EFE0D5" stroke-width="0.4" opacity="0.4"/><path d="M0 58C24 52 38 28 60 26s26 18 48 12" fill="none" stroke="#EFE0D5" stroke-width="0.4" opacity="0.4"/><path d="M0 64C24 58 38 34 60 32s26 18 48 12" fill="none" stroke="#EFE0D5" stroke-width="0.4" opacity="0.4"/></g>
+    <rect width="100" height="100" fill="url(#cvlr5172s)"/>
+  </g></g>
+<text x="1026" y="372" font-family="Inter Medium" font-size="11" font-weight="500" fill="#1E1E1E" text-anchor="start" letter-spacing="0" opacity="1" >Harbour</text>
+<text x="1026" y="385" font-family="Inter" font-size="8.8" font-weight="400" fill="#B3A99D" text-anchor="start" letter-spacing="0" opacity="1" >Ines Roux</text>
+<text x="1226" y="377" font-family="Inter" font-size="8.8" font-weight="400" fill="#B3A99D" text-anchor="end" letter-spacing="0" opacity="1" >4:41</text>
+<g>
+  <defs>
+    <linearGradient id="cvlr6143g" x1="0.1" y1="0" x2="0.9" y2="1">
+      <stop offset="0" stop-color="#F0ECDE"/><stop offset="1" stop-color="#DFE2C7"/>
+    </linearGradient>
+    <filter id="cvlr6143b" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="0.32"/>
+    </filter>
+    <linearGradient id="cvlr6143s" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.2"/>
+      <stop offset="0.5" stop-color="#ffffff" stop-opacity="0"/>
+      <stop offset="1" stop-color="#3A2318" stop-opacity="0.15"/>
+    </linearGradient>
+    <clipPath id="cvlr6143c"><rect width="100" height="100" rx="22"/></clipPath>
+  </defs>
+  <g transform="translate(982,402) scale(0.32)" clip-path="url(#cvlr6143c)">
+    <rect width="100" height="100" fill="url(#cvlr6143g)"/>
+    <g filter="url(#cvlr6143b)"><path d="M-6 85.4510067133233C18 73.4510067133233 26 41.451006713323295 52 37.451006713323295s34 22 56 8" fill="none" stroke="#A5AA84" stroke-width="15" opacity="0.82"/>
+      <path d="M-6 69.4510067133233C18 57.451006713323295 26 25.451006713323295 52 21.451006713323295s34 22 56 8" fill="none" stroke="#666C4C" stroke-width="4" opacity="0.42"/>
+      <path d="M-6 101.4510067133233C20 91.4510067133233 30 67.4510067133233 56 63.451006713323295s30 18 52 6" fill="none" stroke="#F0ECDE" stroke-width="7" opacity="0.6"/></g>
+    <rect width="100" height="100" fill="url(#cvlr6143s)"/>
+  </g></g>
+<text x="1026" y="415" font-family="Inter Medium" font-size="11" font-weight="500" fill="#1E1E1E" text-anchor="start" letter-spacing="0" opacity="1" >Slow Light</text>
+<text x="1026" y="428" font-family="Inter" font-size="8.8" font-weight="400" fill="#B3A99D" text-anchor="start" letter-spacing="0" opacity="1" >Sable &amp; Co.</text>
+<text x="1226" y="420" font-family="Inter" font-size="8.8" font-weight="400" fill="#B3A99D" text-anchor="end" letter-spacing="0" opacity="1" >5:12</text>
+<line x1="984" y1="445" x2="1226" y2="445" stroke="rgba(30,30,30,0.07)" stroke-width="1" />
+<text x="984" y="471" font-family="Inter SemiBold" font-size="7.8" font-weight="600" fill="#B3A99D" text-anchor="start" letter-spacing="2.2" opacity="1" >GENRES</text>
+<rect x="984" y="487" width="55.1" height="23" rx="11.5" fill="rgba(255,255,255,0.9)" />
+<rect x="984" y="487" width="55.1" height="23" rx="11.5" fill="none" stroke="rgba(30,30,30,0.05)"/>
+<text x="1011.55" y="502" font-family="Inter" font-size="9.2" font-weight="400" fill="#6B6259" text-anchor="middle" letter-spacing="0" opacity="1" >Ambient</text>
+<rect x="1046.1" y="487" width="102.8" height="23" rx="11.5" fill="#EFE1D3" />
+<rect x="1046.1" y="487" width="102.8" height="23" rx="11.5" fill="none" stroke="rgba(30,30,30,0.05)"/>
+<text x="1097.5" y="502" font-family="Inter" font-size="9.2" font-weight="400" fill="#8A4E36" text-anchor="middle" letter-spacing="0" opacity="1" >Modern Classical</text>
+<rect x="1155.9" y="487" width="39.2" height="23" rx="11.5" fill="rgba(255,255,255,0.9)" />
+<rect x="1155.9" y="487" width="39.2" height="23" rx="11.5" fill="none" stroke="rgba(30,30,30,0.05)"/>
+<text x="1175.5" y="502" font-family="Inter" font-size="9.2" font-weight="400" fill="#6B6259" text-anchor="middle" letter-spacing="0" opacity="1" >Soul</text>
+<rect x="984" y="518" width="39.2" height="23" rx="11.5" fill="rgba(255,255,255,0.9)" />
+<rect x="984" y="518" width="39.2" height="23" rx="11.5" fill="none" stroke="rgba(30,30,30,0.05)"/>
+<text x="1003.6" y="533" font-family="Inter" font-size="9.2" font-weight="400" fill="#6B6259" text-anchor="middle" letter-spacing="0" opacity="1" >Folk</text>
+<rect x="1030.2" y="518" width="39.2" height="23" rx="11.5" fill="rgba(255,255,255,0.9)" />
+<rect x="1030.2" y="518" width="39.2" height="23" rx="11.5" fill="none" stroke="rgba(30,30,30,0.05)"/>
+<text x="1049.8" y="533" font-family="Inter" font-size="9.2" font-weight="400" fill="#6B6259" text-anchor="middle" letter-spacing="0" opacity="1" >Jazz</text>
+<rect x="1076.4" y="518" width="65.7" height="23" rx="11.5" fill="rgba(255,255,255,0.9)" />
+<rect x="1076.4" y="518" width="65.7" height="23" rx="11.5" fill="none" stroke="rgba(30,30,30,0.05)"/>
+<text x="1109.25" y="533" font-family="Inter" font-size="9.2" font-weight="400" fill="#6B6259" text-anchor="middle" letter-spacing="0" opacity="1" >Downtempo</text>
+<text x="984" y="578" font-family="Inter SemiBold" font-size="7.8" font-weight="600" fill="#B3A99D" text-anchor="start" letter-spacing="2.2" opacity="1" >LIBRARY</text>
+<text x="984" y="614" font-family="Playfair Display" font-size="22" font-weight="400" fill="#1E1E1E" text-anchor="start" letter-spacing="0" opacity="1" >1,284</text>
+<text x="984" y="632" font-family="Inter" font-size="8.4" font-weight="400" fill="#B3A99D" text-anchor="start" letter-spacing="0.6" opacity="1" >Albums</text>
+<text x="1072" y="614" font-family="Playfair Display" font-size="22" font-weight="400" fill="#1E1E1E" text-anchor="start" letter-spacing="0" opacity="1" >1,096</text>
+<text x="1072" y="632" font-family="Inter" font-size="8.4" font-weight="400" fill="#B3A99D" text-anchor="start" letter-spacing="0.6" opacity="1" >Artists</text>
+<text x="1160" y="614" font-family="Playfair Display" font-size="22" font-weight="400" fill="#1E1E1E" text-anchor="start" letter-spacing="0" opacity="1" >386</text>
+<text x="1160" y="632" font-family="Inter" font-size="8.4" font-weight="400" fill="#B3A99D" text-anchor="start" letter-spacing="0.6" opacity="1" >Playlists</text>
+<rect x="236" y="728" width="1044" height="72" rx="0" fill="#FCFAF6" />
+<rect x="236" y="728" width="1044" height="1" rx="0" fill="rgba(30,30,30,0.06)" />
+<g>
+  <defs>
+    <linearGradient id="cvlbar72g" x1="0.1" y1="0" x2="0.9" y2="1">
+      <stop offset="0" stop-color="#F7E4CD"/><stop offset="1" stop-color="#EFC79F"/>
+    </linearGradient>
+    <filter id="cvlbar72b" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="0.32"/>
+    </filter>
+    <linearGradient id="cvlbar72s" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.2"/>
+      <stop offset="0.5" stop-color="#ffffff" stop-opacity="0"/>
+      <stop offset="1" stop-color="#3A2318" stop-opacity="0.15"/>
+    </linearGradient>
+    <clipPath id="cvlbar72c"><rect width="100" height="100" rx="22"/></clipPath>
+  </defs>
+  <g transform="translate(260,744) scale(0.4)" clip-path="url(#cvlbar72c)">
+    <rect width="100" height="100" fill="url(#cvlbar72g)"/>
+    <g filter="url(#cvlbar72b)"><rect width="100" height="100" fill="#EFC79F" opacity="0.5"/>
+      <path d="M0 60C22 54 34 26 56 24s30 22 52 14v62H0z" fill="#D98A5F" opacity="0.52"/>
+      <path d="M0 73C24 67 36 45 58 43s28 20 50 12v45H0z" fill="#8E4A32" opacity="0.34"/>
+      <path d="M0 86C22 82 34 64 56 62s30 18 52 12v26H0z" fill="#D98A5F" opacity="0.3"/>
+      <circle cx="66.25" cy="22.59" r="11" fill="#FFF6E9" opacity="0.82"/>
+      <path d="M0 52C24 46 38 22 60 20s26 18 48 12" fill="none" stroke="#F7E4CD" stroke-width="0.4" opacity="0.4"/><path d="M0 58C24 52 38 28 60 26s26 18 48 12" fill="none" stroke="#F7E4CD" stroke-width="0.4" opacity="0.4"/><path d="M0 64C24 58 38 34 60 32s26 18 48 12" fill="none" stroke="#F7E4CD" stroke-width="0.4" opacity="0.4"/></g>
+    <rect width="100" height="100" fill="url(#cvlbar72s)"/>
+  </g></g>
+<text x="312" y="762" font-family="Inter Medium" font-size="11.4" font-weight="550" fill="#1E1E1E" text-anchor="start" letter-spacing="0" opacity="1" >Aurora Lines</text>
+<text x="312" y="776" font-family="Inter" font-size="9" font-weight="400" fill="#B3A99D" text-anchor="start" letter-spacing="0" opacity="1" >Kael Rivers</text>
+<g transform="translate(434,754) scale(0.65)" fill="#C4704F" stroke="#C4704F" stroke-width="1.69" stroke-linejoin="round" opacity="0.85"><path d="M10 16.4s-6.2-3.7-6.2-8A3.3 3.3 0 0 1 10 6.4a3.3 3.3 0 0 1 6.2 2c0 4.3-6.2 8-6.2 8z"/></g>
+<g transform="translate(638,752) scale(0.7)" fill="none" stroke="#B3A99D" stroke-width="1.86" stroke-linecap="round" stroke-linejoin="round" opacity="1"><path d="M2.8 6h2.4c1.4 0 2.3.6 3.2 1.8l2.8 4c.9 1.2 1.8 1.8 3.2 1.8h2.4M13.4 10.8l2.6 2.8-2.6 2.6M2.8 13.6h2.4c1 0 1.7-.3 2.4-1M12 7.4c1-.9 2-1.4 3.2-1.4h2.8M13.4 3.2 16 6l-2.6 2.6"/></g>
+<g transform="translate(690,751) scale(0.8)" fill="#1E1E1E" stroke="#1E1E1E" stroke-width="1.38" stroke-linejoin="round" opacity="0.9"><path d="M5 4.4v11.2M14.8 5 6.6 10l8.2 5z"/></g>
+<circle cx="756" cy="764" r="19" fill="#C4704F" />
+<path d="M751 756 765 764 751 772z" fill="#FDF8F2"/>
+<g transform="translate(806,751) scale(0.8)" fill="#1E1E1E" stroke="#1E1E1E" stroke-width="1.38" stroke-linejoin="round" opacity="0.9"><path d="M15 4.4v11.2M5.2 5 13.4 10 5.2 15z"/></g>
+<g transform="translate(856,752) scale(0.7)" fill="none" stroke="#B3A99D" stroke-width="1.86" stroke-linecap="round" stroke-linejoin="round" opacity="1"><path d="M4 8.4V7.4A2.4 2.4 0 0 1 6.4 5h7M13.6 12v1a2.4 2.4 0 0 1-2.4 2.4H4M11.2 2.8 13.6 5l-2.4 2.2M6.8 12.6 4.4 14.8l2.4 2.2"/></g>
+<rect x="486" y="794" width="544" height="2" rx="1" fill="#E6DCD0" />
+<rect x="486" y="794" width="223.04" height="2" rx="1" fill="#C4704F" />
+<g transform="translate(1104,752) scale(0.75)" fill="none" stroke="#8A8177" stroke-width="1.73" stroke-linecap="round" stroke-linejoin="round" opacity="1"><path d="M3 8h2.6L9.4 5v10L5.6 12H3zM12 7.6a3.4 3.4 0 0 1 0 4.8M14.4 5.2a6.8 6.8 0 0 1 0 9.6"/></g>
+<rect x="1128" y="760" width="78" height="3" rx="1.5" fill="#E4DACE" />
+<rect x="1128" y="760" width="44" height="3" rx="1.5" fill="#B3A99D" />
+<g transform="translate(1232,752) scale(0.75)" fill="none" stroke="#8A8177" stroke-width="1.73" stroke-linecap="round" stroke-linejoin="round" opacity="1"><path d="M4 6h9M4 10.5h9M4 15h6M16.8 8.6v7.1M16.8 8.6l2.8-.9v7.2M16.8 15.7a1.4 1.4 0 1 1-2.8 0 1.4 1.4 0 0 1 2.8 0"/></g></g>
+  </g>
+  <rect x="140.5" y="1189.5" width="1319" height="824" rx="22" fill="none" stroke="rgba(30,30,30,0.10)"/>
+  <rect x="140.5" y="1189.5" width="1319" height="824" rx="22" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="1"/>
+</g>
+<text x="80" y="2094" font-family="Playfair Display" font-size="16" font-weight="400" fill="#C4704F" text-anchor="start" letter-spacing="1" opacity="1" >03</text>
+<text x="116" y="2093" font-family="Inter SemiBold" font-size="9.2" font-weight="600" fill="#4A443D" text-anchor="start" letter-spacing="2.6" opacity="1" >APP ICON</text>
+<line x1="202.8" y1="2090" x2="772" y2="2090" stroke="rgba(30,30,30,0.1)" stroke-width="1" />
+<text x="772" y="2093" font-family="Inter" font-size="9" font-weight="400" fill="#B3A99D" text-anchor="end" letter-spacing="0.3" opacity="1" >1024 × 1024  ·  Monogram &amp; scale test</text>
+<rect x="80" y="2110" width="700" height="560" rx="24" fill="rgba(255,255,255,0.55)" />
+<rect x="80.5" y="2110.5" width="699" height="559" rx="24" fill="none" stroke="rgba(30,30,30,0.07)"/>
+<text x="106" y="2142" font-family="Inter SemiBold" font-size="7.6" font-weight="600" fill="#B3A99D" text-anchor="start" letter-spacing="2.4" opacity="1" >MATTE EMBOSS  ·  NO GLOW</text>
+<text x="754" y="2142" font-family="Playfair Display" font-size="15" font-weight="400" fill="#C4704F" text-anchor="end" letter-spacing="0" opacity="1" >BA</text>
+<rect x="158" y="2194" width="330" height="330" rx="76" fill="#7A5238" opacity="0.22" filter="url(#softBig)"/>
+<g transform="translate(154,2168) scale(0.83)">
+  <defs>
+    <linearGradient id="bigbg" x1="0.08" y1="0" x2="0.85" y2="1">
+      <stop offset="0" stop-color="#FDF7ED"/><stop offset="0.42" stop-color="#F2DCC8"/>
+      <stop offset="1" stop-color="#C4704F"/>
+    </linearGradient>
+    <radialGradient id="biggl" cx="0.22" cy="0.1" r="0.95">
+      <stop offset="0" stop-color="#FFFCF6" stop-opacity="0.8"/>
+      <stop offset="0.5" stop-color="#FFF9F1" stop-opacity="0.06"/>
+      <stop offset="1" stop-color="#A85A3B" stop-opacity="0.12"/>
+    </radialGradient>
+    <linearGradient id="bigink" x1="0.15" y1="0" x2="0.6" y2="1">
+      <stop offset="0" stop-color="#9A5133"/><stop offset="0.6" stop-color="#AB5F3D"/>
+      <stop offset="1" stop-color="#B96F4B"/>
+    </linearGradient>
+    <filter id="bigblur" x="-45%" y="-45%" width="190%" height="190%">
+      <feGaussianBlur stdDeviation="11"/>
+    </filter>
+    <filter id="bigemb" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="1.2"/>
+    </filter>
+    <filter id="biglift" x="-40%" y="-40%" width="180%" height="180%">
+      <feDropShadow dx="0" dy="2.4" stdDeviation="3" flood-color="#6E3A22" flood-opacity="0.28"/>
+    </filter>
+    <clipPath id="bigcl"><rect width="400" height="400" rx="92"/></clipPath>
+  </defs>
+  <g clip-path="url(#bigcl)">
+    <rect width="400" height="400" fill="url(#bigbg)"/>
+    <rect width="400" height="400" fill="url(#biggl)"/>
+    <circle cx="96" cy="70" r="126" fill="#FFFAF1" opacity="0.55" filter="url(#bigblur)"/>
+    <circle cx="352" cy="386" r="130" fill="#A0553A" opacity="0.22" filter="url(#bigblur)"/>
+    <g opacity="0.1" fill="#FFF7EA">
+      <ellipse cx="110" cy="332" rx="11" ry="8" transform="rotate(-20 110 332)"/>
+      <rect x="117.6" y="272" width="4.2" height="60" rx="2.1"/>
+      <path d="M121.8 272 160 264v12l-38.2 8z"/>
+      <rect x="155.8" y="270" width="4.2" height="38" rx="2.1"/>
+      <ellipse cx="148" cy="308" rx="11" ry="8" transform="rotate(-20 148 308)"/>
+    </g>
+    <g transform="translate(28,28) scale(1.72)">
+      <g filter="url(#bigemb)" opacity="0.5" transform="translate(0.8,2)">
+        <g fill="none" stroke="#8A4A2C" stroke-width="15.6" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M48 54V146M48 54C48 54 88 48 97 71C105 92 79 100 53 100M53 100C88 100 109 111 104 127C99 143 78 148 48 146"/><path d="M118 147 146 57 174 147"/><path d="M128 121h36"/>
+        </g>
+      </g>
+      <g filter="url(#biglift)" fill="none" stroke="url(#bigink)" stroke-width="15.6" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M48 54V146M48 54C48 54 88 48 97 71C105 92 79 100 53 100M53 100C88 100 109 111 104 127C99 143 78 148 48 146"/><path d="M118 147 146 57 174 147"/><path d="M128 121h36"/>
+      </g>
+      <g fill="none" stroke="#FBEFE2" stroke-width="1.7" opacity="0.26" stroke-linecap="round" stroke-linejoin="round" transform="translate(-0.7,-1.6)">
+        <path d="M48 54V146M48 54C48 54 88 48 97 71C105 92 79 100 53 100M53 100C88 100 109 111 104 127C99 143 78 148 48 146"/><path d="M118 147 146 57 174 147"/><path d="M128 121h36"/>
+      </g>
+    </g>
+  </g>
+  <rect x="3" y="3" width="394" height="394" rx="90" fill="none" stroke="rgba(255,253,248,0.6)" stroke-width="2.6"/>
+  <rect x="9" y="9" width="382" height="382" rx="85" fill="none" stroke="rgba(120,64,40,0.07)"/>
+</g>
+<text x="532" y="2178" font-family="Inter SemiBold" font-size="7.4" font-weight="600" fill="#B3A99D" text-anchor="start" letter-spacing="2.2" opacity="1" >SCALE TEST</text>
+<g transform="translate(532,2194) scale(0.3)">
+  <defs>
+    <linearGradient id="ic120bg" x1="0.08" y1="0" x2="0.85" y2="1">
+      <stop offset="0" stop-color="#FDF7ED"/><stop offset="0.42" stop-color="#F2DCC8"/>
+      <stop offset="1" stop-color="#C4704F"/>
+    </linearGradient>
+    <radialGradient id="ic120gl" cx="0.22" cy="0.1" r="0.95">
+      <stop offset="0" stop-color="#FFFCF6" stop-opacity="0.8"/>
+      <stop offset="0.5" stop-color="#FFF9F1" stop-opacity="0.06"/>
+      <stop offset="1" stop-color="#A85A3B" stop-opacity="0.12"/>
+    </radialGradient>
+    <linearGradient id="ic120ink" x1="0.15" y1="0" x2="0.6" y2="1">
+      <stop offset="0" stop-color="#9A5133"/><stop offset="0.6" stop-color="#AB5F3D"/>
+      <stop offset="1" stop-color="#B96F4B"/>
+    </linearGradient>
+    <filter id="ic120blur" x="-45%" y="-45%" width="190%" height="190%">
+      <feGaussianBlur stdDeviation="11"/>
+    </filter>
+    <filter id="ic120emb" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="1.2"/>
+    </filter>
+    <filter id="ic120lift" x="-40%" y="-40%" width="180%" height="180%">
+      <feDropShadow dx="0" dy="2.4" stdDeviation="3" flood-color="#6E3A22" flood-opacity="0.28"/>
+    </filter>
+    <clipPath id="ic120cl"><rect width="400" height="400" rx="92"/></clipPath>
+  </defs>
+  <g clip-path="url(#ic120cl)">
+    <rect width="400" height="400" fill="url(#ic120bg)"/>
+    <rect width="400" height="400" fill="url(#ic120gl)"/>
+    <circle cx="96" cy="70" r="126" fill="#FFFAF1" opacity="0.55" filter="url(#ic120blur)"/>
+    <circle cx="352" cy="386" r="130" fill="#A0553A" opacity="0.22" filter="url(#ic120blur)"/>
+    <g opacity="0.1" fill="#FFF7EA">
+      <ellipse cx="110" cy="332" rx="11" ry="8" transform="rotate(-20 110 332)"/>
+      <rect x="117.6" y="272" width="4.2" height="60" rx="2.1"/>
+      <path d="M121.8 272 160 264v12l-38.2 8z"/>
+      <rect x="155.8" y="270" width="4.2" height="38" rx="2.1"/>
+      <ellipse cx="148" cy="308" rx="11" ry="8" transform="rotate(-20 148 308)"/>
+    </g>
+    <g transform="translate(28,28) scale(1.72)">
+      <g filter="url(#ic120emb)" opacity="0.5" transform="translate(0.8,2)">
+        <g fill="none" stroke="#8A4A2C" stroke-width="15.6" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M48 54V146M48 54C48 54 88 48 97 71C105 92 79 100 53 100M53 100C88 100 109 111 104 127C99 143 78 148 48 146"/><path d="M118 147 146 57 174 147"/><path d="M128 121h36"/>
+        </g>
+      </g>
+      <g filter="url(#ic120lift)" fill="none" stroke="url(#ic120ink)" stroke-width="15.6" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M48 54V146M48 54C48 54 88 48 97 71C105 92 79 100 53 100M53 100C88 100 109 111 104 127C99 143 78 148 48 146"/><path d="M118 147 146 57 174 147"/><path d="M128 121h36"/>
+      </g>
+      <g fill="none" stroke="#FBEFE2" stroke-width="1.7" opacity="0.26" stroke-linecap="round" stroke-linejoin="round" transform="translate(-0.7,-1.6)">
+        <path d="M48 54V146M48 54C48 54 88 48 97 71C105 92 79 100 53 100M53 100C88 100 109 111 104 127C99 143 78 148 48 146"/><path d="M118 147 146 57 174 147"/><path d="M128 121h36"/>
+      </g>
+    </g>
+  </g>
+  <rect x="3" y="3" width="394" height="394" rx="90" fill="none" stroke="rgba(255,253,248,0.6)" stroke-width="2.6"/>
+  <rect x="9" y="9" width="382" height="382" rx="85" fill="none" stroke="rgba(120,64,40,0.07)"/>
+</g>
+<text x="664" y="2257" font-family="Inter" font-size="8.4" font-weight="400" fill="#B3A99D" text-anchor="start" letter-spacing="0" opacity="1" >120 px</text>
+<g transform="translate(532,2334) scale(0.18)">
+  <defs>
+    <linearGradient id="ic72bg" x1="0.08" y1="0" x2="0.85" y2="1">
+      <stop offset="0" stop-color="#FDF7ED"/><stop offset="0.42" stop-color="#F2DCC8"/>
+      <stop offset="1" stop-color="#C4704F"/>
+    </linearGradient>
+    <radialGradient id="ic72gl" cx="0.22" cy="0.1" r="0.95">
+      <stop offset="0" stop-color="#FFFCF6" stop-opacity="0.8"/>
+      <stop offset="0.5" stop-color="#FFF9F1" stop-opacity="0.06"/>
+      <stop offset="1" stop-color="#A85A3B" stop-opacity="0.12"/>
+    </radialGradient>
+    <linearGradient id="ic72ink" x1="0.15" y1="0" x2="0.6" y2="1">
+      <stop offset="0" stop-color="#9A5133"/><stop offset="0.6" stop-color="#AB5F3D"/>
+      <stop offset="1" stop-color="#B96F4B"/>
+    </linearGradient>
+    <filter id="ic72blur" x="-45%" y="-45%" width="190%" height="190%">
+      <feGaussianBlur stdDeviation="11"/>
+    </filter>
+    <filter id="ic72emb" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="1.2"/>
+    </filter>
+    <filter id="ic72lift" x="-40%" y="-40%" width="180%" height="180%">
+      <feDropShadow dx="0" dy="2.4" stdDeviation="3" flood-color="#6E3A22" flood-opacity="0.28"/>
+    </filter>
+    <clipPath id="ic72cl"><rect width="400" height="400" rx="92"/></clipPath>
+  </defs>
+  <g clip-path="url(#ic72cl)">
+    <rect width="400" height="400" fill="url(#ic72bg)"/>
+    <rect width="400" height="400" fill="url(#ic72gl)"/>
+    <circle cx="96" cy="70" r="126" fill="#FFFAF1" opacity="0.55" filter="url(#ic72blur)"/>
+    <circle cx="352" cy="386" r="130" fill="#A0553A" opacity="0.22" filter="url(#ic72blur)"/>
+    <g opacity="0.1" fill="#FFF7EA">
+      <ellipse cx="110" cy="332" rx="11" ry="8" transform="rotate(-20 110 332)"/>
+      <rect x="117.6" y="272" width="4.2" height="60" rx="2.1"/>
+      <path d="M121.8 272 160 264v12l-38.2 8z"/>
+      <rect x="155.8" y="270" width="4.2" height="38" rx="2.1"/>
+      <ellipse cx="148" cy="308" rx="11" ry="8" transform="rotate(-20 148 308)"/>
+    </g>
+    <g transform="translate(28,28) scale(1.72)">
+      <g filter="url(#ic72emb)" opacity="0.5" transform="translate(0.8,2)">
+        <g fill="none" stroke="#8A4A2C" stroke-width="15.6" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M48 54V146M48 54C48 54 88 48 97 71C105 92 79 100 53 100M53 100C88 100 109 111 104 127C99 143 78 148 48 146"/><path d="M118 147 146 57 174 147"/><path d="M128 121h36"/>
+        </g>
+      </g>
+      <g filter="url(#ic72lift)" fill="none" stroke="url(#ic72ink)" stroke-width="15.6" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M48 54V146M48 54C48 54 88 48 97 71C105 92 79 100 53 100M53 100C88 100 109 111 104 127C99 143 78 148 48 146"/><path d="M118 147 146 57 174 147"/><path d="M128 121h36"/>
+      </g>
+      <g fill="none" stroke="#FBEFE2" stroke-width="1.7" opacity="0.26" stroke-linecap="round" stroke-linejoin="round" transform="translate(-0.7,-1.6)">
+        <path d="M48 54V146M48 54C48 54 88 48 97 71C105 92 79 100 53 100M53 100C88 100 109 111 104 127C99 143 78 148 48 146"/><path d="M118 147 146 57 174 147"/><path d="M128 121h36"/>
+      </g>
+    </g>
+  </g>
+  <rect x="3" y="3" width="394" height="394" rx="90" fill="none" stroke="rgba(255,253,248,0.6)" stroke-width="2.6"/>
+  <rect x="9" y="9" width="382" height="382" rx="85" fill="none" stroke="rgba(120,64,40,0.07)"/>
+</g>
+<text x="616" y="2373" font-family="Inter" font-size="8.4" font-weight="400" fill="#B3A99D" text-anchor="start" letter-spacing="0" opacity="1" >72 px</text>
+<g transform="translate(532,2426) scale(0.1)">
+  <defs>
+    <linearGradient id="ic40bg" x1="0.08" y1="0" x2="0.85" y2="1">
+      <stop offset="0" stop-color="#FDF7ED"/><stop offset="0.42" stop-color="#F2DCC8"/>
+      <stop offset="1" stop-color="#C4704F"/>
+    </linearGradient>
+    <radialGradient id="ic40gl" cx="0.22" cy="0.1" r="0.95">
+      <stop offset="0" stop-color="#FFFCF6" stop-opacity="0.8"/>
+      <stop offset="0.5" stop-color="#FFF9F1" stop-opacity="0.06"/>
+      <stop offset="1" stop-color="#A85A3B" stop-opacity="0.12"/>
+    </radialGradient>
+    <linearGradient id="ic40ink" x1="0.15" y1="0" x2="0.6" y2="1">
+      <stop offset="0" stop-color="#9A5133"/><stop offset="0.6" stop-color="#AB5F3D"/>
+      <stop offset="1" stop-color="#B96F4B"/>
+    </linearGradient>
+    <filter id="ic40blur" x="-45%" y="-45%" width="190%" height="190%">
+      <feGaussianBlur stdDeviation="11"/>
+    </filter>
+    <filter id="ic40emb" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="1.2"/>
+    </filter>
+    <filter id="ic40lift" x="-40%" y="-40%" width="180%" height="180%">
+      <feDropShadow dx="0" dy="2.4" stdDeviation="3" flood-color="#6E3A22" flood-opacity="0.28"/>
+    </filter>
+    <clipPath id="ic40cl"><rect width="400" height="400" rx="92"/></clipPath>
+  </defs>
+  <g clip-path="url(#ic40cl)">
+    <rect width="400" height="400" fill="url(#ic40bg)"/>
+    <rect width="400" height="400" fill="url(#ic40gl)"/>
+    <circle cx="96" cy="70" r="126" fill="#FFFAF1" opacity="0.55" filter="url(#ic40blur)"/>
+    <circle cx="352" cy="386" r="130" fill="#A0553A" opacity="0.22" filter="url(#ic40blur)"/>
+    <g opacity="0.1" fill="#FFF7EA">
+      <ellipse cx="110" cy="332" rx="11" ry="8" transform="rotate(-20 110 332)"/>
+      <rect x="117.6" y="272" width="4.2" height="60" rx="2.1"/>
+      <path d="M121.8 272 160 264v12l-38.2 8z"/>
+      <rect x="155.8" y="270" width="4.2" height="38" rx="2.1"/>
+      <ellipse cx="148" cy="308" rx="11" ry="8" transform="rotate(-20 148 308)"/>
+    </g>
+    <g transform="translate(20,20) scale(1.8)">
+      <g filter="url(#ic40emb)" opacity="0.5" transform="translate(0.8,2)">
+        <g fill="none" stroke="#8A4A2C" stroke-width="15.6" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M48 54V146M48 54C48 54 88 48 97 71C105 92 79 100 53 100M53 100C88 100 109 111 104 127C99 143 78 148 48 146"/><path d="M118 147 146 57 174 147"/><path d="M128 121h36"/>
+        </g>
+      </g>
+      <g filter="url(#ic40lift)" fill="none" stroke="url(#ic40ink)" stroke-width="15.6" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M48 54V146M48 54C48 54 88 48 97 71C105 92 79 100 53 100M53 100C88 100 109 111 104 127C99 143 78 148 48 146"/><path d="M118 147 146 57 174 147"/><path d="M128 121h36"/>
+      </g>
+      <g fill="none" stroke="#FBEFE2" stroke-width="1.7" opacity="0.26" stroke-linecap="round" stroke-linejoin="round" transform="translate(-0.7,-1.6)">
+        <path d="M48 54V146M48 54C48 54 88 48 97 71C105 92 79 100 53 100M53 100C88 100 109 111 104 127C99 143 78 148 48 146"/><path d="M118 147 146 57 174 147"/><path d="M128 121h36"/>
+      </g>
+    </g>
+  </g>
+  <rect x="3" y="3" width="394" height="394" rx="90" fill="none" stroke="rgba(255,253,248,0.6)" stroke-width="2.6"/>
+  <rect x="9" y="9" width="382" height="382" rx="85" fill="none" stroke="rgba(120,64,40,0.07)"/>
+</g>
+<text x="584" y="2449" font-family="Inter" font-size="8.4" font-weight="400" fill="#B3A99D" text-anchor="start" letter-spacing="0" opacity="1" >40 px</text>
+<text x="532" y="2498" font-family="Inter SemiBold" font-size="7.4" font-weight="600" fill="#B3A99D" text-anchor="start" letter-spacing="2.2" opacity="1" >DOCK / RETAIL</text>
+<line x1="106" y1="2582" x2="754" y2="2582" stroke="rgba(30,30,30,0.08)" stroke-width="1" />
+<text x="106" y="2610" font-family="Inter" font-size="9.8" font-weight="400" fill="#6B6259" text-anchor="start" letter-spacing="0" opacity="1" >Two flowing soundwave ribbons intertwine into B and A;</text>
+<text x="106" y="2625" font-family="Inter" font-size="9.8" font-weight="400" fill="#6B6259" text-anchor="start" letter-spacing="0" opacity="1" >a music note rests in the negative space, 6% opacity.</text>
+<text x="106" y="2646" font-family="Inter" font-size="8.6" font-weight="400" fill="#B3A99D" text-anchor="start" letter-spacing="0.2" opacity="1" >Rounded square 22.5%  ·  Cream → terracotta gradient  ·  Embossed, matte</text>
+<text x="820" y="2094" font-family="Playfair Display" font-size="16" font-weight="400" fill="#C4704F" text-anchor="start" letter-spacing="1" opacity="1" >04</text>
+<text x="856" y="2093" font-family="Inter SemiBold" font-size="9.2" font-weight="600" fill="#4A443D" text-anchor="start" letter-spacing="2.6" opacity="1" >COLOR &amp; TYPOGRAPHY</text>
+<line x1="1028.8" y1="2090" x2="1520" y2="2090" stroke="rgba(30,30,30,0.1)" stroke-width="1" />
+<text x="1520" y="2093" font-family="Inter" font-size="9" font-weight="400" fill="#B3A99D" text-anchor="end" letter-spacing="0.3" opacity="1" >Palette · Inter + Playfair Display</text>
+<rect x="820" y="2110" width="700" height="560" rx="24" fill="rgba(255,255,255,0.55)" />
+<rect x="820.5" y="2110.5" width="699" height="559" rx="24" fill="none" stroke="rgba(30,30,30,0.07)"/>
+<text x="848" y="2144" font-family="Inter SemiBold" font-size="8" font-weight="600" fill="#B3A99D" text-anchor="start" letter-spacing="2.6" opacity="1" >COLOR</text>
+<rect x="848" y="2158" width="117.6" height="96" rx="14" fill="#F5F1EA" />
+<rect x="848.5" y="2158.5" width="116.6" height="95" rx="14" fill="none" stroke="rgba(30,30,30,0.09)"/>
+<text x="848" y="2274" font-family="Inter Medium" font-size="9.6" font-weight="550" fill="#1E1E1E" text-anchor="start" letter-spacing="0" opacity="1" >Warm Cream</text>
+<text x="848" y="2288" font-family="Inter" font-size="7.8" font-weight="400" fill="#B3A99D" text-anchor="start" letter-spacing="0.4" opacity="1" >#F5F1EA</text>
+<rect x="979.6" y="2158" width="117.6" height="96" rx="14" fill="#FDFBF7" />
+<rect x="980.1" y="2158.5" width="116.6" height="95" rx="14" fill="none" stroke="rgba(30,30,30,0.09)"/>
+<text x="979.6" y="2274" font-family="Inter Medium" font-size="9.6" font-weight="550" fill="#1E1E1E" text-anchor="start" letter-spacing="0" opacity="1" >Card White</text>
+<text x="979.6" y="2288" font-family="Inter" font-size="7.8" font-weight="400" fill="#B3A99D" text-anchor="start" letter-spacing="0.4" opacity="1" >#FDFBF7</text>
+<rect x="1111.2" y="2158" width="117.6" height="96" rx="14" fill="#1E1E1E" />
+<rect x="1111.7" y="2158.5" width="116.6" height="95" rx="14" fill="none" stroke="rgba(30,30,30,0.09)"/>
+<text x="1111.2" y="2274" font-family="Inter Medium" font-size="9.6" font-weight="550" fill="#1E1E1E" text-anchor="start" letter-spacing="0" opacity="1" >Graphite</text>
+<text x="1111.2" y="2288" font-family="Inter" font-size="7.8" font-weight="400" fill="#B3A99D" text-anchor="start" letter-spacing="0.4" opacity="1" >#1E1E1E</text>
+<rect x="1242.8" y="2158" width="117.6" height="96" rx="14" fill="#C4704F" />
+<rect x="1243.3" y="2158.5" width="116.6" height="95" rx="14" fill="none" stroke="rgba(30,30,30,0.09)"/>
+<text x="1242.8" y="2274" font-family="Inter Medium" font-size="9.6" font-weight="550" fill="#1E1E1E" text-anchor="start" letter-spacing="0" opacity="1" >Terracotta</text>
+<text x="1242.8" y="2288" font-family="Inter" font-size="7.8" font-weight="400" fill="#B3A99D" text-anchor="start" letter-spacing="0.4" opacity="1" >#C4704F</text>
+<rect x="1374.4" y="2158" width="117.6" height="96" rx="14" fill="#8A9A7B" />
+<rect x="1374.9" y="2158.5" width="116.6" height="95" rx="14" fill="none" stroke="rgba(30,30,30,0.09)"/>
+<text x="1374.4" y="2274" font-family="Inter Medium" font-size="9.6" font-weight="550" fill="#1E1E1E" text-anchor="start" letter-spacing="0" opacity="1" >Soft Sage</text>
+<text x="1374.4" y="2288" font-family="Inter" font-size="7.8" font-weight="400" fill="#B3A99D" text-anchor="start" letter-spacing="0.4" opacity="1" >#8A9A7B</text>
+<line x1="848" y1="2314" x2="1492" y2="2314" stroke="rgba(30,30,30,0.08)" stroke-width="1" />
+<text x="848" y="2342" font-family="Inter SemiBold" font-size="8" font-weight="600" fill="#B3A99D" text-anchor="start" letter-spacing="2.6" opacity="1" >TYPE</text>
+<text x="846" y="2452" font-family="Playfair Display" font-size="112" font-weight="400" fill="#1E1E1E" text-anchor="start" letter-spacing="-1" opacity="1" >Aa</text>
+<text x="996" y="2378" font-family="Playfair Display" font-size="22" font-weight="400" fill="#1E1E1E" text-anchor="start" letter-spacing="0" opacity="1" >Playfair Display</text>
+<text x="996" y="2398" font-family="Inter SemiBold" font-size="7.6" font-weight="600" fill="#B3A99D" text-anchor="start" letter-spacing="1.8" opacity="1" >DISPLAY  ·  400 / 500 / 600</text>
+<text x="996" y="2426" font-family="Inter" font-size="10.6" font-weight="400" fill="#6B6259" text-anchor="start" letter-spacing="0" opacity="1" >Wordmark, titles, lyrics</text>
+<text x="996" y="2442" font-family="Inter" font-size="10.6" font-weight="400" fill="#6B6259" text-anchor="start" letter-spacing="0" opacity="1" >Set tight, −2% tracking</text>
+<line x1="848" y1="2494" x2="1492" y2="2494" stroke="rgba(30,30,30,0.08)" stroke-width="1" />
+<text x="846" y="2594" font-family="Inter Medium" font-size="92" font-weight="500" fill="#1E1E1E" text-anchor="start" letter-spacing="-2" opacity="1" >Aa</text>
+<text x="996" y="2530" font-family="Inter SemiBold" font-size="22" font-weight="600" fill="#1E1E1E" text-anchor="start" letter-spacing="0" opacity="1" >Inter</text>
+<text x="996" y="2550" font-family="Inter SemiBold" font-size="7.6" font-weight="600" fill="#B3A99D" text-anchor="start" letter-spacing="1.8" opacity="1" >UI  ·  400 / 500 / 600</text>
+<text x="996" y="2578" font-family="Inter" font-size="10.6" font-weight="400" fill="#6B6259" text-anchor="start" letter-spacing="0" opacity="1" >Navigation, metadata, controls</text>
+<text x="996" y="2594" font-family="Inter" font-size="10.6" font-weight="400" fill="#6B6259" text-anchor="start" letter-spacing="0" opacity="1" >Medium 12–14px · +2% tracking on caps</text>
+<line x1="848" y1="2622" x2="1492" y2="2622" stroke="rgba(30,30,30,0.08)" stroke-width="1" />
+<text x="848" y="2646" font-family="Inter" font-size="9" font-weight="400" fill="#B3A99D" text-anchor="start" letter-spacing="0.3" opacity="1" >Radii 16–24 px   ·   Elevation 0/1/2   ·   Grain 3%   ·   No neon, no glow</text>
+<line x1="80" y1="2730" x2="1520" y2="2730" stroke="rgba(30,30,30,0.12)" stroke-width="1" />
+<text x="80" y="2760" font-family="Playfair Display" font-size="16" font-weight="400" fill="#1E1E1E" text-anchor="start" letter-spacing="0" opacity="1" >ByAzen</text>
+<text x="154" y="2759" font-family="Inter" font-size="10" font-weight="400" fill="#B3A99D" text-anchor="start" letter-spacing="0" opacity="1" >Premium desktop music player — design concept</text>
+<text x="1520" y="2759" font-family="Inter" font-size="9.2" font-weight="400" fill="#B3A99D" text-anchor="end" letter-spacing="0.9" opacity="1" >Warm cream  ·  Graphite  ·  Terracotta  ·  Sage</text>
+<rect width="1600" height="2804" filter="url(#grain)" opacity="0.042"/>
+</svg>
