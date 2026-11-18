@@ -5,6 +5,7 @@
  */
 const fs = require('fs');
 const path = require('path');
+const { pathToFileURL } = require('url');
 const { JSDOM, VirtualConsole } = require('jsdom');
 
 const APP = path.join(__dirname, '..', 'app', 'renderer');
@@ -18,7 +19,7 @@ const dom = new JSDOM(html, {
   runScripts: 'outside-only',
   pretendToBeVisual: true,
   virtualConsole: vc,
-  url: 'file://' + APP + '/index.html',
+  url: pathToFileURL(path.join(APP, 'index.html')).href,
 });
 const { window } = dom;
 
@@ -45,7 +46,12 @@ Object.defineProperty(window.HTMLMediaElement.prototype, 'currentTime', {
   configurable: true,
 });
 
-window.eval(fs.readFileSync(path.join(APP, 'app.js'), 'utf8'));
+try {
+  window.eval(fs.readFileSync(path.join(APP, 'app.js'), 'utf8'));
+} catch (e) {
+  console.error('renderer boot failed:', e && e.stack ? e.stack : e);
+  process.exit(1);
+}
 
 const d = window.document;
 const q = (s) => d.querySelector(s);

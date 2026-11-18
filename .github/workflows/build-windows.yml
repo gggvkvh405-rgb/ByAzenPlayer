@@ -20,7 +20,7 @@ jobs:
 
       - uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 22
           cache: npm
 
       - name: Install packager
@@ -29,11 +29,11 @@ jobs:
         run: |
           npm install --no-save --no-audit --no-fund electron@32.2.0 @electron/packager@18.3.6
 
+      - name: Install test/render deps
+        run: npm install --no-audit --no-fund
+
       - name: Smoke test renderer (jsdom)
-        shell: pwsh
-        run: |
-          npm install --no-save --no-audit --no-fund jsdom@31
-          node tools/smoke-test.js
+        run: node tools/smoke-test.js
 
       - name: Package ByAzen.exe
         working-directory: app
