@@ -27,6 +27,9 @@ jobs:
       - name: Install dependencies
         run: npm install --no-audit --no-fund
 
+      - name: Core tests (tags, library, recommendations)
+        run: node tools/test-core.js
+
       - name: Smoke test renderer
         run: node tools/smoke-test.js
 

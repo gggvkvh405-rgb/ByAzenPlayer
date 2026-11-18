@@ -104,6 +104,7 @@
 
         <!-- =========================================================== view: home -->
         <section class="view view--home is-active" id="view-home">
+          <div class="np-wrap">
           <div class="np">
             <div class="art-wrap">
               <img class="art" id="np-art" alt="" />
@@ -150,6 +151,8 @@
               <span class="vol-val" id="vol-val">72</span>
             </div>
           </div>
+          <div class="shelves" id="shelves"></div>
+          </div>
 
           <div class="queue">
             <div class="queue-head">
@@ -158,7 +161,7 @@
             </div>
             <div class="queue-list" id="queue"></div>
             <div class="lyrics" id="lyrics">
-              <div class="lyr-head"><span class="cap cap--dark">LYRICS</span><span class="lyr-sync">Synced</span></div>
+              <div class="lyr-head"><span class="cap cap--dark">LYRICS</span><span class="lyr-sync" id="lyr-head-note">—</span></div>
               <div class="lyr-body" id="lyr-body"></div>
             </div>
           </div>
@@ -170,6 +173,8 @@
             <h1 class="lib-title">Library</h1>
             <div class="lib-count" id="lib-count">8 albums · 8 tracks</div>
             <div class="lib-tools">
+              <button class="btn btn--sm" id="btn-rescan" title="Re-read tags and pick up new files">Rescan</button>
+              <button class="btn btn--sm btn--primary" id="btn-add-folder" title="Add a music folder">Add folder…</button>
               <div class="chips" id="chips">
                 <button class="chip is-on" data-filter="all">All</button>
                 <button class="chip" data-filter="albums">Albums</button>
@@ -190,9 +195,9 @@
               <div class="rule"></div>
               <div class="cap">LIBRARY</div>
               <div class="stats">
-                <div><b id="st-albums">8</b><span>Albums</span></div>
-                <div><b id="st-artists">6</b><span>Artists</span></div>
-                <div><b id="st-min">0</b><span>Minutes</span></div>
+                <div><b id="st-albums">0</b><span>Albums</span></div>
+                <div><b id="st-artists">0</b><span>Artists</span></div>
+                <div><b id="st-genres">0</b><span>Genres</span></div>
               </div>
             </aside>
           </div>
@@ -207,7 +212,7 @@
         <!-- ========================================================= view: radio -->
         <section class="view view--simple" id="view-radio">
           <h1 class="lib-title">Radio</h1>
-          <p class="lede">Generated stations from your library. Pick a mood — ByAzen shuffles it for you.</p>
+          <p class="lede">Stations are built on your own files: shared genres, tempo, era and the tracks you actually finish. Nothing leaves this machine.</p>
           <div class="cards" id="stations"></div>
         </section>
 
@@ -227,11 +232,24 @@
               <div><b>Reduced motion</b><span>Calm album art, no rotation</span></div>
               <label class="switch"><input type="checkbox" id="set-motion" /><i></i></label>
             </div>
+            <div class="set-row set-row--stack">
+              <div><b>Music folders</b><span id="library-path">—</span></div>
+              <div class="set-actions">
+                <button class="btn btn--sm" id="btn-add-folder-2">Add folder…</button>
+                <button class="btn btn--sm" id="btn-rescan-2">Rescan</button>
+              </div>
+            </div>
+            <div class="set-row">
+              <div><b>Playlists</b><span>Artists with 3+ tracks become one-click collections</span></div>
+              <span class="pill" id="lib-folders">0 folders</span>
+            </div>
             <div class="set-meta" id="app-meta">ByAzen</div>
           </div>
         </section>
 
-        <!-- ============================================================= footer -->
+        <div class="scan-banner" id="scan-banner">Scanning…</div>
+
+        <!-- =========================================================== footer -->
         <div class="nowbar" id="nowbar">
           <img class="nowbar-art" id="bar-art" alt="" />
           <div class="nowbar-meta">
@@ -252,6 +270,7 @@
         </div>
       </main>
     </div>
+    <div class="drop-hint" aria-hidden="true"><div>Drop a music folder to add it to your library</div></div>
     <audio id="audio" preload="auto"></audio>
     <script src="app.js"></script>
   </body>

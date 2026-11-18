@@ -5,7 +5,13 @@
     "file": "assets/tracks/aurora-lines.wav",
     "cover": "assets/covers/aurora-lines.png",
     "duration": 25.3,
-    "bpm": 84
+    "bpm": 84,
+    "artist": "Kael Rivers",
+    "album": "Northern Light",
+    "genre": "Ambient",
+    "year": 2024,
+    "trackNo": 1,
+    "track": 1
   },
   {
     "id": "paper-moons",
@@ -13,7 +19,13 @@
     "file": "assets/tracks/paper-moons.wav",
     "cover": "assets/covers/paper-moons.png",
     "duration": 23.3,
-    "bpm": 92
+    "bpm": 92,
+    "artist": "Nils Åberg",
+    "album": "Harbour Tapes",
+    "genre": "Downtempo",
+    "year": 2023,
+    "trackNo": 2,
+    "track": 2
   },
   {
     "id": "low-tide",
@@ -21,7 +33,13 @@
     "file": "assets/tracks/low-tide.wav",
     "cover": "assets/covers/low-tide.png",
     "duration": 27.7,
-    "bpm": 76
+    "bpm": 76,
+    "artist": "Mira Voss",
+    "album": "Slow Bloom",
+    "genre": "Ambient",
+    "year": 2022,
+    "trackNo": 3,
+    "track": 3
   },
   {
     "id": "felt-piano",
@@ -29,7 +47,13 @@
     "file": "assets/tracks/felt-piano.wav",
     "cover": "assets/covers/felt-piano.png",
     "duration": 30.6,
-    "bpm": 68
+    "bpm": 68,
+    "artist": "Aster Quartet",
+    "album": "Four Rooms",
+    "genre": "Modern Classical",
+    "year": 2024,
+    "trackNo": 4,
+    "track": 4
   },
   {
     "id": "northbound",
@@ -37,7 +61,13 @@
     "file": "assets/tracks/northbound.wav",
     "cover": "assets/covers/northbound.png",
     "duration": 24.2,
-    "bpm": 88
+    "bpm": 88,
+    "artist": "Kael Rivers",
+    "album": "Paper Moons",
+    "genre": "Downtempo",
+    "year": 2023,
+    "trackNo": 5,
+    "track": 5
   },
   {
     "id": "slow-light",
@@ -45,7 +75,13 @@
     "file": "assets/tracks/slow-light.wav",
     "cover": "assets/covers/slow-light.png",
     "duration": 29.1,
-    "bpm": 72
+    "bpm": 72,
+    "artist": "Sable & Co.",
+    "album": "Night Bus",
+    "genre": "Downtempo",
+    "year": 2022,
+    "trackNo": 6,
+    "track": 6
   },
   {
     "id": "harbour",
@@ -53,7 +89,13 @@
     "file": "assets/tracks/harbour.wav",
     "cover": "assets/covers/harbour.png",
     "duration": 26.4,
-    "bpm": 80
+    "bpm": 80,
+    "artist": "Ines Roux",
+    "album": "Rue Verte",
+    "genre": "Ambient",
+    "year": 2024,
+    "trackNo": 7,
+    "track": 7
   },
   {
     "id": "wildflower",
@@ -61,6 +103,12 @@
     "file": "assets/tracks/wildflower.wav",
     "cover": "assets/covers/wildflower.png",
     "duration": 22.4,
-    "bpm": 96
+    "bpm": 96,
+    "artist": "June Alba",
+    "album": "Wildflower",
+    "genre": "Folk",
+    "year": 2023,
+    "trackNo": 8,
+    "track": 8
   }
 ]
