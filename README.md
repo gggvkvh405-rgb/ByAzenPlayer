@@ -13,6 +13,26 @@ with four labelled sections:
 4. **Color & typography** — warm cream, card white, graphite, terracotta and soft
    sage swatches; Playfair Display (display) + Inter (UI) pairing.
 
+## Windows app
+
+`release v1.0.0` ships a portable build (no installer):
+
+**https://github.com/gggvkvh405-rgb/ByAzenPlayer/releases/download/v1.0.0/ByAzen-win32-x64-portable.zip**
+(≈143 MB — Electron runtime + app + eight demo tracks)
+
+Unzip anywhere and run `ByAzen.exe`. It is unsigned, so Windows SmartScreen will
+ask once: *More info → Run anyway*.
+
+What actually works in the app: play/pause, next/prev, shuffle, repeat, seeking,
+volume, queue, per-track synced lyrics, library grid with search, playlists,
+generated radio stations, settings, and hotkeys (`Space`, `←/→`, `↑/↓`, `S`, `R`,
+`M`, `/`). Audio is eight original tracks synthesised in `tools/gen-assets.js`.
+
+Rebuild it: push to `app/` (or run *Actions → Build Windows app → Run workflow*).
+The workflow smoke-tests the renderer, assembles the portable folder, stamps the
+icon/version, launches the exe to prove it starts, and attaches the zip to the
+release. See `app/README.md`.
+
 ## Deliverables
 
 | File | What it is |
