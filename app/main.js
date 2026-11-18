@@ -1,7 +1,7 @@
-const { app, BrowserWindow, ipcMain, dialog, shell, nativeImage, protocol, net } = require('electron');
+const { app, BrowserWindow, ipcMain, dialog, shell, nativeImage, protocol } = require('electron');
 const path = require('path');
 const fs = require('fs');
-const { pathToFileURL } = require('url');
+const { Readable } = require('stream');
 const { Library } = require('./library');
 
 const isDev = !app.isPackaged;
@@ -21,19 +21,92 @@ protocol.registerSchemesAsPrivileged([
   { scheme: 'byazen', privileges: { standard: true, secure: true, supportFetchAPI: true, stream: true, bypassCSP: false } },
 ]);
 
+const MIME = {
+  '.mp3': 'audio/mpeg',
+  '.m4a': 'audio/mp4',
+  '.aac': 'audio/aac',
+  '.flac': 'audio/flac',
+  '.wav': 'audio/wav',
+  '.ogg': 'audio/ogg',
+  '.opus': 'audio/ogg',
+  '.wma': 'audio/x-ms-wma',
+  '.aiff': 'audio/aiff',
+  '.aif': 'audio/aiff',
+  '.lrc': 'text/plain; charset=utf-8',
+  '.jpg': 'image/jpeg',
+  '.jpeg': 'image/jpeg',
+  '.png': 'image/png',
+  '.webp': 'image/webp',
+  '.gif': 'image/gif',
+};
+
+function decodeMediaPath(requestUrl) {
+  const url = new URL(requestUrl);
+  if (url.host !== 'media') return null;
+  const b64 = url.pathname.replace(/^\//, '');
+  if (!b64) return null;
+  const file = Buffer.from(decodeURIComponent(b64), 'base64').toString('utf8');
+  return path.isAbsolute(file) ? file : null;
+}
+
+/**
+ * Serve a local file with byte-range support, so <audio> can seek and start
+ * playback without downloading a whole FLAC first. Everything is read-only and
+ * limited to paths the renderer asked for explicitly.
+ */
 function registerMediaProtocol() {
   protocol.handle('byazen', (request) => {
+    const file = decodeMediaPath(request.url);
+    if (!file) return new Response('forbidden', { status: 403 });
+
+    let stat;
     try {
-      const url = new URL(request.url);
-      // byazen://media/<base64 path>
-      const b64 = url.pathname.replace(/^\//, '');
-      if (url.host !== 'media' || !b64) return new Response('forbidden', { status: 403 });
-      const file = Buffer.from(decodeURIComponent(b64), 'base64').toString('utf8');
-      if (!path.isAbsolute(file)) return new Response('forbidden', { status: 403 });
-      return net.fetch(pathToFileURL(file).toString());
+      stat = fs.statSync(file);
+      if (!stat.isFile()) return new Response('not a file', { status: 404 });
     } catch {
-      return new Response('bad request', { status: 400 });
+      return new Response('not found', { status: 404 });
     }
+
+    const type = MIME[path.extname(file).toLowerCase()] || 'application/octet-stream';
+    const range = request.headers.get('range');
+    const headers = {
+      'content-type': type,
+      'accept-ranges': 'bytes',
+      'cache-control': 'no-cache',
+    };
+
+    if (range) {
+      const m = /^bytes=(\d*)-(\d*)$/.exec(range.trim());
+      if (!m) return new Response('bad range', { status: 416, headers: { 'content-range': `bytes */${stat.size}` } });
+      let start = m[1] === '' ? null : Number(m[1]);
+      let end = m[2] === '' ? null : Number(m[2]);
+      if (start === null && end === null) return new Response('bad range', { status: 416 });
+      if (start === null) {
+        // suffix range: last N bytes
+        start = Math.max(0, stat.size - end);
+        end = stat.size - 1;
+      } else if (end === null || end >= stat.size) {
+        end = stat.size - 1;
+      }
+      if (start > end || start >= stat.size) {
+        return new Response('range not satisfiable', { status: 416, headers: { 'content-range': `bytes */${stat.size}` } });
+      }
+      const stream = fs.createReadStream(file, { start, end });
+      return new Response(Readable.toWeb(stream), {
+        status: 206,
+        headers: {
+          ...headers,
+          'content-length': String(end - start + 1),
+          'content-range': `bytes ${start}-${end}/${stat.size}`,
+        },
+      });
+    }
+
+    const stream = fs.createReadStream(file);
+    return new Response(Readable.toWeb(stream), {
+      status: 200,
+      headers: { ...headers, 'content-length': String(stat.size) },
+    });
   });
 }
 
