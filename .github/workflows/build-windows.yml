@@ -4,6 +4,7 @@ on:
   push:
     paths:
       - 'app/**'
+      - 'tools/**'
       - '.github/workflows/build-windows.yml'
   workflow_dispatch:
 
@@ -23,28 +24,75 @@ jobs:
           node-version: 22
           cache: npm
 
-      - name: Install packager
-        working-directory: app
-        shell: pwsh
-        run: |
-          npm install --no-save --no-audit --no-fund electron@32.2.0 @electron/packager@18.3.6
-
-      - name: Install test/render deps
+      - name: Install dependencies
         run: npm install --no-audit --no-fund
 
-      - name: Smoke test renderer (jsdom)
+      - name: Smoke test renderer
         run: node tools/smoke-test.js
 
-      - name: Package ByAzen.exe
-        working-directory: app
+      - name: Fetch Electron runtime
         shell: pwsh
         run: |
-          npx electron-packager . ByAzen --platform=win32 --arch=x64 --out=dist --overwrite --app-version=1.0.0 --icon=build/icon.ico --asar --prune=true --ignore="dist" --win32metadata.CompanyName="ByAzen" --win32metadata.FileDescription="ByAzen - premium desktop music player" --win32metadata.ProductName="ByAzen"
-          if ($LASTEXITCODE -ne 0) { throw "packager failed" }
+          cd app
+          npm install --no-save --no-package-lock --no-audit --no-fund electron@32.2.0
+          if (-not (Test-Path node_modules/electron/dist/electron.exe)) { throw "electron runtime missing" }
+          (Get-Item node_modules/electron/dist/electron.exe).Length
+
+      - name: Assemble portable build
+        shell: pwsh
+        run: |
+          $out = "app/dist/ByAzen-win32-x64"
+          Remove-Item -Recurse -Force app/dist -ErrorAction SilentlyContinue
+          New-Item -ItemType Directory -Force -Path $out | Out-Null
+
+          # 1. Electron runtime (no installer, portable folder)
+          Copy-Item -Recurse -Force app/node_modules/electron/dist/* $out/
+          Remove-Item -Force "$out/default_app.asar" -ErrorAction SilentlyContinue
+
+          # 2. App payload -> resources/app
+          $appDir = "$out/resources/app"
+          New-Item -ItemType Directory -Force -Path $appDir | Out-Null
+          Copy-Item -Force app/main.js, app/preload.js, app/package.json $appDir/
+          Copy-Item -Recurse -Force app/renderer $appDir/renderer
+
+          # 3. Rename the launcher and stamp version info
+          Rename-Item -Force "$out/electron.exe" "ByAzen.exe"
+          $exe = (Resolve-Path "$out/ByAzen.exe").Path
+
+          # 4. Icon + Windows file properties (best effort: never fail the build)
+          npx --yes @electron/rcedit@3.0.0 $exe `
+            --set-icon app/build/icon.ico `
+            --set-version-string ProductName ByAzen `
+            --set-version-string FileDescription "ByAzen - premium desktop music player" `
+            --set-version-string CompanyName ByAzen `
+            --set-file-version 1.0.0.0 `
+            --set-product-version 1.0.0
+          if ($LASTEXITCODE -ne 0) { Write-Warning "rcedit skipped; default Electron icon used" }
+
+          Write-Host "built:"
+          Get-ChildItem $out | Select-Object Name, Length | Format-Table
+          "payload bytes: " + ((Get-ChildItem -Recurse $out | Measure-Object -Property Length -Sum).Sum / 1MB)
+
+      - name: Verify the exe starts
+        shell: pwsh
+        run: |
+          $exe = "app/dist/ByAzen-win32-x64/ByAzen.exe"
+          $env:ELECTRON_ENABLE_LOGGING = "1"
+          $p = Start-Process -FilePath $exe -ArgumentList "--no-sandbox" -PassThru
+          Start-Sleep -Seconds 8
+          if ($p.HasExited) {
+            Write-Host "exit code: $($p.ExitCode)"
+            throw "ByAzen.exe exited immediately"
+          }
+          Write-Host "running ok (pid $($p.Id))"
+          Stop-Process -Id $p.Id -Force
+          Get-Process | Where-Object { $_.ProcessName -like 'ByAzen*' } | Stop-Process -Force -ErrorAction SilentlyContinue
 
       - name: Zip portable build
         shell: pwsh
-        run: Compress-Archive -Path app/dist/ByAzen-win32-x64/* -DestinationPath ByAzen-win32-x64-portable.zip
+        run: |
+          Compress-Archive -Path app/dist/ByAzen-win32-x64/* -DestinationPath ByAzen-win32-x64-portable.zip -CompressionLevel Optimal
+          (Get-Item ByAzen-win32-x64-portable.zip).Length / 1MB
 
       - uses: actions/upload-artifact@v4
         with:
@@ -58,8 +106,8 @@ jobs:
         shell: pwsh
         run: |
           $tag = "v1.0.0"
-          gh release view $tag --repo $env:GITHUB_REPOSITORY 2>$null
+          gh release view $tag --repo $env:GITHUB_REPOSITORY *> $null
           if ($LASTEXITCODE -ne 0) {
-            gh release create $tag --repo $env:GITHUB_REPOSITORY --title "ByAzen 1.0.0" --notes "Portable Windows build. Unzip, then run ByAzen.exe." --target $env:GITHUB_SHA
+            gh release create $tag --repo $env:GITHUB_REPOSITORY --title "ByAzen 1.0.0" --notes "Portable Windows build. Unzip, then run ByAzen.exe. Eight original demo tracks are bundled." --target $env:GITHUB_SHA
           }
           gh release upload $tag ByAzen-win32-x64-portable.zip --repo $env:GITHUB_REPOSITORY --clobber
