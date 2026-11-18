@@ -50,8 +50,12 @@ jobs:
 
           $appDir = "$out/resources/app"
           New-Item -ItemType Directory -Force -Path $appDir | Out-Null
-          Copy-Item -Force app/main.js, app/preload.js, app/package.json $appDir/
+          $files = @('main.js', 'preload.js', 'meta.js', 'library.js', 'recommend.js', 'package.json')
+          foreach ($f in $files) { Copy-Item -Force "app/$f" $appDir/ }
           Copy-Item -Recurse -Force app/renderer $appDir/renderer
+          Copy-Item -Recurse -Force app/build $appDir/build
+          Write-Host "app payload:"
+          Get-ChildItem $appDir | Select-Object Name | Format-Table
 
           Rename-Item -Force "$out/electron.exe" "ByAzen.exe"
           Write-Host "payload before stamp:"
@@ -96,7 +100,7 @@ jobs:
           $tag = "v1.0.0"
           gh release view $tag --repo $env:GITHUB_REPOSITORY *> $null
           if ($LASTEXITCODE -ne 0) {
-            gh release create $tag --repo $env:GITHUB_REPOSITORY --title "ByAzen 1.0.0" --notes "Portable Windows build. Unzip, then run ByAzen.exe. Eight original demo tracks are bundled." --target $env:GITHUB_SHA
+            gh release create $tag --repo $env:GITHUB_REPOSITORY --title "ByAzen 1.0.0" --notes "Portable Windows build. Unzip, then run ByAzen.exe. Reads your own music folders (MP3/FLAC/M4A/OGG/Opus/WAV/AIFF/WMA) with tags, cover art, offline radio and .lrc lyrics; eight demo tracks are bundled." --target $env:GITHUB_SHA
           }
           gh release upload $tag ByAzen-win32-x64-portable.zip --repo $env:GITHUB_REPOSITORY --clobber
           exit 0
