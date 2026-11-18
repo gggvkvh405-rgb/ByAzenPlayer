@@ -1233,8 +1233,12 @@
 <text x="532" y="2498" font-family="Inter SemiBold" font-size="7.4" font-weight="600" fill="#B3A99D" text-anchor="start" letter-spacing="2.2" opacity="1" >DOCK / RETAIL</text>
 <line x1="106" y1="2582" x2="754" y2="2582" stroke="rgba(30,30,30,0.08)" stroke-width="1" />
 <text x="106" y="2610" font-family="Inter" font-size="9.8" font-weight="400" fill="#6B6259" text-anchor="start" letter-spacing="0" opacity="1" >Two flowing soundwave ribbons intertwine into B and A;</text>
-<text x="106" y="2625" font-family="Inter" font-size="9.8" font-weight="400" fill="#6B6259" text-anchor="start" letter-spacing="0" opacity="1" >a music note rests in the negative space, 6% opacity.</text>
-<text x="106" y="2646" font-family="Inter" font-size="8.6" font-weight="400" fill="#B3A99D" text-anchor="start" letter-spacing="0.2" opacity="1" >Rounded square 22.5%  ·  Cream → terracotta gradient  ·  Embossed, matte</text>
+<text x="106" y="2625" font-family="Inter" font-size="9.8" font-weight="400" fill="#6B6259" text-anchor="start" letter-spacing="0" opacity="1" >a music note rests in the negative space, 10% opacity.</text>
+<text x="106" y="2646" font-family="Inter" font-size="8.6" font-weight="400" fill="#B3A99D" text-anchor="start" letter-spacing="0.2" opacity="1" >Rounded square 22.5%  ·  Cream</text>
+<g stroke="#B3A99D" stroke-width="0.9" fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M247 2643h11"/><path d="M254.6 2639.8l3.4 3.2-3.4 3.2"/>
+    </g>
+<text x="264" y="2646" font-family="Inter" font-size="8.6" font-weight="400" fill="#B3A99D" text-anchor="start" letter-spacing="0.2" opacity="1" >terracotta gradient  ·  Embossed, matte</text>
 <text x="820" y="2094" font-family="Playfair Display" font-size="16" font-weight="400" fill="#C4704F" text-anchor="start" letter-spacing="1" opacity="1" >04</text>
 <text x="856" y="2093" font-family="Inter SemiBold" font-size="9.2" font-weight="600" fill="#4A443D" text-anchor="start" letter-spacing="2.6" opacity="1" >COLOR &amp; TYPOGRAPHY</text>
 <line x1="1028.8" y1="2090" x2="1520" y2="2090" stroke="rgba(30,30,30,0.1)" stroke-width="1" />

@@ -887,14 +887,31 @@ S.push(caps(varX, icCardY + 330, 'DOCK / RETAIL', 7.4, C.faint, 2.2));
 
 S.push(line(M + 26, icY + cardH - 88, M + cardW - 26, icY + cardH - 88, 'rgba(30,30,30,0.08)'));
 S.push(txt(M + 26, icY + cardH - 60, 'Two flowing soundwave ribbons intertwine into B and A;', { size: 9.8, fill: C.body }));
-S.push(txt(M + 26, icY + cardH - 45, 'a music note rests in the negative space, 6% opacity.', { size: 9.8, fill: C.body }));
-S.push(
-  txt(M + 26, icY + cardH - 24, 'Rounded square 22.5%  ·  Cream → terracotta gradient  ·  Embossed, matte', {
-    size: 8.6,
-    fill: C.faint,
-    ls: 0.2,
-  })
-);
+S.push(txt(M + 26, icY + cardH - 45, 'a music note rests in the negative space, 10% opacity.', { size: 9.8, fill: C.body }));
+// arrow drawn as a path — U+2192 is not in the bundled subsets
+{
+  const ay = icY + cardH - 27;
+  const ax = M + 26 + 141;
+  S.push(
+    txt(M + 26, icY + cardH - 24, 'Rounded square 22.5%  ·  Cream', {
+      size: 8.6,
+      fill: C.faint,
+      ls: 0.2,
+    })
+  );
+  S.push(
+    `<g stroke="${C.faint}" stroke-width="0.9" fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M${n(ax)} ${n(ay)}h11"/><path d="M${n(ax + 7.6)} ${n(ay - 3.2)}l3.4 3.2-3.4 3.2"/>
+    </g>`
+  );
+  S.push(
+    txt(ax + 17, icY + cardH - 24, 'terracotta gradient  ·  Embossed, matte', {
+      size: 8.6,
+      fill: C.faint,
+      ls: 0.2,
+    })
+  );
+}
 
 /* 04 palette + type */
 const px = M + cardW + 40;
